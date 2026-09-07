@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voluntariat - ALKA</title>
+<meta name="robots" content="noindex, nofollow">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background:#E9E4D8; }
+    h1, h2, h3, .display-num { font-family: 'Frank Ruhl Libre', Georgia, serif; }
+    a { color: #a8433d; text-decoration: none; }
+    a:hover { color: #7d3530; }
+    .ph-icon { color: rgba(29,47,70,.28); }
+    .footer-input::placeholder { color: rgba(253,251,247,.5); }
+    .nav-dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(6px); background:#FDFBF7; border:1px solid rgba(29,47,70,.1); border-radius:14px; padding:8px; min-width:210px; box-shadow:0 14px 34px rgba(29,47,70,.14); opacity:0; visibility:hidden; transition:opacity .15s ease, transform .15s ease; z-index:60; }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+    .nav-dropdown-menu a { display:block; padding:10px 14px; border-radius:8px; font-size:13.5px; font-weight:600; color:#1d2f46 !important; }
+    .nav-dropdown-menu a:hover { background:rgba(29,47,70,.06); }
+
+    .lang-switch { position:relative; }
+    .lang-switch > summary {
+      list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:5px;
+      border:1.5px solid rgba(29,47,70,.22); border-radius:999px; padding:7px 12px;
+      font-size:12px; font-weight:700; color:#1d2f46;
+    }
+    .lang-switch > summary::-webkit-details-marker { display:none; }
+    .lang-switch[open] > summary { border-color:rgba(29,47,70,.45); }
+    .lang-menu {
+      position:absolute; top:calc(100% + 6px); right:0; background:#FDFBF7;
+      border:1px solid rgba(29,47,70,.1); border-radius:12px; padding:6px; min-width:88px;
+      box-shadow:0 14px 34px rgba(29,47,70,.14); z-index:70;
+    }
+    .lang-menu a { display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:8px; font-size:12.5px; font-weight:700; color:#1d2f46 !important; }
+    .lang-menu a:hover { background:rgba(29,47,70,.06); }
+    .lang-menu a.lang-current { opacity:.4; }
+
+    @media (max-width: 900px) {
+      nav[aria-label="Navegació principal"] {
+        padding-left:20px !important; padding-right:20px !important;
+        flex-wrap:wrap !important;
+      }
+      /* language selector stays visible in the header, as a pill button */
+      .nav-right {
+        display:flex !important;
+        order:2;
+        width:auto !important;
+        margin-left:auto !important;
+        gap:0 !important;
+      }
+      /* the membership CTA is not needed in the mobile header */
+      .nav-cta { display:none !important; }
+      .nav-burger { display:flex !important; order:3; margin-left:10px !important; }
+      /* collapsible menu drops onto its own full-width row */
+      .nav-links {
+        display:none !important;
+        order:4;
+        width:100% !important;
+        flex-direction:column;
+        align-items:flex-start !important;
+        gap:6px !important;
+        padding:10px 0 6px 0;
+        border-top:1px solid rgba(29,47,70,.08);
+        margin-top:12px;
+      }
+      #nav-toggle:checked ~ .nav-links { display:flex !important; }
+      .nav-links > a, .nav-links > .nav-dropdown { width:100%; padding:8px 0; }
+      .nav-dropdown-menu {
+        position:static !important; opacity:1 !important; visibility:visible !important;
+        transform:none !important; box-shadow:none !important; border:none !important;
+        background:transparent !important;
+        padding:2px 0 8px 14px !important; min-width:0 !important; display:block !important;
+      }
+
+      .grid-4-col, .grid-3-col, .grid-2-col { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+      /* compact footer: 2 columns, newsletter spanning the full width */
+      footer[id="contacte"] { padding-top:34px !important; padding-bottom:18px !important; }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap:22px !important;
+        padding-bottom:20px !important;
+      }
+      /* the "Enllaços" column duplicates the burger menu on small screens */
+      .footer-grid > div:nth-child(2) { display:none !important; }
+      .footer-grid > div:nth-child(4) { grid-column:1 / -1; }
+      .footer-grid > div:nth-child(4) p { margin-bottom:10px !important; }
+      /* bottom bar: tighter, so copyright + legal links take as little height as possible */
+      footer[id="contacte"] > div > div:last-child { font-size:11px !important; padding-top:14px !important; gap:4px 14px !important; }
+      footer[id="contacte"] > div > div:last-child > div:last-child { gap:14px !important; }
+      .cr-long { display:none; }
+
+      /* reclaim the 64px desktop side gutters so blocks use the full width */
+      [style*="64px"] { padding-left:18px !important; padding-right:18px !important; }
+      .split-media-44 { padding:20px 18px !important; }
+      .split-text-56 { padding:4px 18px 28px 18px !important; }
+      .stack-mobile { flex-direction:column !important; }
+      .split-media, .split-text, .split-54, .split-46, .split-media-44, .split-text-56 {
+        width:100% !important; flex:none !important;
+      }
+
+      .hero-content { padding:32px 24px !important; max-width:100% !important; }
+      .hero-content > div:first-child { font-size:11px !important; letter-spacing:.16em !important; }
+      .hero-title { font-size:32px !important; }
+      .hero-banner { min-height:0 !important; }
+      /* stronger scrim so the overlaid text stays readable over the photo */
+      .hero-banner > div:first-of-type {
+        background:linear-gradient(180deg, rgba(253,251,247,.94) 0%, rgba(253,251,247,.88) 60%, rgba(253,251,247,.8) 100%) !important;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .grid-4-col, .grid-3-col, .grid-2-col, .footer-grid { grid-template-columns: 1fr !important; }
+      nav[aria-label="Navegació principal"] { padding-top:10px !important; padding-bottom:10px !important; }
+    }
+    .form-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:18px 20px; }
+    .field { display:flex; flex-direction:column; gap:7px; }
+    .field.full { grid-column:1 / -1; }
+    .field > label { font-size:12.5px; font-weight:700; color:#1d2f46; letter-spacing:.02em; }
+    .field input[type="text"], .field input[type="email"], .field input[type="tel"], .field select, .field textarea {
+      font-family:inherit; font-size:14px; color:#1d2f46; background:#FFFFFF;
+      border:1.5px solid rgba(29,47,70,.18); border-radius:12px; padding:12px 14px; width:100%;
+    }
+    .field textarea { min-height:110px; resize:vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline:none; border-color:#1d2f46; }
+    .check-row { display:flex; align-items:flex-start; gap:10px; font-size:13.5px; line-height:1.55; color:#1d1d1b; }
+    .check-row input { margin-top:3px; width:17px; height:17px; flex-shrink:0; accent-color:#b74f49; }
+    .chips { display:flex; flex-wrap:wrap; gap:10px; }
+    .chip { display:flex; align-items:center; gap:8px; border:1.5px solid rgba(29,47,70,.18); border-radius:999px; padding:9px 15px; font-size:13.5px; font-weight:600; color:#1d2f46; cursor:pointer; }
+    .chip input { accent-color:#b74f49; }
+    .legal-body h2 { font-size:20px; font-weight:700; color:#1d2f46; margin:34px 0 10px 0; }
+    .legal-body p, .legal-body li { font-size:14.5px; line-height:1.75; color:#1d1d1b; opacity:.78; margin:0 0 12px 0; }
+    .legal-body ul { padding-left:20px; margin:0 0 12px 0; }
+    .ph { background:rgba(232,183,54,.3); border-radius:4px; padding:1px 6px; font-weight:700; color:#1d2f46; opacity:1; }
+    @media (max-width: 900px) { .form-grid { grid-template-columns:1fr !important; } }
+  </style>
+
+</head>
+<body>
+<div style="width:100%; max-width:1440px; margin:0 auto; background:#FDFBF7; color:#1d1d1b; box-shadow:0 0 0 1px rgba(29,47,70,.06); overflow-x:hidden;">
+
+  <!-- NAV -->
+  <nav aria-label="Navegació principal" style="position:sticky; top:0; z-index:50; background:rgba(253,251,247,0.95); border-bottom:1px solid rgba(29,47,70,0.08); display:flex; align-items:center; justify-content:space-between; padding:14px 64px;">
+    <a href="/" style="display:flex; align-items:center;">
+      <svg width="126" height="26" viewBox="0 0 263.22 53" xmlns="http://www.w3.org/2000/svg">
+        <rect fill="#1d2f46" x="136.74" y="1.11" width="19.54" height="50.77"/>
+        <polygon fill="#1d2f46" points="192.6 51.82 162.53 51.89 159.86 28.37 159.83 1.07 185.71 1.12 166.07 24.59 192.6 51.82"/>
+        <path fill="#e8b736" d="M119.31,38.61c3.08.02,4.96,1.88,5.39,4.82l.27,9.21-51.81-.02V1.84s19.75,0,19.75,0l.02,31.95c-.09,2.6,1.74,4.63,4.43,4.65l21.94.17Z"/>
+        <path fill="#b74f49" d="M260.02,49.09c-1.09-2.29-2.61-5.53-4.34-9.24-8.66-18.42-15.93-33.84-17.33-35.9-1.68-2.47-4.68-3.95-8.02-3.95s-6.23,1.44-7.92,3.84c-2.13,3.05-8.72,17.14-16.47,33.86-2.23,4.81-4.14,8.95-5.31,11.38l-1.6,3.33h19.59s.81-1.57.81-1.57c2.64-5.12,5.3-9.36,11.13-9.36h.24c4.19.08,8.21,4.94,10.57,9.47l.74,1.42,19.51.04-1.57-3.33ZM228.96,31.93c-1.34-.3-2.5-1.48-3.11-2.94-1.75-4.2-1.33-8.98.54-13.18.91-2.05,3.51-3.8,5.01-2.94,1.57.91,2.68,2.26,3.26,3.84,1.6,4.29,2.09,10.88-1.21,14.2-1.09,1.09-2.82,1.39-4.5,1.02Z"/>
+        <path fill="#325f42" d="M38.07,37.56c-3.82-3.29-8.91-3.17-12.66-.11-1.56,1.28-2.77,2.9-3.66,4.71-1.48,3.25-2.06,6.6-1.93,10.29H3.99s.02-27.71.02-27.71c0-6.68,2.91-12.91,7.97-17.42,11.6-10.34,30.4-9.53,40.68,1.66,4.06,4.42,6.51,10.08,6.53,16.08l.11,27.39h-15.89s-.75-6.84-.75-6.84c-.75-3.03-2.1-5.89-4.6-8.05Z"/>
+      </svg>
+    </a>
+    <input type="checkbox" id="nav-toggle" style="display:none;">
+    <label for="nav-toggle" class="nav-burger" aria-label="Menú" style="display:none; width:34px; height:34px; align-items:center; justify-content:center; cursor:pointer; border-radius:50%; margin-left:auto;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </label>
+    <div class="nav-links" style="display:flex; align-items:center; gap:28px;">
+      <a href="/qui-som" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Qui som</a>
+      <div class="nav-dropdown" style="position:relative;">
+        <a href="/#arees" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46; display:inline-flex; align-items:center; gap:5px;">
+          &Agrave;rees d'acci&oacute;
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/cultura">Cultura</a>
+          <a href="/educacio">Educaci&oacute;</a>
+          <a href="/comunitat">Comunitat</a>
+          <a href="/tecnologia">Tecnologia</a>
+        </div>
+      </div>
+      <a href="/#projectes" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Projectes</a>
+      <a href="/#participa" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Participa</a>
+      <a href="/#actualitat" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Actualitat</a>
+      <a href="/#contacte" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Contacte</a>
+    </div>
+    <div class="nav-right" style="display:flex; align-items:center; gap:16px;">
+    <details class="lang-switch"><summary aria-label="Idioma"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="12" fill="#FCDD09"/><rect y="1.33" width="18" height="1.34" fill="#DA121A"/><rect y="4" width="18" height="1.34" fill="#DA121A"/><rect y="6.66" width="18" height="1.34" fill="#DA121A"/><rect y="9.33" width="18" height="1.34" fill="#DA121A"/></svg>CA<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><div class="lang-menu"><a href="/voluntariat" class="lang-current"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="12" fill="#FCDD09"/><rect y="1.33" width="18" height="1.34" fill="#DA121A"/><rect y="4" width="18" height="1.34" fill="#DA121A"/><rect y="6.66" width="18" height="1.34" fill="#DA121A"/><rect y="9.33" width="18" height="1.34" fill="#DA121A"/></svg>CA</a><a href="/lt/voluntariat"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="4" fill="#FDB913"/><rect y="4" width="18" height="4" fill="#006A44"/><rect y="8" width="18" height="4" fill="#C1272D"/></svg>LT</a><a href="/en/voluntariat"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="12" fill="#012169"/><path d="M0 0 18 12M18 0 0 12" stroke="#FFFFFF" stroke-width="2.6"/><path d="M0 0 18 12M18 0 0 12" stroke="#C8102E" stroke-width="1.3"/><path d="M9 0V12M0 6H18" stroke="#FFFFFF" stroke-width="4"/><path d="M9 0V12M0 6H18" stroke="#C8102E" stroke-width="2.4"/></svg>EN</a></div></details>
+    <a class="nav-cta" href="/#participa" style="background:#b74f49; color:#FDFBF7; padding:11px 22px; border-radius:999px; font-weight:700; font-size:13.5px; display:inline-flex; align-items:center; gap:7px;">
+      Fes-te'n soci
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#FDFBF7"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.7 4 6.7 4c2.2 0 4 1.2 5.3 3 1.3-1.8 3.1-3 5.3-3 4 0 6.2 4 4.7 7.7C19.5 16.3 12 21 12 21Z"/></svg>
+    </a>
+  </div>
+  </nav>
+  <!-- BREADCRUMB -->
+  <div style="padding:20px 64px 0 64px;">
+    <a href="/" style="display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600; color:#1d2f46; opacity:.6;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      Tornar a l'inici
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <div style="padding:32px 64px 0 64px;">
+    <div style="max-width:820px;">
+      <div style="font-size:12.5px; letter-spacing:.22em; font-weight:700; color:#976524; text-transform:uppercase; margin-bottom:16px;">Formulari d'inscripci&oacute;</div>
+      <h1 style="font-size:40px; font-weight:800; color:#1d2f46; margin:0 0 16px 0;">Sigues voluntari</h1>
+      <p style="font-size:16px; line-height:1.75; color:#1d1d1b; opacity:.75; margin:0;">Comparteix el teu temps i talents amb la comunitat d'ALKA. Explica'ns qu&egrave; t'agradaria fer.</p>
+    </div>
+  </div>
+
+  <!-- FORMULARI -->
+  <div style="padding:44px 64px 96px 64px;">
+    <div style="max-width:820px;">
+      <!-- Substitueix XXXXXXXX per l'identificador real del formulari a Formspree -->
+      <form action="/api/inscripcio" method="POST">
+        <input type="hidden" name="tipus" value="voluntari">
+        <input type="hidden" name="idioma" value="ca">
+        <div aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;">
+          <label>Lloc web<input type="text" name="lloc_web" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="nom">Nom i cognoms *</label>
+            <input type="text" id="nom" name="nom" required>
+          </div>
+          <div class="field">
+            <label for="email">Correu electr&ograve;nic *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="tel">Tel&egrave;fon</label>
+            <input type="tel" id="tel" name="telefon">
+          </div>
+          <div class="field">
+            <label for="poblacio">Poblaci&oacute;</label>
+            <input type="text" id="poblacio" name="poblacio">
+          </div>
+          <div class="field full">
+            <label>&Agrave;rees d'inter&egrave;s</label>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="arees" value="Cultura"> Cultura</label>
+              <label class="chip"><input type="checkbox" name="arees" value="Educacio"> Educaci&oacute;</label>
+              <label class="chip"><input type="checkbox" name="arees" value="Comunitat"> Comunitat</label>
+              <label class="chip"><input type="checkbox" name="arees" value="Tecnologia"> Tecnologia</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="disponibilitat">Disponibilitat</label>
+            <select id="disponibilitat" name="disponibilitat">
+              <option value="">Tria una opci&oacute;</option>
+              <option value="Entre setmana">Entre setmana</option>
+              <option value="Caps de setmana">Caps de setmana</option>
+              <option value="Puntual">Puntual, per a activitats concretes</option>
+              <option value="Flexible">Flexible</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="sobre">Explica'ns una mica sobre tu</label>
+            <textarea id="sobre" name="sobre_tu"></textarea>
+          </div>
+        </div>
+        <div class="check-row" style="margin-top:22px;">
+          <input type="checkbox" id="consent" name="consentiment" required>
+          <label for="consent">He llegit i accepto la <a href="/privacitat">pol&iacute;tica de privacitat</a> i el tractament de les meves dades. *</label>
+        </div>
+        <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap; margin-top:26px;">
+          <button type="submit" style="background:#976524; color:#FDFBF7; border:none; padding:15px 34px; border-radius:999px; font-family:inherit; font-weight:700; font-size:15px; cursor:pointer;">Envia la sol&middot;licitud</button>
+          <span style="font-size:12.5px; opacity:.6;">* Camps obligatoris</span>
+        </div>
+      </form>
+      <p style="font-size:13.5px; line-height:1.7; opacity:.7; margin:28px 0 0 0; max-width:560px;">Ens posarem en contacte amb tu per con&egrave;ixer-te i explicar-te quines activitats s'ajusten millor a la teva disponibilitat.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="contacte" style="background:#1d2f46; color:#FDFBF7; padding:64px 64px 28px 64px;">
+    <div style="max-width:1200px; margin:0 auto;">
+
+      <div class="footer-grid" style="display:grid; grid-template-columns:1.3fr 1fr 1fr 1.2fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(253,251,247,.14);">
+
+        <div>
+          <svg width="98" height="20" viewBox="0 0 263.22 53" xmlns="http://www.w3.org/2000/svg">
+            <rect fill="#FDFBF7" x="136.74" y="1.11" width="19.54" height="50.77"/>
+            <polygon fill="#FDFBF7" points="192.6 51.82 162.53 51.89 159.86 28.37 159.83 1.07 185.71 1.12 166.07 24.59 192.6 51.82"/>
+            <path fill="#FDFBF7" d="M119.31,38.61c3.08.02,4.96,1.88,5.39,4.82l.27,9.21-51.81-.02V1.84s19.75,0,19.75,0l.02,31.95c-.09,2.6,1.74,4.63,4.43,4.65l21.94.17Z"/>
+            <path fill="#FDFBF7" d="M260.02,49.09c-1.09-2.29-2.61-5.53-4.34-9.24-8.66-18.42-15.93-33.84-17.33-35.9-1.68-2.47-4.68-3.95-8.02-3.95s-6.23,1.44-7.92,3.84c-2.13,3.05-8.72,17.14-16.47,33.86-2.23,4.81-4.14,8.95-5.31,11.38l-1.6,3.33h19.59s.81-1.57.81-1.57c2.64-5.12,5.3-9.36,11.13-9.36h.24c4.19.08,8.21,4.94,10.57,9.47l.74,1.42,19.51.04-1.57-3.33ZM228.96,31.93c-1.34-.3-2.5-1.48-3.11-2.94-1.75-4.2-1.33-8.98.54-13.18.91-2.05,3.51-3.8,5.01-2.94,1.57.91,2.68,2.26,3.26,3.84,1.6,4.29,2.09,10.88-1.21,14.2-1.09,1.09-2.82,1.39-4.5,1.02Z"/>
+            <path fill="#FDFBF7" d="M38.07,37.56c-3.82-3.29-8.91-3.17-12.66-.11-1.56,1.28-2.77,2.9-3.66,4.71-1.48,3.25-2.06,6.6-1.93,10.29H3.99s.02-27.71.02-27.71c0-6.68,2.91-12.91,7.97-17.42,11.6-10.34,30.4-9.53,40.68,1.66,4.06,4.42,6.51,10.08,6.53,16.08l.11,27.39h-15.89s-.75-6.84-.75-6.84c-.75-3.03-2.1-5.89-4.6-8.05Z"/>
+          </svg>
+          <div style="font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-top:14px;">Cultura &middot; Educaci&oacute; &middot; Comunitat</div>
+        </div>
+
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-bottom:18px;">Enlla&ccedil;os</div>
+          <div style="display:flex; flex-direction:column; gap:11px;">
+            <a href="/qui-som" style="color:#FDFBF7; opacity:.85; font-size:14px;">Qui som</a>
+            <a href="/#arees" style="color:#FDFBF7; opacity:.85; font-size:14px;">&Agrave;rees d'acci&oacute;</a>
+            <a href="/#projectes" style="color:#FDFBF7; opacity:.85; font-size:14px;">Projectes</a>
+            <a href="/#actualitat" style="color:#FDFBF7; opacity:.85; font-size:14px;">Actualitat</a>
+            <a href="/#contacte" style="color:#FDFBF7; opacity:.85; font-size:14px;">Contacte</a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-bottom:18px;">Contacte</div>
+          <div style="display:flex; flex-direction:column; gap:11px; font-size:14px; opacity:.85;">
+            <div>Palau de Vidre<br>Camps Elisis - Lleida</div>
+            <a href="mailto:labas@alka.cat" style="color:#FDFBF7; opacity:1;">labas@alka.cat</a>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:18px;">
+            <a href="#" aria-label="Instagram" style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FDFBF7" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1" fill="#FDFBF7" stroke="none"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook" style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#FDFBF7"><path d="M15 8.5h2.5V4.8h-2.7C11.9 4.8 10.5 6.6 10.5 9v3H8v4h2.5v7.2h4V16h2.7l.5-4h-3.2V9.4c0-.6.4-.9 1-.9Z"/></svg>
+            </a>
+            <a href="mailto:labas@alka.cat" aria-label="Correu" style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FDFBF7" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-bottom:14px;">Uneix-te a la comunitat</div>
+          <p style="font-size:13px; line-height:1.6; opacity:.7; margin:0 0 16px 0;">Rep novetats i activitats directament al teu correu.</p>
+          <div style="display:flex; gap:8px;">
+            <input type="email" placeholder="El teu correu" class="footer-input" style="flex:1; min-width:0; padding:11px 16px; border-radius:999px; border:1px solid rgba(253,251,247,.25); background:rgba(255,255,255,.06); color:#FDFBF7; font-size:13.5px; font-family:inherit;">
+            <button aria-label="Envia" style="width:40px; height:40px; border-radius:50%; background:#e8b736; border:none; display:flex; align-items:center; justify-content:center; flex-shrink:0; cursor:pointer;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:22px; font-size:12.5px; opacity:.55; flex-wrap:wrap; gap:10px;">
+        <div>&copy; 2026 ALKA<span class="cr-long"> - Associaci&oacute; d'Avan&ccedil;ament</span></div>
+        <div style="display:flex; gap:18px;">
+          <a href="/avis-legal" style="color:#FDFBF7; opacity:1;">Av&iacute;s legal</a>
+          <a href="/privacitat" style="color:#FDFBF7; opacity:1;">Privacitat</a>
+          <a href="/proteccio-dades" style="color:#FDFBF7; opacity:1;">Protecci&oacute; de dades</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALKA - Kuriame rysius bendrai ateiciai</title>
+<meta name="robots" content="noindex, nofollow">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background:#E9E4D8; }
+    h1, h2, h3, .display-num { font-family: 'Frank Ruhl Libre', Georgia, serif; }
+    a { color: #a8433d; text-decoration: none; }
+    a:hover { color: #7d3530; }
+    .ph-icon { color: rgba(29,47,70,.28); }
+    .footer-input::placeholder { color: rgba(253,251,247,.5); }
+    .nav-dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(6px); background:#FDFBF7; border:1px solid rgba(29,47,70,.1); border-radius:14px; padding:8px; min-width:210px; box-shadow:0 14px 34px rgba(29,47,70,.14); opacity:0; visibility:hidden; transition:opacity .15s ease, transform .15s ease; z-index:60; }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+    .nav-dropdown-menu a { display:block; padding:10px 14px; border-radius:8px; font-size:13.5px; font-weight:600; color:#1d2f46 !important; }
+    .nav-dropdown-menu a:hover { background:rgba(29,47,70,.06); }
+
+    .lang-switch { position:relative; }
+    .lang-switch > summary {
+      list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:5px;
+      border:1.5px solid rgba(29,47,70,.22); border-radius:999px; padding:7px 12px;
+      font-size:12px; font-weight:700; color:#1d2f46;
+    }
+    .lang-switch > summary::-webkit-details-marker { display:none; }
+    .lang-switch[open] > summary { border-color:rgba(29,47,70,.45); }
+    .lang-menu {
+      position:absolute; top:calc(100% + 6px); right:0; background:#FDFBF7;
+      border:1px solid rgba(29,47,70,.1); border-radius:12px; padding:6px; min-width:88px;
+      box-shadow:0 14px 34px rgba(29,47,70,.14); z-index:70;
+    }
+    .lang-menu a { display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:8px; font-size:12.5px; font-weight:700; color:#1d2f46 !important; }
+    .lang-menu a:hover { background:rgba(29,47,70,.06); }
+    .lang-menu a.lang-current { opacity:.4; }
+
+    @media (max-width: 900px) {
+      nav[aria-label="Navegació principal"] {
+        padding-left:20px !important; padding-right:20px !important;
+        flex-wrap:wrap !important;
+      }
+      /* language selector stays visible in the header, as a pill button */
+      .nav-right {
+        display:flex !important;
+        order:2;
+        width:auto !important;
+        margin-left:auto !important;
+        gap:0 !important;
+      }
+      /* the membership CTA is not needed in the mobile header */
+      .nav-cta { display:none !important; }
+      .nav-burger { display:flex !important; order:3; margin-left:10px !important; }
+      /* collapsible menu drops onto its own full-width row */
+      .nav-links {
+        display:none !important;
+        order:4;
+        width:100% !important;
+        flex-direction:column;
+        align-items:flex-start !important;
+        gap:6px !important;
+        padding:10px 0 6px 0;
+        border-top:1px solid rgba(29,47,70,.08);
+        margin-top:12px;
+      }
+      #nav-toggle:checked ~ .nav-links { display:flex !important; }
+      .nav-links > a, .nav-links > .nav-dropdown { width:100%; padding:8px 0; }
+      .nav-dropdown-menu {
+        position:static !important; opacity:1 !important; visibility:visible !important;
+        transform:none !important; box-shadow:none !important; border:none !important;
+        background:transparent !important;
+        padding:2px 0 8px 14px !important; min-width:0 !important; display:block !important;
+      }
+
+      .grid-4-col, .grid-3-col, .grid-2-col { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+      /* compact footer: 2 columns, newsletter spanning the full width */
+      footer[id="contacte"] { padding-top:34px !important; padding-bottom:18px !important; }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap:22px !important;
+        padding-bottom:20px !important;
+      }
+      /* the "Enllaços" column duplicates the burger menu on small screens */
+      .footer-grid > div:nth-child(2) { display:none !important; }
+      .footer-grid > div:nth-child(4) { grid-column:1 / -1; }
+      .footer-grid > div:nth-child(4) p { margin-bottom:10px !important; }
+      /* bottom bar: tighter, so copyright + legal links take as little height as possible */
+      footer[id="contacte"] > div > div:last-child { font-size:11px !important; padding-top:14px !important; gap:4px 14px !important; }
+      footer[id="contacte"] > div > div:last-child > div:last-child { gap:14px !important; }
+      .cr-long { display:none; }
+
+      /* reclaim the 64px desktop side gutters so blocks use the full width */
+      [style*="64px"] { padding-left:18px !important; padding-right:18px !important; }
+      .split-media-44 { padding:20px 18px !important; }
+      .split-text-56 { padding:4px 18px 28px 18px !important; }
+      .stack-mobile { flex-direction:column !important; }
+      .split-media, .split-text, .split-54, .split-46, .split-media-44, .split-text-56 {
+        width:100% !important; flex:none !important;
+      }
+
+      .hero-content { padding:32px 24px !important; max-width:100% !important; }
+      .hero-content > div:first-child { font-size:11px !important; letter-spacing:.16em !important; }
+      .hero-title { font-size:32px !important; }
+      .hero-banner { min-height:0 !important; }
+      /* stronger scrim so the overlaid text stays readable over the photo */
+      .hero-banner > div:first-of-type {
+        background:linear-gradient(180deg, rgba(253,251,247,.94) 0%, rgba(253,251,247,.88) 60%, rgba(253,251,247,.8) 100%) !important;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .grid-4-col, .grid-3-col, .grid-2-col, .footer-grid { grid-template-columns: 1fr !important; }
+      nav[aria-label="Navegació principal"] { padding-top:10px !important; padding-bottom:10px !important; }
+    }
+  </style>
+
+</head>
+<body>
+<div style="width:100%; max-width:1440px; margin:0 auto; background:#FDFBF7; color:#1d1d1b; box-shadow:0 0 0 1px rgba(29,47,70,.06); overflow-x:hidden;">
+
+  <!-- NAV -->
+  <nav aria-label="Navegació principal" style="position:sticky; top:0; z-index:50; background:rgba(253,251,247,0.95); border-bottom:1px solid rgba(29,47,70,0.08); display:flex; align-items:center; justify-content:space-between; padding:14px 64px;">
+    <a href="/lt/" style="display:flex; align-items:center;">
+      <svg width="126" height="26" viewBox="0 0 263.22 53" xmlns="http://www.w3.org/2000/svg">
+        <rect fill="#1d2f46" x="136.74" y="1.11" width="19.54" height="50.77"/>
+        <polygon fill="#1d2f46" points="192.6 51.82 162.53 51.89 159.86 28.37 159.83 1.07 185.71 1.12 166.07 24.59 192.6 51.82"/>
+        <path fill="#e8b736" d="M119.31,38.61c3.08.02,4.96,1.88,5.39,4.82l.27,9.21-51.81-.02V1.84s19.75,0,19.75,0l.02,31.95c-.09,2.6,1.74,4.63,4.43,4.65l21.94.17Z"/>
+        <path fill="#b74f49" d="M260.02,49.09c-1.09-2.29-2.61-5.53-4.34-9.24-8.66-18.42-15.93-33.84-17.33-35.9-1.68-2.47-4.68-3.95-8.02-3.95s-6.23,1.44-7.92,3.84c-2.13,3.05-8.72,17.14-16.47,33.86-2.23,4.81-4.14,8.95-5.31,11.38l-1.6,3.33h19.59s.81-1.57.81-1.57c2.64-5.12,5.3-9.36,11.13-9.36h.24c4.19.08,8.21,4.94,10.57,9.47l.74,1.42,19.51.04-1.57-3.33ZM228.96,31.93c-1.34-.3-2.5-1.48-3.11-2.94-1.75-4.2-1.33-8.98.54-13.18.91-2.05,3.51-3.8,5.01-2.94,1.57.91,2.68,2.26,3.26,3.84,1.6,4.29,2.09,10.88-1.21,14.2-1.09,1.09-2.82,1.39-4.5,1.02Z"/>
+        <path fill="#325f42" d="M38.07,37.56c-3.82-3.29-8.91-3.17-12.66-.11-1.56,1.28-2.77,2.9-3.66,4.71-1.48,3.25-2.06,6.6-1.93,10.29H3.99s.02-27.71.02-27.71c0-6.68,2.91-12.91,7.97-17.42,11.6-10.34,30.4-9.53,40.68,1.66,4.06,4.42,6.51,10.08,6.53,16.08l.11,27.39h-15.89s-.75-6.84-.75-6.84c-.75-3.03-2.1-5.89-4.6-8.05Z"/>
+      </svg>
+    </a>
+    <input type="checkbox" id="nav-toggle" style="display:none;">
+    <label for="nav-toggle" class="nav-burger" aria-label="Menú" style="display:none; width:34px; height:34px; align-items:center; justify-content:center; cursor:pointer; border-radius:50%; margin-left:auto;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </label>
+    <div class="nav-links" style="display:flex; align-items:center; gap:28px;">
+      <a href="/lt/qui-som" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Apie mus</a>
+      <div class="nav-dropdown" style="position:relative;">
+        <a href="#arees" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46; display:inline-flex; align-items:center; gap:5px;">
+          Veiklos sritys
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/lt/cultura">Kultūra</a>
+          <a href="/lt/educacio">Švietimas</a>
+          <a href="/lt/comunitat">Bendruomenė</a>
+          <a href="/lt/tecnologia">Technologijos</a>
+        </div>
+      </div>
+      <a href="#projectes" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Projektai</a>
+      <a href="#participa" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Prisijunk</a>
+      <a href="#actualitat" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Naujienos</a>
+      <a href="#contacte" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Kontaktai</a>
+    </div>
+    <div class="nav-right" style="display:flex; align-items:center; gap:16px;">
+    <details class="lang-switch"><summary aria-label="Idioma"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="4" fill="#FDB913"/><rect y="4" width="18" height="4" fill="#006A44"/><rect y="8" width="18" height="4" fill="#C1272D"/></svg>LT<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><div class="lang-menu"><a href="/"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="12" fill="#FCDD09"/><rect y="1.33" width="18" height="1.34" fill="#DA121A"/><rect y="4" width="18" height="1.34" fill="#DA121A"/><rect y="6.66" width="18" height="1.34" fill="#DA121A"/><rect y="9.33" width="18" height="1.34" fill="#DA121A"/></svg>CA</a><a href="/lt/" class="lang-current"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="4" fill="#FDB913"/><rect y="4" width="18" height="4" fill="#006A44"/><rect y="8" width="18" height="4" fill="#C1272D"/></svg>LT</a><a href="/en/"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="12" fill="#012169"/><path d="M0 0 18 12M18 0 0 12" stroke="#FFFFFF" stroke-width="2.6"/><path d="M0 0 18 12M18 0 0 12" stroke="#C8102E" stroke-width="1.3"/><path d="M9 0V12M0 6H18" stroke="#FFFFFF" stroke-width="4"/><path d="M9 0V12M0 6H18" stroke="#C8102E" stroke-width="2.4"/></svg>EN</a></div></details>
+    <a class="nav-cta" href="#participa" style="background:#b74f49; color:#FDFBF7; padding:11px 22px; border-radius:999px; font-weight:700; font-size:13.5px; display:inline-flex; align-items:center; gap:7px;">
+      Tapk nariu
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#FDFBF7"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.7 4 6.7 4c2.2 0 4 1.2 5.3 3 1.3-1.8 3.1-3 5.3-3 4 0 6.2 4 4.7 7.7C19.5 16.3 12 21 12 21Z"/></svg>
+    </a>
+  </div>
+  </nav>
+
+  <!-- HERO -->
+  <div>
+    <div class="hero-banner" style="position:relative; overflow:hidden; min-height:560px; background-image:url('/images/hero.jpg'); background-size:cover; background-position:center calc(32% - 150px); display:flex; align-items:center;">
+      <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(253,251,247,.95) 0%, rgba(253,251,247,.86) 26%, rgba(253,251,247,.4) 48%, rgba(253,251,247,0) 66%);"></div>
+      <div class="hero-content" style="position:relative; z-index:1; padding:64px; max-width:600px;">
+        <div style="font-size:12.5px; letter-spacing:.24em; font-weight:700; color:#1d2f46; text-transform:uppercase; margin-bottom:20px;">Kultūra &middot; Švietimas &middot; Bendruomenė</div>
+        <h1 class="hero-title" style="max-width:480px; font-size:46px; line-height:1.16; font-weight:900; color:#1d2f46; margin:0 0 22px 0;">Mezgame ryšius bendrai ateičiai<span style="color:#e8b736;">.</span></h1>
+        <p style="max-width:430px; font-size:16px; line-height:1.65; color:#1d1d1b; opacity:.8; margin:0 0 32px 0;">ALKA vysto projektus, kurie jungia kultūrą, švietimą ir technologijas ir stiprina mūsų bendruomenę.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="#participa" style="background:#b74f49; color:#FDFBF7; padding:14px 26px; border-radius:999px; font-weight:700; font-size:14.5px; display:inline-flex; align-items:center; gap:8px;">
+            Tapk savanoriu
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FDFBF7" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3.2"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><path d="M16 4.5c1.9.4 3.2 1.9 3.2 3.8 0 1.6-.9 2.9-2.2 3.5M18 14.8c2.4.6 4 2.6 4 5.2"/></svg>
+          </a>
+          <a href="#projectes" style="background:transparent; border:1.5px dashed rgba(29,47,70,.35); color:#1d2f46; padding:12.5px 24px; border-radius:999px; font-weight:700; font-size:14.5px; display:inline-flex; align-items:center; gap:8px;">
+            Bendradarbiauk
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M10.5 6.5l1-1a3.5 3.5 0 0 1 5 5l-1 1"/><path d="M13.5 17.5l-1 1a3.5 3.5 0 0 1-5-5l1-1"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:10px 64px 0 64px;">
+    <svg width="100%" height="26" viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q150 0 300 13 T600 13 T900 13 T1200 13" stroke="#e8b736" stroke-width="2" fill="none" opacity=".55"/></svg>
+  </div>
+
+  <!-- QUATRE ÀREES -->
+  <div id="arees" style="padding:72px 64px 100px 64px; background:#FFFFFF;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <h2 style="text-align:center; font-size:32px; font-weight:800; color:#1d2f46; margin:0;">Keturios sritys visuomenei keisti</h2>
+      <div style="display:flex; justify-content:center; margin:14px 0 44px 0;">
+        <svg width="46" height="10" viewBox="0 0 46 10"><path d="M2 6c4-6 8-6 12 0s8 6 12 0 8-6 12 0" stroke="#e8b736" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      </div>
+
+      <div class="grid-4-col" style="display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:20px;">
+
+        <!-- Kultūra -->
+        <div style="border-radius:24px; overflow:hidden; display:flex; flex-direction:column;">
+          <div style="background:#325f42; padding:24px 20px 26px 20px;">
+            <div style="width:40px; height:40px; border-radius:50%; border:1.5px solid rgba(255,255,255,.5); display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FDFBF7" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8-1 13-6 14-14-8 1-13 6-14 14Z"/><path d="M9 15c2-2 4-4 8-6"/></svg>
+            </div>
+            <div style="font-size:16.5px; font-weight:700; color:#FDFBF7; margin-bottom:4px;">Kultūra</div>
+            <div style="font-size:12px; color:#FDFBF7; opacity:.75; margin-bottom:10px;">Kuriame ir saugome savo paveldą</div>
+            <p style="font-size:12px; line-height:1.5; color:#FDFBF7; opacity:.82; margin:0 0 12px 0;">Skatiname meninę kūrybą, vertiname tradicijas ir puoselėjame lietuvišką bei katalonišką kultūros paveldą.</p>
+            <a href="/lt/cultura" style="color:#FDFBF7; font-weight:700; font-size:13.5px;">Sužinok daugiau &rarr;</a>
+          </div>
+          <div style="flex:1; min-height:190px; position:relative; overflow:hidden;">
+            <div style="position:absolute; inset:0; background-image:url('/images/cultura.jpg'); background-size:cover; background-position:center 30%;"></div>
+            <svg viewBox="0 0 400 32" preserveAspectRatio="none" style="position:absolute; top:0; left:0; width:100%; height:32px; display:block;"><path d="M0 32 Q100 4 210 18 T400 6 L400 0 L0 0 Z" fill="#325f42"/></svg>
+          </div>
+        </div>
+
+        <!-- Educació -->
+        <div style="border-radius:24px; overflow:hidden; display:flex; flex-direction:column;">
+          <div style="background:#976524; padding:24px 20px 26px 20px;">
+            <div style="width:40px; height:40px; border-radius:50%; border:1.5px solid rgba(255,255,255,.5); display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FDFBF7" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5c2-1 5-1 8 0v13c-3-1-6-1-8 0V5.5Z"/><path d="M20 5.5c-2-1-5-1-8 0v13c3-1 6-1 8 0V5.5Z"/></svg>
+            </div>
+            <div style="font-size:16.5px; font-weight:700; color:#FDFBF7; margin-bottom:4px;">Švietimas</div>
+            <div style="font-size:12px; color:#FDFBF7; opacity:.8; margin-bottom:10px;">Mokomės, kad augtume kartu</div>
+            <p style="font-size:12px; line-height:1.5; color:#FDFBF7; opacity:.9; margin:0 0 12px 0;">Siūlome ugdymo programas ir priemones vaikams, jaunimui ir šeimoms, skatindami daugiakalbį mokymąsi.</p>
+            <a href="/lt/educacio" style="color:#FDFBF7; font-weight:700; font-size:13.5px;">Sužinok daugiau &rarr;</a>
+          </div>
+          <div style="flex:1; min-height:190px; position:relative; overflow:hidden;">
+            <div style="position:absolute; inset:0; background-image:url('/images/educacio.jpg'); background-size:cover; background-position:center 30%;"></div>
+            <svg viewBox="0 0 400 32" preserveAspectRatio="none" style="position:absolute; top:0; left:0; width:100%; height:32px; display:block;"><path d="M0 32 Q100 4 210 18 T400 6 L400 0 L0 0 Z" fill="#976524"/></svg>
+          </div>
+        </div>
+
+        <!-- Bendruomenė -->
+        <div style="border-radius:24px; overflow:hidden; display:flex; flex-direction:column;">
+          <div style="background:#b74f49; padding:24px 20px 26px 20px;">
+            <div style="width:40px; height:40px; border-radius:50%; border:1.5px solid rgba(255,255,255,.5); display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#FDFBF7" stroke="none"><circle cx="8" cy="9.4" r="3.3" opacity=".9"/><circle cx="16" cy="9.4" r="3.3" opacity=".9"/><circle cx="12" cy="16" r="3.3" opacity=".9"/></svg>
+            </div>
+            <div style="font-size:16.5px; font-weight:700; color:#FDFBF7; margin-bottom:4px;">Bendruomenė</div>
+            <div style="font-size:12px; color:#FDFBF7; opacity:.8; margin-bottom:10px;">Erdvės, kurios mus vienija</div>
+            <p style="font-size:12px; line-height:1.5; color:#FDFBF7; opacity:.88; margin:0 0 12px 0;">Kuriame fizines ir skaitmenines erdves susitikimams, mokymuisi ir savanorystei, kad kultūra ir švietimas būtų arčiau visų.</p>
+            <a href="/lt/comunitat" style="color:#FDFBF7; font-weight:700; font-size:13.5px;">Sužinok daugiau &rarr;</a>
+          </div>
+          <div style="flex:1; min-height:190px; position:relative; overflow:hidden;">
+            <div style="position:absolute; inset:0; background-image:url('/images/comunitat.jpg'); background-size:cover; background-position:center 35%;"></div>
+            <svg viewBox="0 0 400 32" preserveAspectRatio="none" style="position:absolute; top:0; left:0; width:100%; height:32px; display:block;"><path d="M0 32 Q100 4 210 18 T400 6 L400 0 L0 0 Z" fill="#b74f49"/></svg>
+          </div>
+        </div>
+
+        <!-- Technologijos -->
+        <div style="border-radius:24px; overflow:hidden; display:flex; flex-direction:column;">
+          <div style="background:#1d2f46; padding:24px 20px 26px 20px;">
+            <div style="width:40px; height:40px; border-radius:50%; border:1.5px solid rgba(255,255,255,.5); display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FDFBF7" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="11" rx="2"/><path d="M9 19h6M12 15v4"/></svg>
+            </div>
+            <div style="font-size:16.5px; font-weight:700; color:#FDFBF7; margin-bottom:4px;">Technologijos</div>
+            <div style="font-size:12px; color:#FDFBF7; opacity:.8; margin-bottom:10px;">Įrankiai, kurie mus sujungia</div>
+            <p style="font-size:12px; line-height:1.5; color:#FDFBF7; opacity:.88; margin:0 0 12px 0;">Kuriame programėles ir skaitmenines priemones, kurios kultūrą ir švietimą padaro prieinamesnius visiems.</p>
+            <a href="/lt/tecnologia" style="color:#FDFBF7; font-weight:700; font-size:13.5px;">Sužinok daugiau &rarr;</a>
+          </div>
+          <div style="flex:1; min-height:190px; position:relative; overflow:hidden;">
+            <div style="position:absolute; inset:0; background-image:url('/images/tecnologia.jpg'); background-size:cover; background-position:center 45%;"></div>
+            <svg viewBox="0 0 400 32" preserveAspectRatio="none" style="position:absolute; top:0; left:0; width:100%; height:32px; display:block;"><path d="M0 32 Q100 4 210 18 T400 6 L400 0 L0 0 Z" fill="#1d2f46"/></svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTE DESTACAT -->
+  <div id="projectes" style="padding:96px 64px; background:#F7F2E9;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="stack-mobile" style="background:#F9F8F4; border-radius:32px; overflow:hidden; display:flex; align-items:center; min-height:320px;">
+
+        <div class="split-media-44" style="width:44%; padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative;">
+          <div style="background:#1d2f46; color:#FDFBF7; padding:6px 14px; border-radius:999px; font-size:11px; letter-spacing:.09em; font-weight:700; width:fit-content; align-self:flex-start; margin-bottom:18px;">ERASMUS+ &middot; KA210-SCH</div>
+          <div style="position:relative; width:100%; aspect-ratio:4/3; border-radius:38% 62% 60% 40% / 48% 42% 58% 52%; background-image:url('/images/uogos.jpg'); background-size:cover; background-position:center; overflow:hidden;">
+            <div style="position:absolute; right:14px; bottom:14px; width:16px; height:16px; border-radius:50%; background:#e8b736;"></div>
+            <div style="position:absolute; right:36px; bottom:8px; width:10px; height:10px; border-radius:50%; background:#b74f49;"></div>
+          </div>
+        </div>
+
+        <div class="split-text-56" style="width:56%; padding:44px 56px 44px 24px; position:relative; overflow:hidden;">
+          <svg width="240" height="300" viewBox="0 0 240 300" style="position:absolute; right:-20px; bottom:-30px; opacity:.07; pointer-events:none;">
+            <path d="M120 10 C40 55 20 170 55 270 C85 210 190 210 220 125 C238 68 188 20 120 10Z" fill="#325f42"/>
+            <path d="M120 24 L92 250" stroke="#325f42" stroke-width="3" fill="none" opacity=".6"/>
+          </svg>
+          <div style="position:relative; z-index:1;">
+            <div style="font-size:12.5px; letter-spacing:.2em; font-weight:700; color:#a8433d; text-transform:uppercase; margin-bottom:14px;">Pagrindinis projektas</div>
+            <h3 style="font-size:27px; font-weight:700; color:#1d2f46; margin:0 0 14px 0; max-width:420px;">UOGOS - lietuvių kalba žaidžiant, skirta diasporai</h3>
+            <p style="font-size:15px; line-height:1.7; color:#1d1d1b; opacity:.75; margin:0 0 26px 0; max-width:420px;">Interaktyvi programėlė lietuvių kalbai mokytis žaidžiant, skirta 6–10 metų vaikams, gyvenantiems už Lietuvos ribų ir norintiems išlaikyti gyvą savo kalbą bei šaknis.</p>
+
+            <div style="display:flex; gap:24px; flex-wrap:wrap; margin-bottom:30px;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M8.5 15c1 1 2.2 1.5 3.5 1.5s2.5-.5 3.5-1.5"/></svg>
+                <span style="font-size:13px; color:#1d2f46; opacity:.75;">6–10 metų</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3Z"/></svg>
+                <span style="font-size:13px; color:#1d2f46; opacity:.75;">Lietuvių kalba</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="1.7"><rect x="4" y="7" width="16" height="11" rx="4"/><circle cx="9" cy="12.5" r="1.3" fill="#1d2f46" stroke="none"/><circle cx="15" cy="12.5" r="1.3" fill="#1d2f46" stroke="none"/></svg>
+                <span style="font-size:13px; color:#1d2f46; opacity:.75;">Paremta žaidimu</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="1.7"><path d="M12 2c2.5 2.8 3.8 6 3.8 9.2 0 2-1.7 3.6-3.8 3.6s-3.8-1.6-3.8-3.6C8.2 8 9.5 4.8 12 2Z"/><path d="M9.3 15.5l-2 5M14.7 15.5l2 5"/></svg>
+                <span style="font-size:13px; color:#1d2f46; opacity:.75;">Nuolat tobulinama</span>
+              </div>
+            </div>
+
+            <a href="https://uogos.app/" target="_blank" rel="noopener" style="background:#b74f49; color:#FDFBF7; padding:14px 28px; border-radius:999px; font-weight:700; font-size:14.5px; display:inline-block;">Sužinok apie UOGOS &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMA PART D'ALKA -->
+  <div id="participa" style="padding:96px 64px; background:#FFFFFF;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <h2 style="text-align:center; font-size:32px; font-weight:800; color:#1d2f46; margin:0;">Prisijunk prie ALKA</h2>
+      <div style="display:flex; justify-content:center; margin:14px 0 44px 0;">
+        <svg width="46" height="10" viewBox="0 0 46 10"><path d="M2 6c4-6 8-6 12 0s8 6 12 0 8-6 12 0" stroke="#e8b736" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      </div>
+
+      <div class="grid-3-col" style="display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:24px;">
+
+        <div style="border-radius:24px; overflow:hidden; display:flex; border:1px solid rgba(29,47,70,.08); min-height:250px;">
+          <div style="flex:1 1 55%; padding:28px 22px; display:flex; flex-direction:column;">
+            <div style="width:44px; height:44px; border-radius:50%; background:rgba(50,95,66,.12); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#325f42" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-9-8.8c-1.5-3.2 1-6.4 4.2-6.4 2 0 3.7 1.2 4.8 3 1.1-1.8 2.8-3 4.8-3 3.2 0 5.7 3.2 4.2 6.4C19 15.6 12 20 12 20Z"/></svg>
+            </div>
+            <div style="font-size:17px; font-weight:700; color:#1d2f46; margin-bottom:8px;">Tapk nariu</div>
+            <p style="font-size:13.5px; line-height:1.6; opacity:.7; margin:0 0 14px 0; flex:1;">Tapk asociacijos dalimi ir padėk mums plėtoti projektus, turinčius realų poveikį.</p>
+            <a href="/lt/fes-te-soci" style="color:#325f42; font-weight:700; font-size:13.5px;">Prisijunk &rarr;</a>
+          </div>
+          <div style="flex:1 1 45%; background-image:url('/images/soci.jpg'); background-size:cover; background-position:center;"></div>
+        </div>
+
+        <div style="border-radius:24px; overflow:hidden; display:flex; border:1px solid rgba(29,47,70,.08); min-height:250px;">
+          <div style="flex:1 1 55%; padding:28px 22px; display:flex; flex-direction:column;">
+            <div style="width:44px; height:44px; border-radius:50%; background:rgba(151,101,36,.14); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#976524" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12c0-4.4 3.6-8 8-8s8 3.6 8 8"/><path d="M6 12v4a2 2 0 0 0 2 2h1v-6H6Z"/><path d="M18 12v4a2 2 0 0 1-2 2h-1v-6h3Z"/></svg>
+            </div>
+            <div style="font-size:17px; font-weight:700; color:#1d2f46; margin-bottom:8px;">Tapk savanoriu</div>
+            <p style="font-size:13.5px; line-height:1.6; opacity:.7; margin:0 0 14px 0; flex:1;">Pasidalink savo laiku ir gebėjimais. Bendradarbiauti galima įvairiais būdais.</p>
+            <a href="/lt/voluntariat" style="color:#976524; font-weight:700; font-size:13.5px;">Noriu padėti &rarr;</a>
+          </div>
+          <div style="flex:1 1 45%; background-image:url('/images/voluntari.jpg'); background-size:cover; background-position:center;"></div>
+        </div>
+
+        <div style="border-radius:24px; overflow:hidden; display:flex; border:1px solid rgba(29,47,70,.08); min-height:250px;">
+          <div style="flex:1 1 55%; padding:28px 22px; display:flex; flex-direction:column;">
+            <div style="width:44px; height:44px; border-radius:50%; background:rgba(183,79,73,.12); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b74f49" stroke-width="1.7"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg>
+            </div>
+            <div style="font-size:17px; font-weight:700; color:#1d2f46; margin-bottom:8px;">Institucinis bendradarbiavimas</div>
+            <p style="font-size:13.5px; line-height:1.6; opacity:.7; margin:0 0 14px 0; flex:1;">Organizacijos, mokyklos ir įstaigos: kuriame aljansus, kurie keičia.</p>
+            <a href="mailto:labas@alka.cat" style="color:#b74f49; font-weight:700; font-size:13.5px;">Pakalbėkime &rarr;</a>
+          </div>
+          <div style="flex:1 1 45%; background-image:url('/images/institucional.jpg'); background-size:cover; background-position:center;"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="contacte" style="background:#1d2f46; color:#FDFBF7; padding:64px 64px 28px 64px;">
+    <div style="max-width:1200px; margin:0 auto;">
+
+      <div class="footer-grid" style="display:grid; grid-template-columns:1.3fr 1fr 1fr 1.2fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(253,251,247,.14);">
+
+        <div>
+          <svg width="98" height="20" viewBox="0 0 263.22 53" xmlns="http://www.w3.org/2000/svg">
+            <rect fill="#FDFBF7" x="136.74" y="1.11" width="19.54" height="50.77"/>
+            <polygon fill="#FDFBF7" points="192.6 51.82 162.53 51.89 159.86 28.37 159.83 1.07 185.71 1.12 166.07 24.59 192.6 51.82"/>
+            <path fill="#FDFBF7" d="M119.31,38.61c3.08.02,4.96,1.88,5.39,4.82l.27,9.21-51.81-.02V1.84s19.75,0,19.75,0l.02,31.95c-.09,2.6,1.74,4.63,4.43,4.65l21.94.17Z"/>
+            <path fill="#FDFBF7" d="M260.02,49.09c-1.09-2.29-2.61-5.53-4.34-9.24-8.66-18.42-15.93-33.84-17.33-35.9-1.68-2.47-4.68-3.95-8.02-3.95s-6.23,1.44-7.92,3.84c-2.13,3.05-8.72,17.14-16.47,33.86-2.23,4.81-4.14,8.95-5.31,11.38l-1.6,3.33h19.59s.81-1.57.81-1.57c2.64-5.12,5.3-9.36,11.13-9.36h.24c4.19.08,8.21,4.94,10.57,9.47l.74,1.42,19.51.04-1.57-3.33ZM228.96,31.93c-1.34-.3-2.5-1.48-3.11-2.94-1.75-4.2-1.33-8.98.54-13.18.91-2.05,3.51-3.8,5.01-2.94,1.57.91,2.68,2.26,3.26,3.84,1.6,4.29,2.09,10.88-1.21,14.2-1.09,1.09-2.82,1.39-4.5,1.02Z"/>
+            <path fill="#FDFBF7" d="M38.07,37.56c-3.82-3.29-8.91-3.17-12.66-.11-1.56,1.28-2.77,2.9-3.66,4.71-1.48,3.25-2.06,6.6-1.93,10.29H3.99s.02-27.71.02-27.71c0-6.68,2.91-12.91,7.97-17.42,11.6-10.34,30.4-9.53,40.68,1.66,4.06,4.42,6.51,10.08,6.53,16.08l.11,27.39h-15.89s-.75-6.84-.75-6.84c-.75-3.03-2.1-5.89-4.6-8.05Z"/>
+          </svg>
+          <div style="font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-top:14px;">Kultūra &middot; Švietimas &middot; Bendruomenė</div>
+        </div>
+
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-bottom:18px;">Nuorodos</div>
+          <div style="display:flex; flex-direction:column; gap:11px;">
+            <a href="/lt/qui-som" style="color:#FDFBF7; opacity:.85; font-size:14px;">Apie mus</a>
+            <a href="#arees" style="color:#FDFBF7; opacity:.85; font-size:14px;">Veiklos sritys</a>
+            <a href="#projectes" style="color:#FDFBF7; opacity:.85; font-size:14px;">Projektai</a>
+            <a href="#actualitat" style="color:#FDFBF7; opacity:.85; font-size:14px;">Naujienos</a>
+            <a href="#contacte" style="color:#FDFBF7; opacity:.85; font-size:14px;">Kontaktai</a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-bottom:18px;">Kontaktai</div>
+          <div style="display:flex; flex-direction:column; gap:11px; font-size:14px; opacity:.85;">
+            <div>Palau de Vidre<br>Camps Elisis - Lleida</div>
+            <a href="mailto:labas@alka.cat" style="color:#FDFBF7; opacity:1;">labas@alka.cat</a>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:18px;">
+            <a href="#" aria-label="Instagram" style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FDFBF7" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1" fill="#FDFBF7" stroke="none"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook" style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#FDFBF7"><path d="M15 8.5h2.5V4.8h-2.7C11.9 4.8 10.5 6.6 10.5 9v3H8v4h2.5v7.2h4V16h2.7l.5-4h-3.2V9.4c0-.6.4-.9 1-.9Z"/></svg>
+            </a>
+            <a href="mailto:labas@alka.cat" aria-label="Correu" style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FDFBF7" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-bottom:14px;">Prisijunk prie bendruomenės</div>
+          <p style="font-size:13px; line-height:1.6; opacity:.7; margin:0 0 16px 0;">Gauk naujienas ir renginius tiesiai į savo paštą.</p>
+          <div style="display:flex; gap:8px;">
+            <input type="email" placeholder="Tavo el. paštas" class="footer-input" style="flex:1; min-width:0; padding:11px 16px; border-radius:999px; border:1px solid rgba(253,251,247,.25); background:rgba(255,255,255,.06); color:#FDFBF7; font-size:13.5px; font-family:inherit;">
+            <button aria-label="Envia" style="width:40px; height:40px; border-radius:50%; background:#e8b736; border:none; display:flex; align-items:center; justify-content:center; flex-shrink:0; cursor:pointer;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:22px; font-size:12.5px; opacity:.55; flex-wrap:wrap; gap:10px;">
+        <div>&copy; 2026 ALKA<span class="cr-long"> - Pažangos asociacija</span></div>
+        <div style="display:flex; gap:18px;">
+          <a href="/avis-legal" style="color:#FDFBF7; opacity:1;">Teisinė informacija</a>
+          <a href="/privacitat" style="color:#FDFBF7; opacity:1;">Privatumas</a>
+          <a href="/proteccio-dades" style="color:#FDFBF7; opacity:1;">Duomenų apsauga</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
