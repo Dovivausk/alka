@@ -166,6 +166,7 @@ function card(it) {
         <article class="act-card" data-tipus="${esc(it.tipus)}">
           ${img ? imgHtml(img, link) : ""}
           <div class="act-meta">
+            ${it.fixat ? `<span class="act-tag act-tag-fixat">Destacat</span>` : ""}
             ${it.tipus ? `<span class="act-tag${it.tipus === "Agenda" ? " act-tag-agenda" : ""}">${esc(it.tipus)}</span>` : ""}
             ${data ? `<span class="act-date">${esc(data)}</span>` : ""}
           </div>
@@ -181,25 +182,24 @@ function card(it) {
 }
 
 const CSS = `
-  .act-wrap { padding:0 64px 96px 64px; }
-  .act-inner { max-width:1200px; margin:0 auto; }
-  .act-head { padding:32px 64px 8px 64px; }
-  .act-head .eyebrow { font-size:12.5px; letter-spacing:.22em; font-weight:700; color:#976524; text-transform:uppercase; margin-bottom:16px; }
+  .act-page { box-sizing:border-box; max-width:1312px; margin:0 auto; padding:20px 64px 96px 64px; }
+  .act-back a { display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600; color:#1d2f46; opacity:.6; }
+  .act-head { padding:24px 0 0 0; }
   .act-head h1 { font-size:42px; font-weight:800; color:#1d2f46; margin:0 0 10px 0; }
-  .act-head .lead { font-size:16px; line-height:1.7; color:#1d1d1b; opacity:.72; max-width:560px; margin:0; }
-  .act-chips { display:flex; flex-wrap:wrap; gap:10px; margin:28px 0 8px 0; }
+  .act-head .lead { font-size:16px; line-height:1.7; color:#1d1d1b; opacity:.72; margin:0; }
+  .act-chips { display:flex; flex-wrap:wrap; gap:10px; margin:28px 0 0 0; }
   .act-chip { font:inherit; font-size:13.5px; font-weight:600; color:#1d2f46; background:#fff; border:1.5px solid rgba(29,47,70,.18); border-radius:999px; padding:8px 16px; cursor:pointer; }
   .act-chip[aria-pressed="true"] { background:#1d2f46; color:#FDFBF7; border-color:#1d2f46; }
   .act-chip:focus-visible, .act-card a:focus-visible { outline:3px solid #976524; outline-offset:2px; }
-  .act-sec h2 { font-size:22px; font-weight:800; color:#1d2f46; margin:36px 0 18px 0; }
-  .act-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:28px; }
+  .act-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:28px; margin-top:32px; }
   .act-card { background:#fff; border:1px solid rgba(29,47,70,.08); border-radius:20px; padding:24px; display:flex; flex-direction:column; gap:10px; }
-  .act-card[hidden], .act-sec[hidden] { display:none !important; }
+  .act-card[hidden] { display:none !important; }
   .act-imglink { display:block; border-radius:14px; overflow:hidden; background:#f2efe8; }
   .act-img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; }
   .act-meta { display:flex; flex-wrap:wrap; align-items:center; gap:10px; font-size:12.5px; color:#1d1d1b; opacity:.85; }
   .act-tag { font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-size:11.5px; color:#976524; background:rgba(151,101,36,.14); border-radius:999px; padding:4px 10px; }
   .act-tag-agenda { color:#b74f49; background:rgba(183,79,73,.12); }
+  .act-tag-fixat { color:#1d2f46; background:rgba(29,47,70,.09); }
   .act-card h3 { font-size:18px; line-height:1.35; font-weight:700; color:#1d2f46; margin:0; }
   .act-card p { font-size:14px; line-height:1.65; opacity:.75; margin:0; }
   .act-areas { font-size:12.5px; font-weight:600; color:#976524; }
@@ -211,9 +211,8 @@ const CSS = `
   .act-empty h2 { margin:0 0 8px 0; font-size:22px; color:#1d2f46; }
   .act-empty p { margin:0; opacity:.75; line-height:1.7; }
   @media (max-width: 900px) {
-    .act-head { padding:24px 20px 0 20px; }
+    .act-page { padding:16px 20px 64px 20px; }
     .act-head h1 { font-size:34px; }
-    .act-wrap { padding:0 20px 64px 20px; }
   }
   @media (max-width: 680px) { .act-grid { grid-template-columns:1fr; } }
 `;
@@ -228,38 +227,30 @@ const SCRIPT = `
         document.querySelectorAll('.act-card').forEach(function (c) {
           c.hidden = t !== '*' && c.getAttribute('data-tipus') !== t;
         });
-        document.querySelectorAll('.act-sec').forEach(function (s) {
-          s.hidden = !s.querySelector('.act-card:not([hidden])');
-        });
       });
     });
   })();
 `;
 
 function mainHtml(items) {
-  const fixats = items.filter((i) => i.fixat);
-  const resta = items.filter((i) => !i.fixat);
   const tipus = [...new Set(items.map((i) => i.tipus).filter(Boolean))];
 
   const head = `
-  <div style="padding:20px 64px 0 64px;" class="act-back">
-    <a href="/" style="display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600; color:#1d2f46; opacity:.6;">&larr; Tornar a l'inici</a>
-  </div>
-  <div class="act-head">
-    <div class="eyebrow">Actualitat</div>
-    <h1>Actualitat</h1>
-    <p class="lead">Novetats d'ALKA i una mirada a Lit&uacute;ania en catal&agrave;: agenda, premsa, art i cultura.</p>
-  </div>`;
+    <div class="act-back"><a href="/">&larr; Tornar a l'inici</a></div>
+    <div class="act-head">
+      <h1>Actualitat</h1>
+      <p class="lead">Novetats d'ALKA i una mirada a Lit&uacute;ania en catal&agrave;: agenda, premsa, art i cultura.</p>
+    </div>`;
 
   if (!items.length) {
-    return `<style>${CSS}</style>${head}
-  <div class="act-wrap"><div class="act-inner">
+    return `<style>${CSS}</style>
+  <div class="act-page">${head}
     <div class="act-empty">
       <h2>Aviat hi haur&agrave; novetats</h2>
       <p>Encara no hi ha res publicat. Torna d'aqu&iacute; uns dies o escriu-nos a
       <a href="mailto:labas@alka.cat" style="color:#b74f49; font-weight:700;">labas@alka.cat</a>.</p>
     </div>
-  </div></div>`;
+  </div>`;
   }
 
   const chips = tipus.length > 1
@@ -268,19 +259,12 @@ function mainHtml(items) {
         ${tipus.map((t) => `<button type="button" class="act-chip" data-t="${esc(t)}" aria-pressed="false">${esc(t)}</button>`).join("\n        ")}
       </div>` : "";
 
-  const section = (titol, list) => list.length ? `
-    <section class="act-sec">
-      <h2>${titol}</h2>
-      <div class="act-grid">${list.map(card).join("")}
-      </div>
-    </section>` : "";
-
-  return `<style>${CSS}</style>${head}
-  <div class="act-wrap"><div class="act-inner">
+  return `<style>${CSS}</style>
+  <div class="act-page">${head}
     ${chips}
-    ${section("Destacat", fixats)}
-    ${section(fixats.length ? "M&eacute;s recent" : "Novetats", resta)}
-  </div></div>
+    <div class="act-grid">${items.map(card).join("")}
+    </div>
+  </div>
   ${tipus.length > 1 ? `<script>${SCRIPT}</script>` : ""}`;
 }
 
