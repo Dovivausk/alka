@@ -18,6 +18,7 @@ import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { renderActualitat, fixActualitatLinks } from "./actualitat.js";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "public");
 const PORT = Number(process.env.PORT) || 3000;
@@ -304,6 +305,16 @@ const server = http.createServer(async (req, res) => {
     return send(res, 405, "Method not allowed", "text/plain");
   }
 
+  // pagina dinamica (nomes catala): llegeix de Notion, no surt de public/
+  if (url.pathname === "/actualitat" || url.pathname === "/actualitat/") {
+    try {
+      return send(res, 200, await renderActualitat(ROOT));
+    } catch (e) {
+      console.error("actualitat:", e.message);
+      return send(res, 500, pagina("ca", ["Error", "No s'ha pogut carregar la pàgina. Torna-ho a provar d'aquí uns minuts."]));
+    }
+  }
+
   const file = resolveFile(url.pathname);
   if (!file) {
     const l = /^\/(lt|en)(\/|$)/.exec(url.pathname)?.[1] || "ca";
@@ -312,6 +323,16 @@ const server = http.createServer(async (req, res) => {
 
   const ext = path.extname(file).toLowerCase();
   const isHtml = ext === ".html";
+  if (isHtml) {
+    // el menu apuntava a #actualitat, que no existeix: el portem a /actualitat
+    const html = fixActualitatLinks(fs.readFileSync(file, "utf8"));
+    res.writeHead(200, {
+      "Content-Type": MIME[ext],
+      "Cache-Control": "no-cache",
+      "X-Content-Type-Options": "nosniff",
+    });
+    return res.end(req.method === "HEAD" ? undefined : html);
+  }
   res.writeHead(200, {
     "Content-Type": MIME[ext] || "application/octet-stream",
     "Cache-Control": isHtml ? "no-cache" : "public, max-age=31536000, immutable",
@@ -326,4 +347,5 @@ server.listen(PORT, () => {
   const falten = ["NOTION_TOKEN", "NOTION_DB_SOCIS", "NOTION_DB_VOLUNTARIS"]
     .filter((v) => !process.env[v]);
   if (falten.length) console.warn(`AVIS: falta ${falten.join(", ")}; els formularis fallaran`);
+  if (!process.env.NOTION_DB_ACTUALITAT) console.warn("AVIS: falta NOTION_DB_ACTUALITAT; /actualitat sortira buida");
 });

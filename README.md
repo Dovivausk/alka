@@ -18,10 +18,20 @@ Variables d'entorn obligatories:
     NOTION_TOKEN           secret de la integracio de Notion
     NOTION_DB_SOCIS        id de la base "Socis ALKA"
     NOTION_DB_VOLUNTARIS   id de la base "Voluntaris ALKA"
+    NOTION_DB_ACTUALITAT   id de la base "Actualitat" (opcional: sense ella /actualitat surt buida)
 
 Sense aquestes variables el web es veu perfectament, pero els formularis
 responen amb un missatge d'error i no desen res. Com que aquest repositori
 es public, ni el token ni els identificadors de les bases no son al codi.
+
+## Pagina /actualitat
+
+No surt de `public/`: la genera `actualitat.js` (cridat des de `server.js`) llegint de
+Notion la base "Actualitat", nomes les files amb Estat = Publicat i sense "Enllac mort".
+Aprofita la capcalera i el peu de `public/educacio.html`; si el disseny canvia i no hi
+troba les marques, serveix una pagina senzilla. Cache de 15 minuts a memoria. Nomes en
+catala: els menus de LT i EN tambe hi apunten. La base ha d'estar compartida amb la
+integracio de Notion del `NOTION_TOKEN`. Les entrades les alimenta un flux de n8n.
 
 ## D'on surt public/
 
