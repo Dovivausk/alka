@@ -149,6 +149,13 @@ export function dataCa(inici, fi) {
   return `${a.d} ${de(a.m)}${MESOS[a.m]} de ${a.y}`;
 }
 
+function imgHtml(img, link) {
+  const tag = `<img class="act-img" src="${esc(img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.act-imglink').remove()">`;
+  return link
+    ? `<a class="act-imglink" href="${esc(link)}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">${tag}</a>`
+    : `<div class="act-imglink">${tag}</div>`;
+}
+
 function card(it) {
   const img = safeUrl(it.imatge, true);
   const link = safeUrl(it.url);
@@ -157,7 +164,7 @@ function card(it) {
     ? `<div class="act-credit">Imatge: ${esc([it.autorImatge, it.llicencia].filter(Boolean).join(" · "))}</div>` : "";
   return `
         <article class="act-card" data-tipus="${esc(it.tipus)}">
-          ${img ? `<img class="act-img" src="${esc(img)}" alt="" loading="lazy">` : ""}
+          ${img ? imgHtml(img, link) : ""}
           <div class="act-meta">
             ${it.tipus ? `<span class="act-tag${it.tipus === "Agenda" ? " act-tag-agenda" : ""}">${esc(it.tipus)}</span>` : ""}
             ${data ? `<span class="act-date">${esc(data)}</span>` : ""}
@@ -185,10 +192,11 @@ const CSS = `
   .act-chip[aria-pressed="true"] { background:#1d2f46; color:#FDFBF7; border-color:#1d2f46; }
   .act-chip:focus-visible, .act-card a:focus-visible { outline:3px solid #976524; outline-offset:2px; }
   .act-sec h2 { font-size:22px; font-weight:800; color:#1d2f46; margin:36px 0 18px 0; }
-  .act-grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:24px; }
+  .act-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:28px; }
   .act-card { background:#fff; border:1px solid rgba(29,47,70,.08); border-radius:20px; padding:24px; display:flex; flex-direction:column; gap:10px; }
   .act-card[hidden], .act-sec[hidden] { display:none !important; }
-  .act-img { width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:12px; }
+  .act-imglink { display:block; border-radius:14px; overflow:hidden; background:#f2efe8; }
+  .act-img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; }
   .act-meta { display:flex; flex-wrap:wrap; align-items:center; gap:10px; font-size:12.5px; color:#1d1d1b; opacity:.85; }
   .act-tag { font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-size:11.5px; color:#976524; background:rgba(151,101,36,.14); border-radius:999px; padding:4px 10px; }
   .act-tag-agenda { color:#b74f49; background:rgba(183,79,73,.12); }
@@ -206,9 +214,8 @@ const CSS = `
     .act-head { padding:24px 20px 0 20px; }
     .act-head h1 { font-size:34px; }
     .act-wrap { padding:0 20px 64px 20px; }
-    .act-grid { grid-template-columns:repeat(2, minmax(0,1fr)); }
   }
-  @media (max-width: 560px) { .act-grid { grid-template-columns:1fr; } }
+  @media (max-width: 680px) { .act-grid { grid-template-columns:1fr; } }
 `;
 
 const SCRIPT = `
