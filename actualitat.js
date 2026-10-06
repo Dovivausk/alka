@@ -19,6 +19,7 @@ const TTL_MS = 15 * 60 * 1000;
 
 let cache = { at: 0, items: null };
 let inflight = null;
+let warned = false;
 
 // ---------------------------------------------------------------- Notion
 
@@ -58,7 +59,10 @@ export async function fetchPublished({
   token = process.env.NOTION_TOKEN,
   dbId = process.env.NOTION_DB_ACTUALITAT,
 } = {}) {
-  if (!token || !dbId) return null;
+  if (!token || !dbId) {
+    if (!warned) { console.warn("actualitat: falta NOTION_TOKEN o NOTION_DB_ACTUALITAT; la pagina surt buida"); warned = true; }
+    return null;
+  }
   const out = [];
   let cursor;
   for (let i = 0; i < 3; i++) {
@@ -81,7 +85,10 @@ export async function fetchPublished({
       }),
       signal: AbortSignal.timeout(10000),
     });
-    if (!r.ok) throw new Error(`Notion ${r.status}`);
+    if (!r.ok) {
+      const detall = await r.json().then((j) => `${j.code || ""} ${j.message || ""}`.trim()).catch(() => "");
+      throw new Error(`Notion ${r.status} ${detall}`.trim());
+    }
     const j = await r.json();
     out.push(...j.results.map(toItem).filter((x) => x.titol));
     if (!j.has_more) break;
@@ -289,7 +296,7 @@ export async function renderActualitat(publicDir) {
 <meta name="robots" content="noindex, nofollow"></head>
 <body style="margin:0;background:#FDFBF7;font-family:system-ui,sans-serif;color:#1d1d1b">${body}</body></html>`;
   }
-  return (shell.slice(0, i) + body + "\n  " + shell.slice(f))
+  return fixActualitatLinks(shell.slice(0, i) + body + "\n  " + shell.slice(f))
     .replace("<title>Educacio - ALKA</title>", "<title>Actualitat - ALKA</title>")
     .replace('href="/educacio" class="lang-current"', 'href="/actualitat" class="lang-current"')
     .replace('href="/lt/educacio"', 'href="/lt/"')
