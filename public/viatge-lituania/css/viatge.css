@@ -1,0 +1,332 @@
+/* Viatge a Lituania - mini-app de la web d'ALKA.
+ *
+ * 1. Base i capcalera/peu compartits: copiat de les pagines generades
+ *    (educacio.html). Si canvia el disseny de la web, cal actualitzar-ho aqui.
+ * 2. Mini-app: tot prefixat amb .vl- per no xocar amb res mes.
+ */
+
+/* ============================================================ 1. ALKA */
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: #E9E4D8; }
+h1, h2, h3 { font-family: 'Frank Ruhl Libre', Georgia, serif; }
+a { color: #a8433d; text-decoration: none; }
+a:hover { color: #7d3530; }
+.footer-input::placeholder { color: rgba(253,251,247,.5); }
+
+.alka-page { width: 100%; max-width: 1440px; margin: 0 auto; background: #FDFBF7; color: #1d1d1b; box-shadow: 0 0 0 1px rgba(29,47,70,.06); overflow-x: clip; }
+
+.nav-dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(6px); background:#FDFBF7; border:1px solid rgba(29,47,70,.1); border-radius:14px; padding:8px; min-width:210px; box-shadow:0 14px 34px rgba(29,47,70,.14); opacity:0; visibility:hidden; transition:opacity .15s ease, transform .15s ease; z-index:60; }
+.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+.nav-dropdown-menu a { display:block; padding:10px 14px; border-radius:8px; font-size:13.5px; font-weight:600; color:#1d2f46 !important; }
+.nav-dropdown-menu a:hover { background:rgba(29,47,70,.06); }
+
+.lang-switch { position:relative; }
+.lang-switch > summary {
+  list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:5px;
+  border:1.5px solid rgba(29,47,70,.22); border-radius:999px; padding:7px 12px;
+  font-size:12px; font-weight:700; color:#1d2f46;
+}
+.lang-switch > summary::-webkit-details-marker { display:none; }
+.lang-switch[open] > summary { border-color:rgba(29,47,70,.45); }
+.lang-menu {
+  position:absolute; top:calc(100% + 6px); right:0; background:#FDFBF7;
+  border:1px solid rgba(29,47,70,.1); border-radius:12px; padding:6px; min-width:88px;
+  box-shadow:0 14px 34px rgba(29,47,70,.14); z-index:70;
+}
+.lang-menu a { display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:8px; font-size:12.5px; font-weight:700; color:#1d2f46 !important; }
+.lang-menu a:hover { background:rgba(29,47,70,.06); }
+.lang-menu a.lang-current { opacity:.4; }
+
+@media (max-width: 900px) {
+  nav[aria-label="Navegació principal"] {
+    padding-left:20px !important; padding-right:20px !important;
+    flex-wrap:wrap !important;
+  }
+  .nav-right { display:flex !important; order:2; width:auto !important; margin-left:auto !important; gap:0 !important; }
+  .nav-cta { display:none !important; }
+  .nav-burger { display:flex !important; order:3; margin-left:10px !important; }
+  .nav-links {
+    display:none !important; order:4; width:100% !important; flex-direction:column;
+    align-items:flex-start !important; gap:6px !important; padding:10px 0 6px 0;
+    border-top:1px solid rgba(29,47,70,.08); margin-top:12px;
+  }
+  #nav-toggle:checked ~ .nav-links { display:flex !important; }
+  .nav-links > a, .nav-links > .nav-dropdown { width:100%; padding:8px 0; }
+  .nav-dropdown-menu {
+    position:static !important; opacity:1 !important; visibility:visible !important;
+    transform:none !important; box-shadow:none !important; border:none !important;
+    background:transparent !important;
+    padding:2px 0 8px 14px !important; min-width:0 !important; display:block !important;
+  }
+
+  footer[id="contacte"] { padding:34px 18px 18px 18px !important; }
+  .footer-grid { grid-template-columns: 1fr 1fr !important; gap:22px !important; padding-bottom:20px !important; }
+  .footer-grid > div:nth-child(2) { display:none !important; }
+  .footer-grid > div:nth-child(4) { grid-column:1 / -1; }
+  .footer-grid > div:nth-child(4) p { margin-bottom:10px !important; }
+  footer[id="contacte"] > div > div:last-child { font-size:11px !important; padding-top:14px !important; gap:4px 14px !important; }
+  footer[id="contacte"] > div > div:last-child > div:last-child { gap:14px !important; }
+  .cr-long { display:none; }
+}
+
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr !important; }
+  nav[aria-label="Navegació principal"] { padding-top:10px !important; padding-bottom:10px !important; }
+}
+
+/* ============================================================ 2. Viatge a Lituania */
+
+:root {
+  --vl-blau: #1d2f46;
+  --vl-vermell: #a8433d;
+  --vl-vermell-cta: #b74f49;
+  --vl-ocre: #976524;
+  --vl-verd: #325f42;
+  --vl-groc: #e8b736;
+  --vl-crema: #FDFBF7;
+  --vl-fons: #E9E4D8;
+  --vl-text: #1d1d1b;
+  --vl-text-suau: #4a4f57;      /* 7.6:1 sobre crema */
+  --vl-linia: rgba(29,47,70,.12);
+  --vl-radi: 20px;
+  --vl-ombra: 0 14px 34px rgba(29,47,70,.14);
+  --vl-alcada: clamp(540px, calc(100vh - 150px), 880px);
+}
+
+/* [hidden] ha de guanyar als display:flex de sota */
+.vl [hidden] { display:none !important; }
+
+.vl-visually-hidden {
+  position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* focus visible a tot el mini-app: blau sobre clar, groc sobre fosc */
+.vl :focus-visible, .vl-crumbs :focus-visible, .vl-skip:focus-visible {
+  outline: 3px solid var(--vl-blau); outline-offset: 2px; border-radius: 8px;
+}
+.vl-btn-dark:focus-visible, .vl-mode[aria-pressed="true"]:focus-visible { outline-color: var(--vl-groc); }
+.vl-map canvas:focus-visible { outline: 3px solid var(--vl-groc); outline-offset: -3px; }
+
+.vl-skip {
+  position:absolute; left:16px; top:-60px; z-index:100; background:var(--vl-blau); color:var(--vl-crema) !important;
+  padding:10px 16px; border-radius:999px; font-weight:700; font-size:14px;
+}
+.vl-skip:focus { top:12px; }
+
+.vl-crumbs { display:flex; gap:20px; align-items:center; padding:18px 64px 0 64px; font-size:13.5px; font-weight:600; }
+.vl-crumbs a { color:var(--vl-blau); opacity:.7; display:inline-flex; align-items:center; gap:6px; }
+.vl-crumbs a:hover { opacity:1; color:var(--vl-blau); }
+
+.vl { padding: 8px 64px 64px 64px; }
+
+.vl-head { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin:12px 0 22px 0; }
+.vl-eyebrow { font-size:12.5px; letter-spacing:.22em; font-weight:700; color:var(--vl-ocre); text-transform:uppercase; margin:0 0 10px 0; }
+.vl-head h1 { font-size:42px; font-weight:800; color:var(--vl-blau); margin:0 0 8px 0; line-height:1.1; }
+.vl-lead { max-width:560px; font-size:16px; line-height:1.6; color:var(--vl-text-suau); margin:0; }
+
+.vl-modes { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.vl-mode {
+  font:inherit; font-size:14px; font-weight:700; cursor:pointer; border-radius:999px; padding:11px 20px;
+  border:1.5px solid rgba(29,47,70,.25); background:transparent; color:var(--vl-blau);
+  min-height:44px;
+}
+.vl-mode:hover { border-color:var(--vl-blau); }
+.vl-mode[aria-pressed="true"] { background:var(--vl-blau); border-color:var(--vl-blau); color:var(--vl-crema); }
+
+.vl-iconbtn {
+  width:44px; height:44px; border-radius:50%; border:1.5px solid rgba(29,47,70,.25); background:transparent;
+  color:var(--vl-blau); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; padding:0;
+}
+.vl-iconbtn:hover { border-color:var(--vl-blau); }
+
+.vl-btn {
+  font:inherit; font-size:14.5px; font-weight:700; cursor:pointer; border-radius:999px; padding:12px 22px;
+  border:none; display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px;
+}
+.vl-btn-dark { background:var(--vl-blau); color:var(--vl-crema); }
+.vl-btn-dark:hover { background:#2a4262; }
+.vl-btn-red { background:var(--vl-vermell-cta); color:var(--vl-crema); }
+.vl-btn-red:hover { background:#9a3f39; }
+.vl-btn-light { background:var(--vl-crema); color:var(--vl-blau); box-shadow:0 0 0 1.5px rgba(29,47,70,.25); }
+.vl-btn-light:hover { box-shadow:0 0 0 1.5px var(--vl-blau); }
+.vl-btn[disabled] { opacity:.4; cursor:not-allowed; }
+
+/* ---------------------------------------------------------------- layout */
+
+.vl-app {
+  display:grid; grid-template-columns: 290px minmax(0,1fr) 370px; gap:16px;
+  height: var(--vl-alcada);
+}
+
+.vl-side, .vl-panel {
+  background:#fff; border:1px solid var(--vl-linia); border-radius:var(--vl-radi);
+  min-height:0; overflow:auto; overscroll-behavior:contain;
+}
+.vl-side { display:flex; flex-direction:column; }
+
+.vl-mapwrap { position:relative; border-radius:var(--vl-radi); overflow:hidden; background:#0f1b2b; min-height:0; }
+.vl-map { position:absolute; inset:0; }
+
+/* ---------------------------------------------------------------- filtres i llista */
+
+.vl-filters { display:flex; flex-wrap:wrap; gap:6px; padding:16px 16px 4px 16px; }
+.vl-chip {
+  font:inherit; font-size:13px; font-weight:700; cursor:pointer; border-radius:999px; padding:8px 12px 8px 10px;
+  border:1.5px solid var(--vl-cat, var(--vl-blau)); background:#fff; color:var(--vl-blau);
+  display:inline-flex; align-items:center; gap:7px; min-height:40px;
+}
+.vl-chip::before { content:""; width:10px; height:10px; border-radius:50%; background:var(--vl-cat); flex-shrink:0; }
+.vl-chip[aria-pressed="true"] { background:var(--vl-cat); color:#fff; }
+.vl-chip[aria-pressed="true"]::before { background:#fff; }
+.vl-chip[aria-pressed="false"] { border-style:dashed; color:var(--vl-text-suau); }
+
+.vl-count { margin:8px 16px 6px 16px; font-size:12.5px; font-weight:600; color:var(--vl-text-suau); }
+
+.vl-list { list-style:none; margin:0; padding:0 8px 12px 8px; }
+.vl-list:focus { outline:none; }
+.vl-item {
+  font:inherit; width:100%; text-align:left; background:transparent; border:none; cursor:pointer;
+  display:flex; align-items:center; gap:12px; padding:9px 10px; border-radius:12px; color:var(--vl-text);
+  min-height:48px;
+}
+.vl-item:hover { background:rgba(29,47,70,.05); }
+.vl-item[aria-current="true"] { background:rgba(29,47,70,.09); }
+.vl-dot {
+  width:30px; height:30px; border-radius:50%; background:var(--vl-cat); flex-shrink:0;
+  display:inline-flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:13px;
+  box-shadow:0 0 0 2px #fff, 0 0 0 3px var(--vl-cat);
+}
+.vl-dot svg { width:15px; height:15px; }
+.vl-item-text { display:flex; flex-direction:column; min-width:0; }
+.vl-item-nom { font-weight:700; font-size:14.5px; color:var(--vl-blau); }
+.vl-item-lloc { font-size:12.5px; color:var(--vl-text-suau); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.vl-empty { padding:12px 16px; font-size:14px; color:var(--vl-text-suau); }
+
+/* ---------------------------------------------------------------- mapa */
+
+.vl-intro {
+  position:absolute; left:50%; top:20px; transform:translateX(-50%); z-index:5;
+  width:min(440px, calc(100% - 32px)); background:rgba(253,251,247,.96); border-radius:var(--vl-radi);
+  padding:22px 24px; box-shadow:var(--vl-ombra); text-align:center;
+}
+.vl-intro-title { font-family:'Frank Ruhl Libre', Georgia, serif; font-size:28px; font-weight:800; color:var(--vl-blau); margin:0 0 6px 0; }
+.vl-intro-text { font-size:15px; line-height:1.55; color:var(--vl-text-suau); margin:0 0 16px 0; }
+
+.vl-reset { position:absolute; left:12px; top:12px; z-index:4; font-size:13px; padding:9px 16px; min-height:40px; }
+
+.vl-maperror {
+  position:absolute; inset:auto 16px 16px 16px; z-index:6; margin:0; background:var(--vl-crema); color:var(--vl-text);
+  border-left:4px solid var(--vl-vermell); border-radius:12px; padding:14px 16px; font-size:14px; line-height:1.5; box-shadow:var(--vl-ombra);
+}
+
+.vl-lleida {
+  font:700 13px 'Plus Jakarta Sans', system-ui, sans-serif; color:var(--vl-blau); background:var(--vl-crema);
+  border-radius:999px; padding:5px 10px 5px 8px; box-shadow:var(--vl-ombra); display:flex; align-items:center; gap:6px;
+}
+.vl-lleida::before { content:""; width:10px; height:10px; border-radius:50%; background:var(--vl-vermell-cta); box-shadow:0 0 0 3px rgba(183,79,73,.3); }
+
+.maplibregl-ctrl-group button { width:36px; height:36px; }
+.maplibregl-ctrl-attrib { font-family:'Plus Jakarta Sans', system-ui, sans-serif; font-size:11px; }
+
+/* ---------------------------------------------------------------- fitxa */
+
+.vl-panel { display:flex; flex-direction:column; }
+.vl-panel:focus { outline:none; }
+.vl-panel-body { padding:20px 22px 22px 22px; }
+.vl-panel-top { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:12px; }
+
+.vl-tag {
+  display:inline-flex; align-items:center; gap:6px; font-size:11.5px; letter-spacing:.12em; text-transform:uppercase;
+  font-weight:800; color:#fff; background:var(--vl-cat); border-radius:999px; padding:5px 11px;
+}
+.vl-close { width:40px; height:40px; flex-shrink:0; }
+
+.vl-photo { margin:0; background:var(--vl-fons); aspect-ratio: 3 / 2; overflow:hidden; flex-shrink:0; }
+.vl-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+.vl-photo-empty { display:flex; align-items:center; justify-content:center; padding:20px; text-align:center; font-size:13.5px; color:var(--vl-text-suau); }
+
+.vl-panel h2 { font-size:28px; font-weight:800; color:var(--vl-blau); margin:0 0 6px 0; line-height:1.15; }
+.vl-lloc { display:flex; align-items:flex-start; gap:6px; font-size:14px; font-weight:600; color:var(--vl-ocre); margin:0 0 14px 0; }
+.vl-lloc svg { flex-shrink:0; margin-top:2px; }
+.vl-data {
+  display:flex; flex-direction:column; gap:2px; background:rgba(168,67,61,.08); border-radius:14px; padding:10px 14px; margin:0 0 14px 0;
+}
+.vl-data-label { font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; font-weight:800; color:var(--vl-vermell); }
+.vl-data-text { font-size:15px; font-weight:700; color:var(--vl-blau); }
+.vl-desc { font-size:15.5px; line-height:1.7; color:var(--vl-text); margin:0 0 14px 0; }
+.vl-note { font-size:13px; line-height:1.5; color:var(--vl-text-suau); background:rgba(29,47,70,.05); border-radius:10px; padding:8px 12px; margin:0 0 14px 0; }
+.vl-credit { font-size:12px; line-height:1.5; color:var(--vl-text-suau); margin:0; }
+.vl-credit a { color:var(--vl-text-suau); text-decoration:underline; text-underline-offset:2px; }
+.vl-credit a:hover { color:var(--vl-blau); }
+
+.vl-welcome { padding:28px 24px; }
+.vl-welcome h2 { font-size:26px; }
+.vl-welcome p { font-size:15px; line-height:1.65; color:var(--vl-text-suau); margin:0 0 18px 0; }
+.vl-legend { list-style:none; padding:0; margin:0 0 22px 0; display:grid; gap:8px; }
+.vl-legend li { display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--vl-blau); }
+.vl-legend span { width:14px; height:14px; border-radius:50%; background:var(--vl-cat); }
+
+/* recorregut */
+.vl-tour-head { padding:16px 22px 0 22px; }
+.vl-tour-step { font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:800; color:var(--vl-ocre); margin:0 0 8px 0; }
+.vl-progress { height:6px; border-radius:99px; background:rgba(29,47,70,.1); overflow:hidden; margin-bottom:14px; }
+.vl-progress span { display:block; height:100%; background:var(--vl-ocre); border-radius:99px; transition:width .4s ease; }
+.vl-tour-nav {
+  position:sticky; bottom:0; margin-top:auto; display:flex; gap:10px; padding:14px 22px;
+  background:linear-gradient(to top, #fff 75%, rgba(255,255,255,0)); border-top:1px solid var(--vl-linia);
+}
+.vl-tour-nav .vl-btn { flex:1; }
+.vl-tour-hint { font-size:12.5px; color:var(--vl-text-suau); margin:0 0 14px 0; }
+
+/* ---------------------------------------------------------------- pantalla completa (projector) */
+
+.vl:fullscreen { background:var(--vl-crema); padding:20px 24px; overflow:auto; }
+.vl:fullscreen .vl-lead, .vl:fullscreen .vl-eyebrow { display:none; }
+.vl:fullscreen .vl-head { margin:0 0 14px 0; }
+.vl:fullscreen .vl-head h1 { font-size:34px; margin:0; }
+.vl:fullscreen .vl-app { height:calc(100vh - 110px); }
+/* al projector la fitxa del recorregut es llegeix de lluny */
+.vl:fullscreen[data-mode="recorregut"] .vl-panel h2 { font-size:36px; }
+.vl:fullscreen[data-mode="recorregut"] .vl-desc { font-size:19px; }
+.vl:fullscreen[data-mode="recorregut"] .vl-app { grid-template-columns: 0 minmax(0,1fr) 440px; gap:0 16px; }
+.vl:fullscreen[data-mode="recorregut"] .vl-side { visibility:hidden; }
+
+/* ---------------------------------------------------------------- responsive */
+
+@media (max-width: 1180px) {
+  .vl-app { grid-template-columns: 260px minmax(0,1fr) 330px; }
+}
+
+@media (max-width: 900px) {
+  .vl-crumbs { padding:14px 18px 0 18px; }
+  .vl { padding:4px 18px 40px 18px; }
+  .vl-head h1 { font-size:32px; }
+  .vl-lead { font-size:15px; }
+  .vl-modes { width:100%; }
+  .vl-mode { flex:1; padding:10px 12px; font-size:13.5px; }
+
+  /* mapa a dalt, llista a sota; la fitxa surt com a full inferior */
+  .vl-app { display:flex; flex-direction:column; height:auto; gap:14px; }
+  .vl-mapwrap { order:-1; height:62vh; min-height:340px; max-height:640px; }
+  .vl-side { overflow:visible; }
+  .vl[data-mode="recorregut"] .vl-side { display:none; }
+
+  .vl-panel {
+    position:fixed; left:0; right:0; bottom:0; z-index:80; max-height:56vh;
+    border-radius:22px 22px 0 0; box-shadow:0 -10px 40px rgba(29,47,70,.25); border:none;
+    padding-bottom:env(safe-area-inset-bottom, 0px);
+  }
+  .vl-panel[hidden] { display:none; }
+  .vl-panel h2 { font-size:24px; }
+  .vl-photo { aspect-ratio: 21 / 9; }
+  .vl-intro { top:12px; padding:16px 18px; }
+  .vl-reset { left:10px; top:10px; font-size:12.5px; padding:7px 13px; min-height:36px; }
+  .vl-intro-title { font-size:24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vl-progress span { transition:none; }
+  .nav-dropdown-menu { transition:none; }
+}

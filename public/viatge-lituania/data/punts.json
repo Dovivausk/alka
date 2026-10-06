@@ -1,0 +1,827 @@
+{
+  "versio": 1,
+  "idiomes": [
+    "ca"
+  ],
+  "categories": [
+    {
+      "id": "ciutats",
+      "color": "#1d2f46",
+      "nom": {
+        "ca": "Ciutats"
+      }
+    },
+    {
+      "id": "llocs",
+      "color": "#325f42",
+      "nom": {
+        "ca": "Llocs d'interès"
+      }
+    },
+    {
+      "id": "gastronomia",
+      "color": "#976524",
+      "nom": {
+        "ca": "Gastronomia"
+      }
+    },
+    {
+      "id": "tradicions",
+      "color": "#a8433d",
+      "nom": {
+        "ca": "Tradicions i dates"
+      }
+    }
+  ],
+  "punts": [
+    {
+      "id": "vilnius",
+      "categoria": "ciutats",
+      "coords": [
+        25.2829,
+        54.687
+      ],
+      "nom": {
+        "ca": "Vílnius"
+      },
+      "lloc": {
+        "ca": "Capital de Lituània"
+      },
+      "descripcio": {
+        "ca": "És la capital de Lituània i la ciutat més gran del país. El seu nucli antic, ple d'esglésies barroques, patis amagats i carrerons empedrats, és Patrimoni Mundial de la UNESCO des del 1994. Des del turó del castell de Gediminas es veuen tots els teulats vermells de la ciutat."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/vilnius.webp",
+        "amplada": 960,
+        "alcada": 640,
+        "autor": "BigHead",
+        "llicencia": "CC BY-SA 4.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Vilnius_old_town_by_Augustas_Didzgalvis.jpg"
+      },
+      "data": null,
+      "recorregut": 1,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (municipi) + Wikidata Q216"
+      },
+      "verificar": false
+    },
+    {
+      "id": "kaunas",
+      "categoria": "ciutats",
+      "coords": [
+        23.9045,
+        54.8982
+      ],
+      "nom": {
+        "ca": "Kaunas"
+      },
+      "lloc": {
+        "ca": "Centre del país"
+      },
+      "descripcio": {
+        "ca": "La segona ciutat de Lituània. Entre el 1920 i el 1939 en va ser la capital provisional, perquè Vílnius havia quedat en mans de Polònia, i d'aquella època conserva centenars d'edificis modernistes que la UNESCO va declarar Patrimoni Mundial el 2023. També és la ciutat del Žalgiris, un dels equips de bàsquet més famosos d'Europa."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/kaunas.webp",
+        "amplada": 960,
+        "alcada": 640,
+        "autor": "BigHead",
+        "llicencia": "CC BY-SA 4.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Kauno_senamiestis_by_Augustas_Didzgalvis.jpg"
+      },
+      "data": null,
+      "recorregut": 6,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (municipi) + Wikidata Q4115712"
+      },
+      "verificar": false
+    },
+    {
+      "id": "klaipeda",
+      "categoria": "ciutats",
+      "coords": [
+        21.135,
+        55.7128
+      ],
+      "nom": {
+        "ca": "Klaipėda"
+      },
+      "lloc": {
+        "ca": "Costa del mar Bàltic"
+      },
+      "descripcio": {
+        "ca": "La tercera ciutat del país i el seu únic gran port de mar, a la vora del Bàltic. Durant segles es va dir Memel i va formar part de Prússia i d'Alemanya, i per això el barri antic té cases amb entramat de fusta. D'aquí surten els transbordadors cap a l'istme de Curlàndia."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/klaipeda.webp",
+        "amplada": 960,
+        "alcada": 627,
+        "autor": "Mantas Volungevicius",
+        "llicencia": "CC BY 2.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by/2.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Quite_summer_evening_in_the_port_city_Klaipeda.jpg"
+      },
+      "data": null,
+      "recorregut": 8,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (municipi) + Wikidata Q776965"
+      },
+      "verificar": false
+    },
+    {
+      "id": "siauliai",
+      "categoria": "ciutats",
+      "coords": [
+        23.3158,
+        55.9341
+      ],
+      "nom": {
+        "ca": "Šiauliai"
+      },
+      "lloc": {
+        "ca": "Nord del país"
+      },
+      "descripcio": {
+        "ca": "La quarta ciutat de Lituània, al nord del país. És la porta d'entrada al Turó de les Creus, que es troba a uns 12 quilòmetres. La seva catedral blanca, amb una torre molt alta, es veu des de molt lluny."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/siauliai.webp",
+        "amplada": 960,
+        "alcada": 719,
+        "autor": "UrteDra",
+        "llicencia": "CC BY-SA 4.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "font": "https://commons.wikimedia.org/wiki/File:SVK_pastatai_2022.jpg"
+      },
+      "data": null,
+      "recorregut": null,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (municipi) + Wikidata Q134712"
+      },
+      "verificar": false
+    },
+    {
+      "id": "druskininkai",
+      "categoria": "ciutats",
+      "coords": [
+        23.9772,
+        54.0172
+      ],
+      "nom": {
+        "ca": "Druskininkai"
+      },
+      "lloc": {
+        "ca": "Sud del país, a la vora del riu Nemunas"
+      },
+      "descripcio": {
+        "ca": "Una ciutat balneari al sud del país, a la vora del riu Nemunas i molt a prop de les fronteres amb Bielorússia i Polònia. Des del segle XIX hi va gent a prendre aigües minerals i banys de fang. Aquí hi va viure i pintar Mikalojus Konstantinas Čiurlionis, el pintor i compositor més famós de Lituània."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/druskininkai.webp",
+        "amplada": 960,
+        "alcada": 640,
+        "autor": "Quintin Soloviev",
+        "llicencia": "CC BY 4.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by/4.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Druskininkai,_Lithuania.jpg"
+      },
+      "data": null,
+      "recorregut": 4,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (municipi) + Wikidata Q1261509"
+      },
+      "verificar": false
+    },
+    {
+      "id": "palanga",
+      "categoria": "ciutats",
+      "coords": [
+        21.0683,
+        55.923
+      ],
+      "nom": {
+        "ca": "Palanga"
+      },
+      "lloc": {
+        "ca": "Costa del mar Bàltic"
+      },
+      "descripcio": {
+        "ca": "El lloc d'estiueig més gran de Lituània, amb 18 quilòmetres de platges de sorra i dunes. Des del 1892 té un llarg moll de fusta que s'endinsa al mar, on la gent va a veure la posta de sol. En un palau del parc hi ha el Museu de l'Ambre, la «pedra d'or» del Bàltic."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/palanga.webp",
+        "amplada": 960,
+        "alcada": 640,
+        "autor": "Augustas Didžgalvis",
+        "llicencia": "CC BY-SA 4.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Palanga_by_Augustas_Didzgalvis.jpg"
+      },
+      "data": null,
+      "recorregut": null,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (municipi) + Wikidata Q2047414"
+      },
+      "verificar": false
+    },
+    {
+      "id": "trakai",
+      "categoria": "llocs",
+      "coords": [
+        24.9339,
+        54.6527
+      ],
+      "nom": {
+        "ca": "Castell de Trakai"
+      },
+      "lloc": {
+        "ca": "Trakai, a uns 28 km de Vílnius"
+      },
+      "descripcio": {
+        "ca": "Un castell de maó vermell construït en una illa del llac Galvė. El va començar el duc Kęstutis al segle XIV i el seu fill, el gran duc Vytautas el Gran, el va acabar cap al 1409; hi va morir el 1430. S'hi arriba caminant per un pont de fusta sobre l'aigua."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/trakai.webp",
+        "amplada": 960,
+        "alcada": 640,
+        "autor": "BigHead",
+        "llicencia": "CC BY-SA 4.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Traku_pilis_by_Augustas_Didzgalvis.jpg"
+      },
+      "data": null,
+      "recorregut": 3,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (castle) + Wikidata Q1482013"
+      },
+      "verificar": false
+    },
+    {
+      "id": "turo-creus",
+      "categoria": "llocs",
+      "coords": [
+        23.4157,
+        56.015
+      ],
+      "nom": {
+        "ca": "Turó de les Creus"
+      },
+      "lloc": {
+        "ca": "A 12 km al nord de Šiauliai"
+      },
+      "descripcio": {
+        "ca": "Un petit turó cobert de creus de totes les mides: el 2006 se'n calculaven més de 100.000, i cada any n'hi deixen més. Es creu que les primeres s'hi van posar després de la revolta del 1831. Durant l'ocupació soviètica les autoritats van intentar destruir-lo diverses vegades, però la gent hi tornava a plantar creus, i es va convertir en un símbol de resistència."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/turo-creus.webp",
+        "amplada": 960,
+        "alcada": 347,
+        "autor": "Pudelek (Marcin Szala)",
+        "llicencia": "CC BY-SA 3.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Kry%C5%BEi%C5%B3_kalnas_(G%C3%B3ra_Krzy%C5%BCy).JPG"
+      },
+      "data": null,
+      "recorregut": 7,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (attraction) + Wikidata Q223726"
+      },
+      "verificar": false
+    },
+    {
+      "id": "nida",
+      "categoria": "llocs",
+      "coords": [
+        21.0038,
+        55.3036
+      ],
+      "nom": {
+        "ca": "Nida i l'istme de Curlàndia"
+      },
+      "lloc": {
+        "ca": "Istme de Curlàndia"
+      },
+      "descripcio": {
+        "ca": "L'istme de Curlàndia és una franja de sorra de 98 quilòmetres entre el mar Bàltic i una llacuna, compartida entre Lituània i Rússia i declarada Patrimoni Mundial de la UNESCO. Nida, el poble principal, està envoltat de dunes gegants i boscos de pins. L'escriptor alemany Thomas Mann, premi Nobel, s'hi va fer construir una casa d'estiu el 1929."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/nida.webp",
+        "amplada": 960,
+        "alcada": 720,
+        "autor": "LinasD",
+        "llicencia": "CC BY-SA 4.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Nida_from_bird%27s-eye_view.jpg"
+      },
+      "data": null,
+      "recorregut": 9,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (Nida, Neringa) + Wikidata Q1004306"
+      },
+      "verificar": false
+    },
+    {
+      "id": "kernave",
+      "categoria": "llocs",
+      "coords": [
+        24.85,
+        54.8833
+      ],
+      "nom": {
+        "ca": "Kernavė"
+      },
+      "lloc": {
+        "ca": "Vall del riu Neris"
+      },
+      "descripcio": {
+        "ca": "Al segle XIII va ser una de les primeres capitals del Gran Ducat de Lituània. Avui s'hi conserven cinc turons fortificats sobre el riu Neris, on hi havia castells de fusta. És Patrimoni Mundial de la UNESCO des del 2004."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/kernave.webp",
+        "amplada": 960,
+        "alcada": 720,
+        "autor": "Mindaur",
+        "llicencia": "CC BY-SA 4.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Kernave_mounds_20200926.jpg"
+      },
+      "data": null,
+      "recorregut": 2,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "Wikidata Q215315 (jaciment) + OSM (Kernavė, 54.8863, 24.8540)"
+      },
+      "verificar": false
+    },
+    {
+      "id": "rumsiskes",
+      "categoria": "llocs",
+      "coords": [
+        24.2012,
+        54.8664
+      ],
+      "nom": {
+        "ca": "Museu a l'aire lliure de Rumšiškės"
+      },
+      "lloc": {
+        "ca": "Rumšiškės, a prop de Kaunas"
+      },
+      "descripcio": {
+        "ca": "Un dels museus etnogràfics a l'aire lliure més grans d'Europa: 195 hectàrees amb cases, molins, esglésies i granges de totes les regions de Lituània. Mostra com vivia la gent del camp entre el segle XVIII i la primera meitat del XX. Cada any hi té lloc la festa d'Užgavėnės més gran del país."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/rumsiskes.webp",
+        "amplada": 960,
+        "alcada": 720,
+        "autor": "Algirdas at Lithuanian Wikipedia",
+        "llicencia": "CC BY-SA 3.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "font": "https://commons.wikimedia.org/wiki/File:Rumsiskes._Liaudies_buities_muziejus._2007-04-21.jpg"
+      },
+      "data": null,
+      "recorregut": 5,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (museum) + Wikidata Q11875746"
+      },
+      "verificar": false
+    },
+    {
+      "id": "aukstaitija",
+      "categoria": "llocs",
+      "coords": [
+        26.0523,
+        55.3497
+      ],
+      "nom": {
+        "ca": "Parc Nacional d'Aukštaitija"
+      },
+      "lloc": {
+        "ca": "Nord-est del país"
+      },
+      "descripcio": {
+        "ca": "El parc nacional més antic de Lituània, creat el 1974 al nord-est del país. Més del 70% del territori és bosc, sobretot de pins, i està esquitxat de llacs units per rierols. És un bon lloc per anar en caiac i descobrir pobles tradicionals de fusta."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/aukstaitija.webp",
+        "amplada": 960,
+        "alcada": 720,
+        "autor": "Wojsyl",
+        "llicencia": "CC BY-SA 3.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "font": "https://commons.wikimedia.org/wiki/File:Paluse_Lusiai_lake.jpg"
+      },
+      "data": null,
+      "recorregut": null,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (national_park) + Wikidata Q400200"
+      },
+      "verificar": false
+    },
+    {
+      "id": "cepelinai",
+      "categoria": "gastronomia",
+      "coords": [
+        23.8859,
+        54.8969
+      ],
+      "nom": {
+        "ca": "Cepelinai"
+      },
+      "lloc": {
+        "ca": "Kaunas (se'n mengen a tot el país)"
+      },
+      "descripcio": {
+        "ca": "El plat nacional de Lituània: grans mandonguilles de patata farcides de carn, de mató o de bolets. Es diuen així perquè tenen la forma dels dirigibles zepelí. Se serveixen amb crema agra i trossets de cansalada fregida."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/cepelinai.webp",
+        "amplada": 960,
+        "alcada": 633,
+        "autor": "Diliff",
+        "llicencia": "CC BY-SA 3.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Cepelinai_2,_Vilnius,_Lithuania_-_Diliff.jpg"
+      },
+      "data": null,
+      "recorregut": null,
+      "ubicacioOrientativa": true,
+      "verificacio": {
+        "coords": "OSM (Ajuntament de Kaunas)"
+      },
+      "verificar": false
+    },
+    {
+      "id": "saltibarsciai",
+      "categoria": "gastronomia",
+      "coords": [
+        25.2869,
+        54.6781
+      ],
+      "nom": {
+        "ca": "Šaltibarščiai"
+      },
+      "lloc": {
+        "ca": "Vílnius (se'n menja a tot el país)"
+      },
+      "descripcio": {
+        "ca": "Una sopa freda de color rosa intens, feta amb remolatxa, quefir, cogombre, ou i anet, que es menja a l'estiu amb patates calentes al costat. És una mica com el nostre gaspatxo: refrescant i perfecta per a la calor. És tan estimada que Vílnius li dedica un festival, el Pink Soup Fest, on milers de persones la mengen juntes."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/saltibarsciai.webp",
+        "amplada": 831,
+        "alcada": 642,
+        "autor": "TreasuryTag",
+        "llicencia": "CC BY-SA 3.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Lurid_borscht.jpg"
+      },
+      "data": null,
+      "recorregut": null,
+      "ubicacioOrientativa": true,
+      "verificacio": {
+        "coords": "OSM (Ajuntament de Vílnius)"
+      },
+      "verificar": false
+    },
+    {
+      "id": "kibinai",
+      "categoria": "gastronomia",
+      "coords": [
+        24.9337,
+        54.6473
+      ],
+      "nom": {
+        "ca": "Kibinai"
+      },
+      "lloc": {
+        "ca": "Trakai, carrer dels Caraïtes"
+      },
+      "descripcio": {
+        "ca": "Unes empanades farcides tradicionalment de carn de xai i ceba. Les cuinaven els caraïtes, una comunitat originària de Crimea que el gran duc Vytautas va portar a Trakai fa més de 600 anys. Al carrer dels Caraïtes de Trakai encara se'n couen i se'n venen."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/kibinai.webp",
+        "amplada": 960,
+        "alcada": 541,
+        "autor": "Ke an",
+        "llicencia": "CC BY-SA 4.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Lithuanian_cuisine_-_kibinai_-_2.jpg"
+      },
+      "data": null,
+      "recorregut": null,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (carrer Karaimų, Trakai)"
+      },
+      "verificar": false
+    },
+    {
+      "id": "sakotis",
+      "categoria": "gastronomia",
+      "coords": [
+        24.0453,
+        53.9882
+      ],
+      "nom": {
+        "ca": "Šakotis"
+      },
+      "lloc": {
+        "ca": "Regió de Dzūkija, a prop de Druskininkai"
+      },
+      "descripcio": {
+        "ca": "Un pastís alt i ple de punxes, com un petit avet, que es fa abocant massa a poc a poc sobre un ast que gira davant del foc. És el pastís de les grans celebracions: casaments, bateigs i festes. A Druskininkai s'hi va fer un dels šakotis més alts del món, i a prop hi ha un museu on se'n pot veure fer i provar."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/sakotis.webp",
+        "amplada": 960,
+        "alcada": 1383,
+        "autor": "Sven Teschke",
+        "llicencia": "CC BY-SA 3.0 de",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+        "font": "https://commons.wikimedia.org/wiki/File:%C5%A0akotis_3799.jpg"
+      },
+      "data": null,
+      "recorregut": null,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (museu del šakotis, Jaskonys)"
+      },
+      "verificar": false
+    },
+    {
+      "id": "kuciukai",
+      "categoria": "gastronomia",
+      "coords": [
+        23.32,
+        55.9327
+      ],
+      "nom": {
+        "ca": "Kūčiukai"
+      },
+      "lloc": {
+        "ca": "Tot el país (ubicació orientativa)"
+      },
+      "descripcio": {
+        "ca": "Galetetes petites i una mica dolces, fetes amb massa de pa i llavors de rosella. Són un dels plats que no poden faltar a Kūčios, el sopar de la nit de Nadal. Es mengen secs o remullats amb llet de rosella."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/kuciukai.webp",
+        "amplada": 960,
+        "alcada": 720,
+        "autor": "Leia at Lithuanian Wikipedia",
+        "llicencia": "Public domain",
+        "llicencia_url": null,
+        "font": "https://commons.wikimedia.org/wiki/File:Kuciukai.jpg"
+      },
+      "data": null,
+      "recorregut": null,
+      "ubicacioOrientativa": true,
+      "verificacio": {
+        "coords": "OSM (catedral de Šiauliai)"
+      },
+      "verificar": false
+    },
+    {
+      "id": "jonines",
+      "categoria": "tradicions",
+      "coords": [
+        24.854,
+        54.8863
+      ],
+      "nom": {
+        "ca": "Joninės (Rasos)"
+      },
+      "lloc": {
+        "ca": "Kernavė (es celebra a tot el país)"
+      },
+      "descripcio": {
+        "ca": "La festa del solstici d'estiu, també anomenada Rasos, «la rosada». Es fan fogueres, es teixeixen corones de flors i es busca la flor de la falguera, que segons la llegenda només floreix aquesta nit. És gairebé com la revetlla de Sant Joan a Catalunya! La celebració més gran i tradicional es fa als turons de Kernavė."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/jonines.webp",
+        "amplada": 461,
+        "alcada": 691,
+        "autor": "Iulius",
+        "llicencia": "CC BY-SA 3.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "font": "https://commons.wikimedia.org/wiki/File:Jonines_in_Vepriai.jpg"
+      },
+      "data": {
+        "tipus": "fixa",
+        "text": {
+          "ca": "Nit del 23 al 24 de juny"
+        }
+      },
+      "recorregut": null,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (Kernavė)"
+      },
+      "verificar": false
+    },
+    {
+      "id": "uzgavenes",
+      "categoria": "tradicions",
+      "coords": [
+        24.2019,
+        54.8707
+      ],
+      "nom": {
+        "ca": "Užgavėnės"
+      },
+      "lloc": {
+        "ca": "Rumšiškės (es celebra a tot el país)"
+      },
+      "descripcio": {
+        "ca": "El carnaval lituà: la gent es disfressa amb màscares de dimonis, bruixes i animals per fer fora l'hivern. En Lašininis («el de cansalada»), que representa l'hivern, lluita contra en Kanapinis («el de cànem»), la primavera, i al final es crema una ninota de palla, la Morė. Recorda la batalla d'en Carnestoltes contra la Vella Quaresma, i també s'hi mengen molts creps!"
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/uzgavenes.webp",
+        "amplada": 960,
+        "alcada": 667,
+        "autor": "Andrius Petrucenia",
+        "llicencia": "CC BY-SA 2.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Uzgavenes_2010_-_masks.jpg"
+      },
+      "data": {
+        "tipus": "mobil",
+        "text": {
+          "ca": "El dimarts abans del Dimecres de Cendra, entre febrer i març (la data canvia cada any)"
+        }
+      },
+      "recorregut": null,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "Wikidata Q11875746 (museu de Rumšiškės)"
+      },
+      "verificar": false
+    },
+    {
+      "id": "kucios",
+      "categoria": "tradicions",
+      "coords": [
+        25.2879,
+        54.6859
+      ],
+      "nom": {
+        "ca": "Kūčios"
+      },
+      "lloc": {
+        "ca": "Tot el país (ubicació orientativa)"
+      },
+      "descripcio": {
+        "ca": "El sopar de la nit de Nadal, el 24 de desembre, un dels moments més importants de l'any per a les famílies lituanes. Tradicionalment hi ha dotze plats, tots sense carn, i si algú de la família ha mort aquell any se li deixa un lloc buit a taula. A Catalunya el gran àpat és el dinar de Nadal; a Lituània, el sopar de la vigília."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/kucios.webp",
+        "amplada": 960,
+        "alcada": 636,
+        "autor": "Hugo.arg i Viktorija O.",
+        "llicencia": "Public domain",
+        "llicencia_url": null,
+        "font": "https://commons.wikimedia.org/wiki/File:K%C5%AB%C4%8Dios.JPG"
+      },
+      "data": {
+        "tipus": "fixa",
+        "text": {
+          "ca": "24 de desembre"
+        }
+      },
+      "recorregut": null,
+      "ubicacioOrientativa": true,
+      "verificacio": {
+        "coords": "Wikidata Q1281237 (catedral de Vílnius)"
+      },
+      "verificar": false
+    },
+    {
+      "id": "kaziukas",
+      "categoria": "tradicions",
+      "coords": [
+        25.2867,
+        54.6853
+      ],
+      "nom": {
+        "ca": "Fira de Kaziukas"
+      },
+      "lloc": {
+        "ca": "Centre de Vílnius"
+      },
+      "descripcio": {
+        "ca": "Una gran fira d'artesania que se celebra des de començaments del segle XVII en honor de sant Casimir, el patró de Lituània. Més de 1.500 parades omplen els carrers del centre de Vílnius de cistells, ceràmica, fusta tallada i menjar. L'objecte més típic són les verbos, uns rams de flors seques i herbes de colors. Recorda les nostres fires, com la de Santa Llúcia o la de Sant Miquel a Lleida."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/kaziukas.webp",
+        "amplada": 960,
+        "alcada": 720,
+        "autor": "Sirex at Lithuanian Wikipedia",
+        "llicencia": "Public domain",
+        "llicencia_url": null,
+        "font": "https://commons.wikimedia.org/wiki/File:Kziuko_muge.jpg"
+      },
+      "data": {
+        "tipus": "mobil",
+        "text": {
+          "ca": "Cap de setmana més proper al 4 de març, festa de Sant Casimir (la data canvia cada any)"
+        }
+      },
+      "recorregut": null,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "Wikidata Q1988340"
+      },
+      "verificar": false
+    },
+    {
+      "id": "dainu-svente",
+      "categoria": "tradicions",
+      "coords": [
+        25.2396,
+        54.683
+      ],
+      "nom": {
+        "ca": "Festa de la Cançó (Dainų šventė)"
+      },
+      "lloc": {
+        "ca": "Parc Vingis, Vílnius"
+      },
+      "descripcio": {
+        "ca": "Una festa enorme on desenes de milers de cantaires i dansaires canten i ballen junts. La primera es va fer el 1924 i el 2024 se'n va celebrar el centenari; el gran concert final es fa al parc Vingis de Vílnius. La UNESCO la reconeix com a patrimoni immaterial, juntament amb les de Letònia i Estònia. Imagina tots els cors i orfeons de Catalunya cantant en un sol concert!"
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/dainu-svente.webp",
+        "amplada": 960,
+        "alcada": 638,
+        "autor": "Szczureq",
+        "llicencia": "CC BY-SA 4.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Dainu_svente_2014-07-06.jpg"
+      },
+      "data": {
+        "tipus": "mobil",
+        "text": {
+          "ca": "A l'estiu, aproximadament cada quatre anys (l'última, el juliol del 2024)"
+        }
+      },
+      "recorregut": 10,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (parc Vingis)"
+      },
+      "verificar": false
+    },
+    {
+      "id": "dia-estat",
+      "categoria": "tradicions",
+      "coords": [
+        25.2863,
+        54.6836
+      ],
+      "nom": {
+        "ca": "Dia de l'Estat"
+      },
+      "lloc": {
+        "ca": "Plaça Daukanto, Vílnius"
+      },
+      "descripcio": {
+        "ca": "Lituània recorda la coronació de Mindaugas, el primer i únic rei de Lituània, l'any 1253. A les nou del vespre, hora de Lituània, lituans de tot el món canten alhora l'himne nacional, la Tautiška giesmė. A Vílnius la festa se celebra davant del Palau Presidencial, a la plaça Daukanto."
+      },
+      "foto": {
+        "url": "/viatge-lituania/img/dia-estat.webp",
+        "amplada": 960,
+        "alcada": 720,
+        "autor": "Pofka",
+        "llicencia": "CC BY-SA 4.0",
+        "llicencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "font": "https://commons.wikimedia.org/wiki/File:Gediminas_Avenue_in_Vilnius,_decorated_for_the_upcoming_commemoration_of_the_Statehood_Day_(6_July_2023),_related_with_the_crowning_of_Mindaugas_as_the_King_of_Lithuania_in_1253_(2).jpg"
+      },
+      "data": {
+        "tipus": "fixa",
+        "text": {
+          "ca": "6 de juliol"
+        }
+      },
+      "recorregut": null,
+      "ubicacioOrientativa": false,
+      "verificacio": {
+        "coords": "OSM (plaça Daukanto) + Wikidata Q5227975"
+      },
+      "verificar": false
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viatge a Lituània - ALKA</title>
+<meta name="description" content="Mapa interactiu de Lituània per a escoles: ciutats, llocs d'interès, gastronomia i tradicions, amb un recorregut guiat.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.css" integrity="sha384-uTttxo/aOKbdE5RlD/SPzSDoDmNvGlUYPjONi2MN/b7c9HPSvW07OIuyP7uL6jxK" crossorigin="anonymous">
+<link rel="stylesheet" href="/viatge-lituania/css/viatge.css?v=2">
+</head>
+<body>
+<a class="vl-skip" href="#vl-llista">Salta a la llista de punts</a>
+<div class="alka-page">
+
+  <nav aria-label="Navegació principal" style="position:sticky; top:0; z-index:50; background:rgba(253,251,247,0.95); border-bottom:1px solid rgba(29,47,70,0.08); display:flex; align-items:center; justify-content:space-between; padding:14px 64px;">
+    <a href="/" style="display:flex; align-items:center;">
+      <svg width="126" height="26" viewBox="0 0 263.22 53" xmlns="http://www.w3.org/2000/svg">
+        <rect fill="#1d2f46" x="136.74" y="1.11" width="19.54" height="50.77"/>
+        <polygon fill="#1d2f46" points="192.6 51.82 162.53 51.89 159.86 28.37 159.83 1.07 185.71 1.12 166.07 24.59 192.6 51.82"/>
+        <path fill="#e8b736" d="M119.31,38.61c3.08.02,4.96,1.88,5.39,4.82l.27,9.21-51.81-.02V1.84s19.75,0,19.75,0l.02,31.95c-.09,2.6,1.74,4.63,4.43,4.65l21.94.17Z"/>
+        <path fill="#b74f49" d="M260.02,49.09c-1.09-2.29-2.61-5.53-4.34-9.24-8.66-18.42-15.93-33.84-17.33-35.9-1.68-2.47-4.68-3.95-8.02-3.95s-6.23,1.44-7.92,3.84c-2.13,3.05-8.72,17.14-16.47,33.86-2.23,4.81-4.14,8.95-5.31,11.38l-1.6,3.33h19.59s.81-1.57.81-1.57c2.64-5.12,5.3-9.36,11.13-9.36h.24c4.19.08,8.21,4.94,10.57,9.47l.74,1.42,19.51.04-1.57-3.33ZM228.96,31.93c-1.34-.3-2.5-1.48-3.11-2.94-1.75-4.2-1.33-8.98.54-13.18.91-2.05,3.51-3.8,5.01-2.94,1.57.91,2.68,2.26,3.26,3.84,1.6,4.29,2.09,10.88-1.21,14.2-1.09,1.09-2.82,1.39-4.5,1.02Z"/>
+        <path fill="#325f42" d="M38.07,37.56c-3.82-3.29-8.91-3.17-12.66-.11-1.56,1.28-2.77,2.9-3.66,4.71-1.48,3.25-2.06,6.6-1.93,10.29H3.99s.02-27.71.02-27.71c0-6.68,2.91-12.91,7.97-17.42,11.6-10.34,30.4-9.53,40.68,1.66,4.06,4.42,6.51,10.08,6.53,16.08l.11,27.39h-15.89s-.75-6.84-.75-6.84c-.75-3.03-2.1-5.89-4.6-8.05Z"/>
+      </svg>
+    </a>
+    <input type="checkbox" id="nav-toggle" style="display:none;">
+    <label for="nav-toggle" class="nav-burger" aria-label="Menú" style="display:none; width:34px; height:34px; align-items:center; justify-content:center; cursor:pointer; border-radius:50%; margin-left:auto;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </label>
+    <div class="nav-links" style="display:flex; align-items:center; gap:28px;">
+      <a href="/qui-som" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Qui som</a>
+      <div class="nav-dropdown" style="position:relative;">
+        <a href="/#arees" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46; display:inline-flex; align-items:center; gap:5px;">
+          &Agrave;rees d'acci&oacute;
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/cultura">Cultura</a>
+          <a href="/educacio">Educaci&oacute;</a>
+          <a href="/comunitat">Comunitat</a>
+          <a href="/tecnologia">Tecnologia</a>
+        </div>
+      </div>
+      <a href="/#projectes" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Projectes</a>
+      <a href="/#participa" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Participa</a>
+      <a href="/#actualitat" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Actualitat</a>
+      <a href="/#contacte" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Contacte</a>
+    </div>
+    <div class="nav-right" style="display:flex; align-items:center; gap:16px;">
+    <details class="lang-switch"><summary aria-label="Idioma"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="12" fill="#FCDD09"/><rect y="1.33" width="18" height="1.34" fill="#DA121A"/><rect y="4" width="18" height="1.34" fill="#DA121A"/><rect y="6.66" width="18" height="1.34" fill="#DA121A"/><rect y="9.33" width="18" height="1.34" fill="#DA121A"/></svg>CA<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><div class="lang-menu"><a href="/viatge-lituania" class="lang-current" aria-current="page"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="12" fill="#FCDD09"/><rect y="1.33" width="18" height="1.34" fill="#DA121A"/><rect y="4" width="18" height="1.34" fill="#DA121A"/><rect y="6.66" width="18" height="1.34" fill="#DA121A"/><rect y="9.33" width="18" height="1.34" fill="#DA121A"/></svg>CA</a><a href="/lt/educacio" lang="lt"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="4" fill="#FDB913"/><rect y="4" width="18" height="4" fill="#006A44"/><rect y="8" width="18" height="4" fill="#C1272D"/></svg>LT</a><a href="/en/educacio" lang="en"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="12" fill="#012169"/><path d="M0 0 18 12M18 0 0 12" stroke="#FFFFFF" stroke-width="2.6"/><path d="M0 0 18 12M18 0 0 12" stroke="#C8102E" stroke-width="1.3"/><path d="M9 0V12M0 6H18" stroke="#FFFFFF" stroke-width="4"/><path d="M9 0V12M0 6H18" stroke="#C8102E" stroke-width="2.4"/></svg>EN</a></div></details>
+    <a class="nav-cta" href="/#participa" style="background:#b74f49; color:#FDFBF7; padding:11px 22px; border-radius:999px; font-weight:700; font-size:13.5px; display:inline-flex; align-items:center; gap:7px;">
+      Fes-te'n soci
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#FDFBF7"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.7 4 6.7 4c2.2 0 4 1.2 5.3 3 1.3-1.8 3.1-3 5.3-3 4 0 6.2 4 4.7 7.7C19.5 16.3 12 21 12 21Z"/></svg>
+    </a>
+  </div>
+  </nav>
+
+  <div class="vl-crumbs">
+    <a href="/educacio">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      Tornar a Educació
+    </a>
+    <a href="/">Inici</a>
+  </div>
+
+  <main id="viatge" class="vl" data-mode="explora">
+    <header class="vl-head">
+      <div class="vl-head-text">
+        <p class="vl-eyebrow">Projecte educatiu · ALKA</p>
+        <h1>Viatge a Lituània</h1>
+        <p class="vl-lead">Descobreix les ciutats, els paisatges, els plats i les festes de Lituània en un mapa interactiu.</p>
+      </div>
+      <div class="vl-modes" role="group" aria-label="Mode del mapa">
+        <button type="button" class="vl-mode" data-mode="explora" aria-pressed="true">Explora el mapa</button>
+        <button type="button" class="vl-mode" data-mode="recorregut" aria-pressed="false">Recorregut per a escoles</button>
+        <button type="button" class="vl-iconbtn vl-fs" id="vl-fs" aria-label="Pantalla completa" hidden>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="vl-app">
+      <section class="vl-side" aria-labelledby="vl-side-title">
+        <h2 id="vl-side-title" class="vl-visually-hidden">Punts d'interès</h2>
+        <div class="vl-filters" id="vl-filters" role="group" aria-label="Filtra per categoria"></div>
+        <p class="vl-count" id="vl-count" aria-live="polite"></p>
+        <ol class="vl-list" id="vl-llista" tabindex="-1"></ol>
+      </section>
+
+      <div class="vl-mapwrap">
+        <div id="vl-map" class="vl-map" role="region" aria-label="Mapa interactiu de Lituània"></div>
+
+        <div class="vl-intro" id="vl-intro" hidden>
+          <p class="vl-intro-title">Viatge a Lituània</p>
+          <p class="vl-intro-text" id="vl-intro-text"></p>
+          <button type="button" class="vl-btn vl-btn-light" id="vl-intro-skip">Salta la intro</button>
+        </div>
+
+        <button type="button" class="vl-btn vl-btn-light vl-reset" id="vl-reset" hidden>Veure tot Lituània</button>
+        <p class="vl-maperror" id="vl-maperror" role="alert" hidden></p>
+      </div>
+
+      <aside class="vl-panel" id="vl-panel" aria-label="Fitxa del punt" tabindex="-1"></aside>
+    </div>
+  </main>
+
+  <footer id="contacte" style="background:#1d2f46; color:#FDFBF7; padding:64px 64px 28px 64px;">
+    <div style="max-width:1200px; margin:0 auto;">
+
+      <div class="footer-grid" style="display:grid; grid-template-columns:1.3fr 1fr 1fr 1.2fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(253,251,247,.14);">
+
+        <div>
+          <svg width="98" height="20" viewBox="0 0 263.22 53" xmlns="http://www.w3.org/2000/svg">
+            <rect fill="#FDFBF7" x="136.74" y="1.11" width="19.54" height="50.77"/>
+            <polygon fill="#FDFBF7" points="192.6 51.82 162.53 51.89 159.86 28.37 159.83 1.07 185.71 1.12 166.07 24.59 192.6 51.82"/>
+            <path fill="#FDFBF7" d="M119.31,38.61c3.08.02,4.96,1.88,5.39,4.82l.27,9.21-51.81-.02V1.84s19.75,0,19.75,0l.02,31.95c-.09,2.6,1.74,4.63,4.43,4.65l21.94.17Z"/>
+            <path fill="#FDFBF7" d="M260.02,49.09c-1.09-2.29-2.61-5.53-4.34-9.24-8.66-18.42-15.93-33.84-17.33-35.9-1.68-2.47-4.68-3.95-8.02-3.95s-6.23,1.44-7.92,3.84c-2.13,3.05-8.72,17.14-16.47,33.86-2.23,4.81-4.14,8.95-5.31,11.38l-1.6,3.33h19.59s.81-1.57.81-1.57c2.64-5.12,5.3-9.36,11.13-9.36h.24c4.19.08,8.21,4.94,10.57,9.47l.74,1.42,19.51.04-1.57-3.33ZM228.96,31.93c-1.34-.3-2.5-1.48-3.11-2.94-1.75-4.2-1.33-8.98.54-13.18.91-2.05,3.51-3.8,5.01-2.94,1.57.91,2.68,2.26,3.26,3.84,1.6,4.29,2.09,10.88-1.21,14.2-1.09,1.09-2.82,1.39-4.5,1.02Z"/>
+            <path fill="#FDFBF7" d="M38.07,37.56c-3.82-3.29-8.91-3.17-12.66-.11-1.56,1.28-2.77,2.9-3.66,4.71-1.48,3.25-2.06,6.6-1.93,10.29H3.99s.02-27.71.02-27.71c0-6.68,2.91-12.91,7.97-17.42,11.6-10.34,30.4-9.53,40.68,1.66,4.06,4.42,6.51,10.08,6.53,16.08l.11,27.39h-15.89s-.75-6.84-.75-6.84c-.75-3.03-2.1-5.89-4.6-8.05Z"/>
+          </svg>
+          <div style="font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-top:14px;">Cultura &middot; Educaci&oacute; &middot; Comunitat</div>
+        </div>
+
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-bottom:18px;">Enlla&ccedil;os</div>
+          <div style="display:flex; flex-direction:column; gap:11px;">
+            <a href="/qui-som" style="color:#FDFBF7; opacity:.85; font-size:14px;">Qui som</a>
+            <a href="/#arees" style="color:#FDFBF7; opacity:.85; font-size:14px;">&Agrave;rees d'acci&oacute;</a>
+            <a href="/#projectes" style="color:#FDFBF7; opacity:.85; font-size:14px;">Projectes</a>
+            <a href="/#actualitat" style="color:#FDFBF7; opacity:.85; font-size:14px;">Actualitat</a>
+            <a href="/#contacte" style="color:#FDFBF7; opacity:.85; font-size:14px;">Contacte</a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-bottom:18px;">Contacte</div>
+          <div style="display:flex; flex-direction:column; gap:11px; font-size:14px; opacity:.85;">
+            <a href="mailto:labas@alka.cat" style="color:#FDFBF7; opacity:1;">labas@alka.cat</a>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:18px;">
+            <a href="#" aria-label="Instagram" style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FDFBF7" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1" fill="#FDFBF7" stroke="none"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook" style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#FDFBF7"><path d="M15 8.5h2.5V4.8h-2.7C11.9 4.8 10.5 6.6 10.5 9v3H8v4h2.5v7.2h4V16h2.7l.5-4h-3.2V9.4c0-.6.4-.9 1-.9Z"/></svg>
+            </a>
+            <a href="mailto:labas@alka.cat" aria-label="Correu" style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FDFBF7" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-bottom:14px;">Uneix-te a la comunitat</div>
+          <p style="font-size:13px; line-height:1.6; opacity:.7; margin:0 0 16px 0;">Rep novetats i activitats directament al teu correu.</p>
+          <div style="display:flex; gap:8px;">
+            <input type="email" placeholder="El teu correu" class="footer-input" style="flex:1; min-width:0; padding:11px 16px; border-radius:999px; border:1px solid rgba(253,251,247,.25); background:rgba(255,255,255,.06); color:#FDFBF7; font-size:13.5px; font-family:inherit;">
+            <button aria-label="Envia" style="width:40px; height:40px; border-radius:50%; background:#e8b736; border:none; display:flex; align-items:center; justify-content:center; flex-shrink:0; cursor:pointer;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:22px; font-size:12.5px; opacity:.55; flex-wrap:wrap; gap:10px;">
+        <div>&copy; 2026 ALKA<span class="cr-long"> - Associaci&oacute; d'Avan&ccedil;ament</span></div>
+        <div style="display:flex; gap:18px;">
+          <a href="/avis-legal" style="color:#FDFBF7; opacity:1;">Av&iacute;s legal</a>
+          <a href="/privacitat" style="color:#FDFBF7; opacity:1;">Privacitat</a>
+          <a href="/proteccio-dades" style="color:#FDFBF7; opacity:1;">Protecci&oacute; de dades</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.js" integrity="sha384-5+cfbwT0iiub6VsQAdn6yz16nr6sDiQoHx6tm4O8OVYXHYOxcffFmCJBL0dgdvGp" crossorigin="anonymous"></script>
+<script src="/viatge-lituania/js/i18n.js?v=2"></script>
+<script src="/viatge-lituania/js/app.js?v=2"></script>
+</body>
+</html>

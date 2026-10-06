@@ -42,6 +42,10 @@ perque Coolify no hagi d'executar cap pas de build.
 
 No editis res dins de `public/` a ma: el proper build ho sobreescriura.
 
+Els mini-apps (`public/viatge-lituania/`) no surten dels `.dc.html`: viuen a
+`apps/` del projecte de disseny i `build_site.py` els hi copia al final
+(`sync-apps.mjs`).
+
 ## En local
 
     node server.js      # http://localhost:3000
