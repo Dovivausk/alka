@@ -83,12 +83,22 @@ export function buildProperties(tipus, f) {
     });
   }
 
-  // ser soci no te cap cost: el formulari no demana quota ni dades bancaries
+  // dues modalitats: Amic/Amiga (0 EUR) i Soci/a col.laborador/a (150 EUR/any, pagament a part)
   if (tipus === "soci") {
+    const colab = f.modalitat === "colaborador";
+    const menor = f.menor === "on" || f.menor === "true";
     return clean({
       ...comu,
       "Com ens ha conegut": text(f.com_ens_has_conegut),
       "Comentaris": text(f.comentaris),
+      "Modalitat": select(colab ? "Soci/a col·laborador/a · 150 €" : "Amic/Amiga · 0 €"),
+      "Pagament": select(colab ? "Pendent" : "No aplica"),
+      "Mètode de pagament": colab ? select(f.metode === "targeta" ? "Targeta" : "Transferència") : undefined,
+      "Any de quota": colab ? { number: new Date().getFullYear() } : undefined,
+      "DNI/NIE": text(f.dni),
+      "Accepta Estatuts": { checkbox: f.estatuts === "on" || f.estatuts === "true" },
+      "Menor d'edat": { checkbox: menor },
+      "Tutor/a legal": menor ? text(f.tutor) : undefined,
     });
   }
 
@@ -139,6 +149,10 @@ const T = {
     okVoluntari: "Hem rebut la teva sol·licitud. Ens posarem en contacte amb tu per conèixer-te i explicar-te les activitats.",
     okContacte: "Hem rebut el teu missatge. Et respondrem tan aviat com puguem.",
     missingMsg: ["Falten dades", "Cal indicar el nom, un correu electrònic vàlid i el missatge."],
+    missingSoci: ["Falten dades", "Cal indicar el DNI/NIE i acceptar els Estatuts. Si ets menor d'edat, cal també el nom i el consentiment del pare, mare o tutor/a legal."],
+    pay: ["Hem rebut la teva sol·licitud. Per completar l'alta com a soci/a col·laborador/a, fes una transferència de 150 € a:",
+      "Titular", "Concepte", "Quota soci/a col·laborador/a", "+ el teu nom",
+      "Quan rebem l'ingrés t'enviarem el justificant de pagament. La quota és anual: et recordarem la renovació per correu i no es fa cap càrrec automàtic.", "Copia l'IBAN"],
     okSpam: "Hem rebut la teva sol·licitud.",
     notFound: ["Pàgina no trobada", "L'adreça que has seguit no existeix o ha canviat."],
   },
@@ -154,6 +168,10 @@ const T = {
     okVoluntari: "Gavome jūsų paraišką. Susisieksime su jumis, kad susipažintume ir papasakotume apie veiklas.",
     okContacte: "Gavome jūsų žinutę. Atsakysime kuo greičiau.",
     missingMsg: ["Trūksta duomenų", "Nurodykite vardą, galiojantį el. pašto adresą ir žinutę."],
+    missingSoci: ["Trūksta duomenų", "Nurodykite asmens dokumento numerį ir sutikite su įstatais. Jei esate nepilnametis, reikia ir tėvų ar globėjo vardo bei sutikimo."],
+    pay: ["Gavome jūsų paraišką. Norėdami užbaigti nario rėmėjo registraciją, perveskite 150 € į sąskaitą:",
+      "Gavėjas", "Mokėjimo paskirtis", "Quota soci/a col·laborador/a", "+ jūsų vardas ir pavardė",
+      "Gavę mokėjimą atsiųsime patvirtinimą. Nario mokestis metinis: apie atnaujinimą priminsime el. paštu, nieko nenurašome automatiškai.", "Kopijuoti IBAN"],
     okSpam: "Gavome jūsų paraišką.",
     notFound: ["Puslapis nerastas", "Nuoroda, kuria perėjote, neegzistuoja arba pasikeitė."],
   },
@@ -169,6 +187,10 @@ const T = {
     okVoluntari: "We have received your request. We will contact you to get to know you and tell you about our activities.",
     okContacte: "We have received your message. We will reply as soon as we can.",
     missingMsg: ["Missing information", "Please provide your name, a valid email address and your message."],
+    missingSoci: ["Missing information", "Please provide your ID number and accept the Statutes. If you are under 18, we also need your parent or guardian's name and consent."],
+    pay: ["We have received your application. To complete your supporting membership, please make a bank transfer of €150 to:",
+      "Account holder", "Reference", "Quota soci/a col·laborador/a", "+ your full name",
+      "Once we receive the payment we will send you a receipt. The fee is annual: we will remind you by email when it is time to renew, with no automatic charges.", "Copy IBAN"],
     okSpam: "We have received your request.",
     notFound: ["Page not found", "The address you followed does not exist or has changed."],
   },
@@ -196,6 +218,24 @@ a{display:inline-block;background:#b74f49;color:#FDFBF7;text-decoration:none;pad
 border-radius:999px;font-weight:700;font-size:14.5px}</style></head>
 <body><div class="c"><h1>${titol}</h1><p>${missatge}</p>
 <a href="${t.homeHref}">${t.home}</a></div></body></html>`;
+}
+
+// Dades per pagar la quota de soci/a col.laborador/a (compte de l'associacio)
+const IBAN = "ES45 3140 0001 9100 2117 6300";
+
+function paginaPagament(lang) {
+  const t = T[lang];
+  const [intro, titular, concepte, conc, nom, nota, copia] = t.pay;
+  const any = new Date().getFullYear();
+  return pagina(lang, [t.thanks, `${intro}</p>
+<div style="text-align:left;background:#F7F2E9;border-radius:16px;padding:18px 20px;margin:0 0 20px 0;font-size:14px;line-height:1.7">
+<div><b>${titular}:</b> Associació ALKA</div>
+<div><b>IBAN:</b> <span id="iban" style="font-family:ui-monospace,monospace;font-weight:700">${IBAN}</span>
+<button type="button" onclick="navigator.clipboard&&navigator.clipboard.writeText('${IBAN.replace(/ /g, "")}').then(()=>{this.textContent='✓'})" style="margin-left:6px;border:1px solid rgba(29,47,70,.25);background:#fff;border-radius:8px;padding:2px 8px;font-size:12px;cursor:pointer">${copia}</button></div>
+<div><b>${concepte}:</b> ${conc} ${any} ${nom}</div>
+<div><b>${{ ca: "Import", lt: "Suma", en: "Amount" }[lang]}:</b> 150 €</div>
+</div>
+<p style="font-size:13px">${nota}`]);
 }
 
 function send(res, code, body, type = "text/html; charset=utf-8") {
@@ -276,6 +316,13 @@ async function handleInscripcio(req, res) {
   if (!f.nom || !f.email || !String(f.email).includes("@")) {
     return send(res, 400, pagina(lang, t.missing));
   }
+  if (tipus === "soci") {
+    const menor = f.menor === "on" || f.menor === "true";
+    if (!String(f.dni || "").trim() || f.estatuts !== "on" ||
+        (menor && (!String(f.tutor || "").trim() || f.tutor_consentiment !== "on"))) {
+      return send(res, 400, pagina(lang, t.missingSoci));
+    }
+  }
   if (tipus === "contacte" && !String(f.missatge || "").trim()) {
     return send(res, 400, pagina(lang, t.missingMsg));
   }
@@ -291,6 +338,9 @@ async function handleInscripcio(req, res) {
     return send(res, 502, pagina(lang, t.saveFail));
   }
 
+  if (tipus === "soci" && f.modalitat === "colaborador") {
+    return send(res, 200, paginaPagament(lang));
+  }
   const ok = { soci: t.okSoci, voluntari: t.okVoluntari, contacte: t.okContacte }[tipus];
   return send(res, 200, pagina(lang, [t.thanks, ok]));
 }

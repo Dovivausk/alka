@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Become a member - ALKA</title>
+<meta name="description" content="Become an ALKA member: free Friend membership or Supporting membership with AI and digital creation workshops, a digital library and discounts.">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap">
   <style>
@@ -134,6 +135,28 @@
     .ph { background:rgba(232,183,54,.3); border-radius:4px; padding:1px 6px; font-weight:700; color:#1d2f46; opacity:1; }
     @media (max-width: 900px) { .form-grid { grid-template-columns:1fr !important; } }
   </style>
+  <style>
+    [hidden] { display:none !important; }
+    .mod-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:24px; align-items:stretch; }
+    .mod-card { border-radius:28px; padding:34px 32px; display:flex; flex-direction:column; border:1.5px solid rgba(29,47,70,.1); background:#FFFFFF; }
+    .mod-card.featured { background:#1d2f46; color:#FDFBF7; border-color:#1d2f46; }
+    .mod-card ul { list-style:none; padding:0; margin:0 0 22px 0; display:flex; flex-direction:column; gap:11px; flex:1; }
+    .mod-card li { position:relative; padding-left:24px; font-size:14px; line-height:1.6; }
+    .mod-card li::before { content:""; position:absolute; left:0; top:7px; width:9px; height:9px; border-radius:50%; background:#e8b736; }
+    .mod-card:not(.featured) li::before { background:#325f42; }
+    .mod-btn { display:inline-block; text-align:center; padding:14px 26px; border-radius:999px; font-weight:700; font-size:14.5px; cursor:pointer; border:none; font-family:inherit; }
+    .radio-row { display:flex; flex-wrap:wrap; gap:10px; }
+    .radio-row label { display:flex; align-items:center; gap:8px; border:1.5px solid rgba(29,47,70,.18); border-radius:999px; padding:10px 16px; font-size:13.5px; font-weight:600; color:#1d2f46; cursor:pointer; }
+    .radio-row label.disabled { opacity:.45; cursor:not-allowed; }
+    .radio-row input { accent-color:#b74f49; }
+    .faq details { border-bottom:1px solid rgba(29,47,70,.12); padding:16px 0; }
+    .faq summary { cursor:pointer; font-weight:700; color:#1d2f46; font-size:15.5px; list-style:none; display:flex; justify-content:space-between; gap:16px; }
+    .faq summary::-webkit-details-marker { display:none; }
+    .faq summary::after { content:"+"; font-size:20px; line-height:1; color:#b74f49; }
+    .faq details[open] summary::after { content:"\2212"; }
+    .faq details p { font-size:14.5px; line-height:1.7; opacity:.75; margin:10px 0 0 0; }
+    @media (max-width: 900px) { .mod-grid { grid-template-columns:1fr !important; } .mod-card { padding:28px 22px; } }
+  </style>
 
 </head>
 <body>
@@ -192,38 +215,111 @@
   <!-- HERO -->
   <div style="padding:32px 64px 0 64px;">
     <div style="max-width:820px;">
-      <div style="font-size:12.5px; letter-spacing:.22em; font-weight:700; color:#325f42; text-transform:uppercase; margin-bottom:16px;">Registration form</div>
-      <h1 style="font-size:40px; font-weight:800; color:#1d2f46; margin:0 0 16px 0;">Become a member</h1>
-      <p style="font-size:16px; line-height:1.75; color:#1d1d1b; opacity:.75; margin:0;">Become an ALKA member and help us grow cultural and educational projects with real impact. Membership is free: there is no fee.</p>
+      <div style="font-size:12.5px; letter-spacing:.22em; font-weight:700; color:#325f42; text-transform:uppercase; margin-bottom:16px;">Become a member</div>
+      <h1 style="font-size:40px; font-weight:800; color:#1d2f46; margin:0 0 16px 0;">Become an ALKA member</h1>
+      <p style="font-size:16px; line-height:1.75; color:#1d1d1b; opacity:.75; margin:0 0 26px 0;">Joining ALKA means becoming part of a community that creates, learns and shares culture between Catalonia and Lithuania.</p>
+      <a href="#modalitats" style="background:#325f42; color:#FDFBF7; padding:14px 28px; border-radius:999px; font-weight:700; font-size:14.5px; display:inline-block;">Choose your membership &darr;</a>
+    </div>
+  </div>
+
+  <!-- MODALITATS -->
+  <div id="modalitats" style="padding:56px 64px 0 64px;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <h2 style="font-size:28px; font-weight:800; color:#1d2f46; margin:0 0 28px 0;">Choose your membership</h2>
+      <div class="mod-grid">
+        <div class="mod-card">
+          <h3 style="font-family:'Plus Jakarta Sans', system-ui, sans-serif; font-size:20px; font-weight:700; color:#1d2f46; margin:0 0 6px 0;">Friend of ALKA</h3>
+          <div style="font-size:30px; font-weight:800; color:#325f42; margin-bottom:20px;">&euro;0</div>
+          <ul>
+            <li>Take part in the life of the association, with a vote at the General Assembly</li>
+            <li>Newsletter and news about our activities</li>
+            <li>Access to the ALKA community</li>
+          </ul>
+          <button type="button" class="mod-btn" data-modalitat="amic" style="background:#325f42; color:#FDFBF7;">Join for free &rarr;</button>
+        </div>
+        <div class="mod-card featured">
+          <div style="align-self:flex-start; background:#e8b736; color:#1d2f46; font-size:11.5px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:6px 12px; border-radius:999px; margin-bottom:14px;">With benefits</div>
+          <h3 style="font-family:'Plus Jakarta Sans', system-ui, sans-serif; font-size:20px; font-weight:700; color:#FDFBF7; margin:0 0 6px 0;">Supporting member</h3>
+          <div style="font-size:30px; font-weight:800; color:#e8b736; margin-bottom:14px;">&euro;150/year</div>
+          <p style="font-size:14px; line-height:1.6; opacity:.85; margin:0 0 14px 0;">A voluntary annual contribution for those who want to create and learn with us:</p>
+          <ul>
+            <li><strong>Hands-on AI and digital creation workshops</strong> applied to culture and education, working with tools such as Canva, Claude, ChatGPT or HeyGen, with access to the recordings</li>
+            <li><strong>HeyGen access codes</strong> for participants in ALKA workshops and events</li>
+            <li><strong>ALKA digital library</strong>: templates, educational resources and bilingual materials</li>
+            <li><strong>Your own projects within ALKA</strong>, developed with the association's tools and support</li>
+            <li>Discounts on ALKA activities and events</li>
+          </ul>
+          <p style="font-size:13px; line-height:1.6; opacity:.7; margin:0 0 20px 0;">Your contribution is reinvested entirely in the association's aims.</p>
+          <button type="button" class="mod-btn" data-modalitat="colaborador" style="background:#e8b736; color:#1d2f46;">Become a supporting member &rarr;</button>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- FORMULARI -->
-  <div style="padding:44px 64px 96px 64px;">
+  <div id="formulari" style="padding:72px 64px 40px 64px;">
     <div style="max-width:820px;">
-      <form action="/api/inscripcio" method="POST">
+      <h2 style="font-size:28px; font-weight:800; color:#1d2f46; margin:0 0 24px 0;">Membership form</h2>
+      <form id="alta" action="/api/inscripcio" method="POST">
         <input type="hidden" name="tipus" value="soci">
         <input type="hidden" name="idioma" value="en">
         <div aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;">
           <label>Lloc web<input type="text" name="lloc_web" tabindex="-1" autocomplete="off"></label>
         </div>
+        <div class="field full" style="margin-bottom:20px;">
+          <label>Membership *</label>
+          <div class="radio-row">
+            <label><input type="radio" name="modalitat" value="amic" required checked> Friend &middot; &euro;0</label>
+            <label><input type="radio" name="modalitat" value="colaborador"> Supporting member &middot; &euro;150/year</label>
+          </div>
+        </div>
         <div class="form-grid">
           <div class="field">
             <label for="nom">Full name *</label>
-            <input type="text" id="nom" name="nom" required>
+            <input type="text" id="nom" name="nom" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="dni">ID number (DNI/NIE) *</label>
+            <input type="text" id="dni" name="dni" required>
           </div>
           <div class="field">
             <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required autocomplete="email">
           </div>
           <div class="field">
             <label for="tel">Phone</label>
-            <input type="tel" id="tel" name="telefon">
+            <input type="tel" id="tel" name="telefon" autocomplete="tel">
           </div>
-          <div class="field">
-            <label for="poblacio">City</label>
+          <div class="field full">
+            <label for="poblacio">Town</label>
             <input type="text" id="poblacio" name="poblacio">
           </div>
+        </div>
+
+        <div class="check-row" style="margin-top:20px;">
+          <input type="checkbox" id="menor" name="menor">
+          <label for="menor">I am under 18</label>
+        </div>
+        <div id="bloc-tutor" style="margin-top:14px; padding:18px 20px; background:#F7F2E9; border-radius:16px;">
+          <div class="field full">
+            <label for="tutor">Name and ID number of parent or legal guardian *</label>
+            <input type="text" id="tutor" name="tutor">
+          </div>
+          <div class="check-row" style="margin-top:14px;">
+            <input type="checkbox" id="tutor_ok" name="tutor_consentiment">
+            <label for="tutor_ok">The parent or legal guardian consents to this membership (art. 7 of the Statutes). *</label>
+          </div>
+        </div>
+
+        <div id="bloc-pagament" class="field full" style="margin-top:20px;">
+          <label>Payment method *</label>
+          <div class="radio-row">
+            <label><input type="radio" name="metode" value="transferencia" checked> Bank transfer</label>
+            <label class="disabled"><input type="radio" name="metode" value="targeta" disabled> Card (coming soon)</label>
+          </div>
+        </div>
+
+        <div class="form-grid" style="margin-top:20px;">
           <div class="field full">
             <label for="coneixut">How did you hear about us?</label>
             <input type="text" id="coneixut" name="com_ens_has_conegut">
@@ -234,17 +330,61 @@
           </div>
         </div>
         <div class="check-row" style="margin-top:22px;">
+          <input type="checkbox" id="estatuts" name="estatuts" required>
+          <label for="estatuts">I accept ALKA's <a href="/estatuts" target="_blank">Statutes</a> (in Catalan). *</label>
+        </div>
+        <div class="check-row" style="margin-top:12px;">
           <input type="checkbox" id="consent" name="consentiment" required>
           <label for="consent">I have read and accept the <a href="/privacitat">privacy policy</a> and the processing of my data. *</label>
         </div>
         <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap; margin-top:26px;">
-          <button type="submit" style="background:#325f42; color:#FDFBF7; border:none; padding:15px 34px; border-radius:999px; font-family:inherit; font-weight:700; font-size:15px; cursor:pointer;">Send request</button>
+          <button type="submit" style="background:#325f42; color:#FDFBF7; border:none; padding:15px 34px; border-radius:999px; font-family:inherit; font-weight:700; font-size:15px; cursor:pointer;">Send application</button>
           <span style="font-size:12.5px; opacity:.6;">* Required fields</span>
         </div>
       </form>
-      <p style="font-size:13.5px; line-height:1.7; opacity:.7; margin:28px 0 0 0; max-width:560px;">Once we receive your request we will contact you to confirm your membership. ALKA membership is free of charge and we do not ask for bank details.</p>
+      <p style="font-size:13.5px; line-height:1.7; opacity:.7; margin:24px 0 0 0; max-width:640px;">The Board will review your application and confirm your admission by email. If you choose supporting membership, you will see the payment details after sending the form.</p>
     </div>
   </div>
+
+  <!-- FAQ -->
+  <div style="padding:40px 64px 96px 64px;">
+    <div class="faq" style="max-width:820px;">
+      <h2 style="font-size:28px; font-weight:800; color:#1d2f46; margin:0 0 12px 0;">Frequently asked questions</h2>
+        <details><summary>What is the difference between the two memberships?</summary><p>Both make you a full member, with a voice and a vote at the General Assembly. Supporting membership also includes the workshops, the digital library and the other benefits, and helps sustain ALKA's projects.</p></details>
+        <details><summary>Can I change my membership?</summary><p>Yes. Write to us at labas@alka.cat and we will change it for the next membership year.</p></details>
+        <details><summary>How do I pay and renew?</summary><p>With a single annual payment by bank transfer (card payment coming soon). We will remind you by email when it is time to renew: there are no automatic charges or direct debits.</p></details>
+        <details><summary>Will I get a receipt?</summary><p>Yes. Once we confirm your payment we will send you a receipt for your membership fee.</p></details>
+        <details><summary>Can I cancel my membership?</summary><p>Yes, at any time, by writing to labas@alka.cat.</p></details>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var form = document.getElementById('alta');
+    if (!form) return;
+    var pay = document.getElementById('bloc-pagament');
+    var tut = document.getElementById('bloc-tutor');
+    var menor = document.getElementById('menor');
+    function sync() {
+      var colab = form.querySelector('input[name="modalitat"]:checked');
+      var isColab = colab && colab.value === 'colaborador';
+      pay.hidden = !isColab;
+      pay.querySelectorAll('input:not([disabled])').forEach(function (i) { i.required = isColab; });
+      tut.hidden = !menor.checked;
+      tut.querySelectorAll('input').forEach(function (i) { i.required = menor.checked; });
+    }
+    form.addEventListener('change', sync);
+    document.querySelectorAll('[data-modalitat]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var r = form.querySelector('input[name="modalitat"][value="' + b.getAttribute('data-modalitat') + '"]');
+        if (r) r.checked = true;
+        sync();
+        document.getElementById('formulari').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+    sync();
+  })();
+  </script>
 
   <!-- FOOTER -->
   <footer id="contacte" style="background:#1d2f46; color:#FDFBF7; padding:64px 64px 28px 64px;">

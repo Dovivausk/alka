@@ -46,7 +46,9 @@ No editis res dins de `public/` a ma: el proper build ho sobreescriura.
 
 ATENCIO (19/10/2026): els canvis per a Google for Nonprofits (pagines /arees, /participa,
 /contacte en ca/lt/en, peu amb dades legals, enllacos del menu, Junta a /qui-som, avis legal,
-robots.txt obert i sitemap.xml) es van fer directament a `public/`. Cal passar-los als
+robots.txt obert i sitemap.xml) es van fer directament a `public/`.
+El mateix dia: bloc de l'escola Gile a Educacio, pagina /estatuts i /fes-te-soci amb les
+modalitats Amic/Amiga i Soci/a col.laborador/a (150 EUR/any). Cal passar-los als
 `.dc.html` del projecte de disseny abans del proper build, o es perdran.
 
 Els mini-apps (`public/viatge-lituania/`) no surten dels `.dc.html`: viuen a

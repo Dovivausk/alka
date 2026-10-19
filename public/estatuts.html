@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estatuts - ALKA</title>
+<meta name="description" content="Estatuts de l'associaci&oacute; ALKA, inscrita al Registre d'Associacions de la Generalitat de Catalunya amb el n&uacute;m. 80242.">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background:#E9E4D8; }
+    h1, h2, h3, .display-num { font-family: 'Frank Ruhl Libre', Georgia, serif; }
+    a { color: #a8433d; text-decoration: none; }
+    a:hover { color: #7d3530; }
+    .ph-icon { color: rgba(29,47,70,.28); }
+    .footer-input::placeholder { color: rgba(253,251,247,.5); }
+    .nav-dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(6px); background:#FDFBF7; border:1px solid rgba(29,47,70,.1); border-radius:14px; padding:8px; min-width:210px; box-shadow:0 14px 34px rgba(29,47,70,.14); opacity:0; visibility:hidden; transition:opacity .15s ease, transform .15s ease; z-index:60; }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+    .nav-dropdown-menu a { display:block; padding:10px 14px; border-radius:8px; font-size:13.5px; font-weight:600; color:#1d2f46 !important; }
+    .nav-dropdown-menu a:hover { background:rgba(29,47,70,.06); }
+
+    .lang-switch { position:relative; }
+    .lang-switch > summary {
+      list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:5px;
+      border:1.5px solid rgba(29,47,70,.22); border-radius:999px; padding:7px 12px;
+      font-size:12px; font-weight:700; color:#1d2f46;
+    }
+    .lang-switch > summary::-webkit-details-marker { display:none; }
+    .lang-switch[open] > summary { border-color:rgba(29,47,70,.45); }
+    .lang-menu {
+      position:absolute; top:calc(100% + 6px); right:0; background:#FDFBF7;
+      border:1px solid rgba(29,47,70,.1); border-radius:12px; padding:6px; min-width:88px;
+      box-shadow:0 14px 34px rgba(29,47,70,.14); z-index:70;
+    }
+    .lang-menu a { display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:8px; font-size:12.5px; font-weight:700; color:#1d2f46 !important; }
+    .lang-menu a:hover { background:rgba(29,47,70,.06); }
+    .lang-menu a.lang-current { opacity:.4; }
+
+    @media (max-width: 900px) {
+      nav[aria-label="Navegació principal"] {
+        padding-left:20px !important; padding-right:20px !important;
+        flex-wrap:wrap !important;
+      }
+      /* language selector stays visible in the header, as a pill button */
+      .nav-right {
+        display:flex !important;
+        order:2;
+        width:auto !important;
+        margin-left:auto !important;
+        gap:0 !important;
+      }
+      /* the membership CTA is not needed in the mobile header */
+      .nav-cta { display:none !important; }
+      .nav-burger { display:flex !important; order:3; margin-left:10px !important; }
+      /* collapsible menu drops onto its own full-width row */
+      .nav-links {
+        display:none !important;
+        order:4;
+        width:100% !important;
+        flex-direction:column;
+        align-items:flex-start !important;
+        gap:6px !important;
+        padding:10px 0 6px 0;
+        border-top:1px solid rgba(29,47,70,.08);
+        margin-top:12px;
+      }
+      #nav-toggle:checked ~ .nav-links { display:flex !important; }
+      .nav-links > a, .nav-links > .nav-dropdown { width:100%; padding:8px 0; }
+      .nav-dropdown-menu {
+        position:static !important; opacity:1 !important; visibility:visible !important;
+        transform:none !important; box-shadow:none !important; border:none !important;
+        background:transparent !important;
+        padding:2px 0 8px 14px !important; min-width:0 !important; display:block !important;
+      }
+
+      .grid-4-col, .grid-3-col, .grid-2-col { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+      /* compact footer: 2 columns, newsletter spanning the full width */
+      footer[id="contacte"] { padding-top:34px !important; padding-bottom:18px !important; }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap:22px !important;
+        padding-bottom:20px !important;
+      }
+      /* the "Enllaços" column duplicates the burger menu on small screens */
+      .footer-grid > div:nth-child(2) { display:none !important; }
+      .footer-grid > div:nth-child(4) { grid-column:1 / -1; }
+      .footer-grid > div:nth-child(4) p { margin-bottom:10px !important; }
+      /* bottom bar: tighter, so copyright + legal links take as little height as possible */
+      footer[id="contacte"] > div > div:last-child { font-size:11px !important; padding-top:14px !important; gap:4px 14px !important; }
+      footer[id="contacte"] > div > div:last-child > div:last-child { gap:14px !important; }
+      .cr-long { display:none; }
+
+      /* reclaim the 64px desktop side gutters so blocks use the full width */
+      [style*="64px"] { padding-left:18px !important; padding-right:18px !important; }
+      .split-media-44 { padding:20px 18px !important; }
+      .split-text-56 { padding:4px 18px 28px 18px !important; }
+      .stack-mobile { flex-direction:column !important; }
+      .split-media, .split-text, .split-54, .split-46, .split-media-44, .split-text-56 {
+        width:100% !important; flex:none !important;
+      }
+
+      .hero-content { padding:32px 24px !important; max-width:100% !important; }
+      .hero-content > div:first-child { font-size:11px !important; letter-spacing:.16em !important; }
+      .hero-title { font-size:32px !important; }
+      .hero-banner { min-height:0 !important; }
+      /* stronger scrim so the overlaid text stays readable over the photo */
+      .hero-banner > div:first-of-type {
+        background:linear-gradient(180deg, rgba(253,251,247,.94) 0%, rgba(253,251,247,.88) 60%, rgba(253,251,247,.8) 100%) !important;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .grid-4-col, .grid-3-col, .grid-2-col, .footer-grid { grid-template-columns: 1fr !important; }
+      nav[aria-label="Navegació principal"] { padding-top:10px !important; padding-bottom:10px !important; }
+    }
+    .form-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:18px 20px; }
+    .field { display:flex; flex-direction:column; gap:7px; }
+    .field.full { grid-column:1 / -1; }
+    .field > label { font-size:12.5px; font-weight:700; color:#1d2f46; letter-spacing:.02em; }
+    .field input[type="text"], .field input[type="email"], .field input[type="tel"], .field select, .field textarea {
+      font-family:inherit; font-size:14px; color:#1d2f46; background:#FFFFFF;
+      border:1.5px solid rgba(29,47,70,.18); border-radius:12px; padding:12px 14px; width:100%;
+    }
+    .field textarea { min-height:110px; resize:vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline:none; border-color:#1d2f46; }
+    .check-row { display:flex; align-items:flex-start; gap:10px; font-size:13.5px; line-height:1.55; color:#1d1d1b; }
+    .check-row input { margin-top:3px; width:17px; height:17px; flex-shrink:0; accent-color:#b74f49; }
+    .chips { display:flex; flex-wrap:wrap; gap:10px; }
+    .chip { display:flex; align-items:center; gap:8px; border:1.5px solid rgba(29,47,70,.18); border-radius:999px; padding:9px 15px; font-size:13.5px; font-weight:600; color:#1d2f46; cursor:pointer; }
+    .chip input { accent-color:#b74f49; }
+    .legal-body h2 { font-size:20px; font-weight:700; color:#1d2f46; margin:34px 0 10px 0; }
+    .legal-body p, .legal-body li { font-size:14.5px; line-height:1.75; color:#1d1d1b; opacity:.78; margin:0 0 12px 0; }
+    .legal-body ul { padding-left:20px; margin:0 0 12px 0; }
+    .ph { background:rgba(232,183,54,.3); border-radius:4px; padding:1px 6px; font-weight:700; color:#1d2f46; opacity:1; }
+    @media (max-width: 900px) { .form-grid { grid-template-columns:1fr !important; } }
+  </style>
+
+</head>
+<body>
+<div style="width:100%; max-width:1440px; margin:0 auto; background:#FDFBF7; color:#1d1d1b; box-shadow:0 0 0 1px rgba(29,47,70,.06); overflow-x:hidden;">
+
+  <!-- NAV -->
+  <nav aria-label="Navegació principal" style="position:sticky; top:0; z-index:50; background:rgba(253,251,247,0.95); border-bottom:1px solid rgba(29,47,70,0.08); display:flex; align-items:center; justify-content:space-between; padding:14px 64px;">
+    <a href="/" style="display:flex; align-items:center;">
+      <svg width="126" height="26" viewBox="0 0 263.22 53" xmlns="http://www.w3.org/2000/svg">
+        <rect fill="#1d2f46" x="136.74" y="1.11" width="19.54" height="50.77"/>
+        <polygon fill="#1d2f46" points="192.6 51.82 162.53 51.89 159.86 28.37 159.83 1.07 185.71 1.12 166.07 24.59 192.6 51.82"/>
+        <path fill="#e8b736" d="M119.31,38.61c3.08.02,4.96,1.88,5.39,4.82l.27,9.21-51.81-.02V1.84s19.75,0,19.75,0l.02,31.95c-.09,2.6,1.74,4.63,4.43,4.65l21.94.17Z"/>
+        <path fill="#b74f49" d="M260.02,49.09c-1.09-2.29-2.61-5.53-4.34-9.24-8.66-18.42-15.93-33.84-17.33-35.9-1.68-2.47-4.68-3.95-8.02-3.95s-6.23,1.44-7.92,3.84c-2.13,3.05-8.72,17.14-16.47,33.86-2.23,4.81-4.14,8.95-5.31,11.38l-1.6,3.33h19.59s.81-1.57.81-1.57c2.64-5.12,5.3-9.36,11.13-9.36h.24c4.19.08,8.21,4.94,10.57,9.47l.74,1.42,19.51.04-1.57-3.33ZM228.96,31.93c-1.34-.3-2.5-1.48-3.11-2.94-1.75-4.2-1.33-8.98.54-13.18.91-2.05,3.51-3.8,5.01-2.94,1.57.91,2.68,2.26,3.26,3.84,1.6,4.29,2.09,10.88-1.21,14.2-1.09,1.09-2.82,1.39-4.5,1.02Z"/>
+        <path fill="#325f42" d="M38.07,37.56c-3.82-3.29-8.91-3.17-12.66-.11-1.56,1.28-2.77,2.9-3.66,4.71-1.48,3.25-2.06,6.6-1.93,10.29H3.99s.02-27.71.02-27.71c0-6.68,2.91-12.91,7.97-17.42,11.6-10.34,30.4-9.53,40.68,1.66,4.06,4.42,6.51,10.08,6.53,16.08l.11,27.39h-15.89s-.75-6.84-.75-6.84c-.75-3.03-2.1-5.89-4.6-8.05Z"/>
+      </svg>
+    </a>
+    <input type="checkbox" id="nav-toggle" style="display:none;">
+    <label for="nav-toggle" class="nav-burger" aria-label="Menú" style="display:none; width:34px; height:34px; align-items:center; justify-content:center; cursor:pointer; border-radius:50%; margin-left:auto;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </label>
+    <div class="nav-links" style="display:flex; align-items:center; gap:28px;">
+      <a href="/qui-som" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Qui som</a>
+      <div class="nav-dropdown" style="position:relative;">
+        <a href="/arees" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46; display:inline-flex; align-items:center; gap:5px;">
+          &Agrave;rees d'acci&oacute;
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/cultura">Cultura</a>
+          <a href="/educacio">Educaci&oacute;</a>
+          <a href="/comunitat">Comunitat</a>
+          <a href="/tecnologia">Tecnologia</a>
+        </div>
+      </div>
+      <a href="/projectes" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Projectes</a>
+      <a href="/participa" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Participa</a>
+      <a href="/#actualitat" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Actualitat</a>
+      <a href="/contacte" style="font-size:13.5px; font-weight:600; letter-spacing:.02em; color:#1d2f46;">Contacte</a>
+    </div>
+    <div class="nav-right" style="display:flex; align-items:center; gap:16px;">
+    <details class="lang-switch"><summary aria-label="Idioma"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="12" fill="#FCDD09"/><rect y="1.33" width="18" height="1.34" fill="#DA121A"/><rect y="4" width="18" height="1.34" fill="#DA121A"/><rect y="6.66" width="18" height="1.34" fill="#DA121A"/><rect y="9.33" width="18" height="1.34" fill="#DA121A"/></svg>CA<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><div class="lang-menu"><a href="/" class="lang-current"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="12" fill="#FCDD09"/><rect y="1.33" width="18" height="1.34" fill="#DA121A"/><rect y="4" width="18" height="1.34" fill="#DA121A"/><rect y="6.66" width="18" height="1.34" fill="#DA121A"/><rect y="9.33" width="18" height="1.34" fill="#DA121A"/></svg>CA</a><a href="/lt/"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="4" fill="#FDB913"/><rect y="4" width="18" height="4" fill="#006A44"/><rect y="8" width="18" height="4" fill="#C1272D"/></svg>LT</a><a href="/en/"><svg width="18" height="12" viewBox="0 0 18 12" style="border-radius:2px; flex-shrink:0;"><rect width="18" height="12" fill="#012169"/><path d="M0 0 18 12M18 0 0 12" stroke="#FFFFFF" stroke-width="2.6"/><path d="M0 0 18 12M18 0 0 12" stroke="#C8102E" stroke-width="1.3"/><path d="M9 0V12M0 6H18" stroke="#FFFFFF" stroke-width="4"/><path d="M9 0V12M0 6H18" stroke="#C8102E" stroke-width="2.4"/></svg>EN</a></div></details>
+    <a class="nav-cta" href="/fes-te-soci" style="background:#b74f49; color:#FDFBF7; padding:11px 22px; border-radius:999px; font-weight:700; font-size:13.5px; display:inline-flex; align-items:center; gap:7px;">
+      Fes-te'n soci
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#FDFBF7"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.7 4 6.7 4c2.2 0 4 1.2 5.3 3 1.3-1.8 3.1-3 5.3-3 4 0 6.2 4 4.7 7.7C19.5 16.3 12 21 12 21Z"/></svg>
+    </a>
+  </div>
+  </nav>
+  <!-- BREADCRUMB -->
+  <div style="padding:20px 64px 0 64px;">
+    <a href="/" style="display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600; color:#1d2f46; opacity:.6;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      Tornar a l'inici
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <div style="padding:32px 64px 0 64px;">
+    <div style="max-width:820px;">
+      <div style="font-size:12.5px; letter-spacing:.22em; font-weight:700; color:#a8433d; text-transform:uppercase; margin-bottom:16px;">Documentaci&oacute; de l'entitat</div>
+      <h1 style="font-size:40px; font-weight:800; color:#1d2f46; margin:0 0 16px 0;">Estatuts d'ALKA</h1>
+      <p style="font-size:16px; line-height:1.75; color:#1d1d1b; opacity:.75; margin:0;">Text dels Estatuts de l'associaci&oacute; ALKA (Associaci&oacute; Lituano-Catalana d'Avan&ccedil;ament), aprovats el 18 d'agost de 2026 i inscrits al Registre d'Associacions de la Generalitat de Catalunya amb el n&uacute;m. 80242.</p>
+    </div>
+  </div>
+
+  <!-- COS LEGAL -->
+  <div class="legal-body" style="padding:24px 64px 96px 64px;">
+    <div style="max-width:820px;">
+      <h2 style="font-size:22px; margin-top:48px;">CAP&#205;TOL I. DENOMINACI&#211;, FINALITATS, ACTIVITATS, DOMICILI I &#192;MBIT TERRITORIAL</h2>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 1. Denominaci&#243; i durada</h3>
+      <p>Amb la denominaci&#243; ALKA (Associaci&#243; Lituano-Catalana d'Avan&#231;ament) es constitueix una associaci&#243; sense &#224;nim de lucre, subjecta a la legislaci&#243; vigent aplicable a les associacions de Catalunya i, en particular, a la Llei 4/2008, de 24 d&#8217;abril, del llibre tercer del Codi civil de Catalunya, relatiu a les persones jur&#237;diques, i a la resta de normativa que li sigui aplicable.</p>
+      <p>L&#8217;associaci&#243; podr&#224; utilitzar la denominaci&#243; abreujada ALKA en les seves activitats, projectes, comunicacions i materials de difusi&#243;. L&#8217;associaci&#243; es constitueix per temps indefinit.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 2. Naturalesa i abs&#232;ncia d&#8217;&#224;nim de lucre</h3>
+      <p>L&#8217;Associaci&#243; ALKA &#233;s una entitat privada, independent, plural, oberta i sense &#224;nim de lucre. Els seus recursos es destinaran &#237;ntegrament al compliment de les seves finalitats.</p>
+      <p>L&#8217;associaci&#243; podr&#224; desenvolupar activitats econ&#242;miques, organitzar activitats de pagament, prestar serveis, editar i comercialitzar publicacions, materials, recursos educatius o productes relacionats amb les seves finalitats i obtenir ingressos per qualsevol mitj&#224; l&#237;cit, sempre que els eventuals beneficis es destinin al compliment de les finalitats associatives i no es distribueixin entre les persones associades.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 3. Finalitats</h3>
+      <p>L&#8217;Associaci&#243; ALKA t&#233; com a finalitats:</p>
+      <p>a) Promoure la cultura, l&#8217;educaci&#243;, la creativitat, el coneixement, i desenvolupar projectes dirigits a infants, joves, persones adultes, fam&#237;lies i altres col&#183;lectius.</p>
+      <p>b) Fomentar el di&#224;leg, la interculturalitat, la conviv&#232;ncia i l&#8217;intercanvi cultural, especialment entre Catalunya, Litu&#224;nia, els pa&#239;sos b&#224;ltics i altres contextos europeus i internacionals.</p>
+      <p>c) Promoure la creaci&#243; art&#237;stica i cultural, aix&#237; com crear i impulsar espais (f&#237;sics i digitals) de trobada, aprenentatge i intercanvi comunitari.</p>
+      <p>d) Fomentar la innovaci&#243;, la transformaci&#243; digital i l&#8217;&#250;s responsable de tecnologies emergents, incloent-hi la intel&#183;lig&#232;ncia artificial, aplicades a la cultura i l'educaci&#243;.</p>
+      <p>e) Donar suport a creadors, artistes, educadors i investigadors, i fomentar la mobilitat, els intercanvis i el voluntariat.</p>
+      <p>f) Contribuir a la preservaci&#243; i transmissi&#243; del patrimoni cultural i afavorir l&#8217;acc&#233;s a la cultura de col&#183;lectius diversos.</p>
+      <p>g) Promoure la igualtat d&#8217;oportunitats, la inclusi&#243;, l&#8217;accessibilitat i la participaci&#243; activa de persones i col&#183;lectius diversos en la vida cultural, educativa i comunit&#224;ria.</p>
+      <p>h) Establir xarxes de cooperaci&#243; institucional i participar en projectes nacionals o internacionals afins a la seva missi&#243;.</p>
+      <p>j) Qualsevol altra finalitat l&#237;cita complement&#224;ria o directament relacionada amb les anteriors.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 4. Activitats</h3>
+      <p>Per assolir les seves finalitats, l&#8217;associaci&#243; podr&#224; desenvolupar les activitats seg&#252;ents:</p>
+      <p>a) <strong>Formatives i culturals:</strong> Organitzaci&#243; de cursos, tallers, seminaris, exposicions, concerts, festivals, clubs de lectura i espais de debat.</p>
+      <p>b) <strong>Educatives i de divulgaci&#243;:</strong> Desenvolupament de programes educatius i difusi&#243; de lleng&#252;es i hist&#242;ria, especialment de Catalunya, Litu&#224;nia i pa&#239;sos b&#224;ltics.</p>
+      <p>c) <strong>Producci&#243; de continguts i tecnologia:</strong> Creaci&#243;, producci&#243;, edici&#243; i comercialitzaci&#243; de continguts culturals en formats f&#237;sics o digitals (plataformes, recursos editorials i audiovisuals).</p>
+      <p>d) <strong>Mobilitat i cooperaci&#243;:</strong> Organitzaci&#243; d'intercanvis, campaments, estades, viatges i programes de cooperaci&#243; internacional.</p>
+      <p>e) <strong>Gesti&#243;, suport i prestaci&#243; de serveis:</strong> Concessi&#243; de beques, ajuts i altres formes de suport, creaci&#243; i gesti&#243; d&#8217;espais comunitaris i prestaci&#243; de serveis a tercers compatibles amb les finalitats de l&#8217;entitat.</p>
+      <p>f) <strong>Recerca i conscienciaci&#243;:</strong> Realitzaci&#243; d'estudis, publicacions i activitats de sensibilitzaci&#243; sobre diversitat i innovaci&#243;.</p>
+      <p>g) <strong>Creaci&#243; i gesti&#243; de continguts i drets:</strong> Creaci&#243;, edici&#243;, producci&#243;, gesti&#243;, difusi&#243; i cessi&#243; de drets sobre obres, continguts i recursos culturals, educatius, art&#237;stics i digitals vinculats a les finalitats de l&#8217;associaci&#243;.</p>
+      <p>h) Qualsevol altra activitat l&#237;cita que contribueixi a l&#8217;assoliment de les finalitats associatives.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 5. &#192;mbit territorial</h3>
+      <p>L&#8217;&#224;mbit principal d&#8217;actuaci&#243; de l&#8217;associaci&#243; ser&#224; Catalunya, sens perjudici que pugui desenvolupar activitats a qualsevol punt l&#8217;Estat espanyol i en altres pa&#239;sos, especialment dins de l&#8217;&#224;mbit de la Uni&#243; Europea i de la cooperaci&#243; internacional. L&#8217;associaci&#243; podr&#224; establir delegacions, seus o representacions en altres territoris quan sigui convenient per al desenvolupament de les seves finalitats.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 6. Domicili social</h3>
+      <p>El domicili social de l&#8217;associaci&#243; s&#8217;estableix a: Av. President Tarradellas 63, B3. Municipi: Lleida. Prov&#237;ncia: Lleida.</p>
+      <p>El domicili social podr&#224; ser traslladat mitjan&#231;ant acord de l&#8217;&#242;rgan de govern i ser&#224; comunicat a l&#8217;Assemblea General. Els canvis de domicili que impliquin una modificaci&#243; dels Estatuts es tramitaran d&#8217;acord amb la legislaci&#243; vigent.</p>
+      <h2 style="font-size:22px; margin-top:48px;">CAP&#205;TOL II. LES PERSONES ASSOCIADES</h2>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 7. Persones associades</h3>
+      <p>Poden formar part de l&#8217;associaci&#243; totes les persones f&#237;siques i jur&#237;diques que comparteixin o tinguin inter&#232;s en les finalitats de l&#8217;associaci&#243; i acceptin aquests Estatuts. Totes les persones associades gaudiran dels drets i estaran subjectes als deures establerts en aquests Estatuts.</p>
+      <p>Els menors en edats compreses entre els 14 i els 18 anys, no emancipats, necessiten el consentiment dels pares o tutors per ser socis de ple dret, amb dret de vot a les assemblees generals, per&#242; no poden ser elegits membres de la Junta Directiva. Els menors de 14 anys poden adquirir la condici&#243; d'associats i exercir els drets derivats d'aquesta condici&#243; per mitj&#224; dels seus representants legals.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 8. Admissi&#243;</h3>
+      <p>La incorporaci&#243; a l&#8217;associaci&#243; ser&#224; volunt&#224;ria i es formalitzar&#224; mitjan&#231;ant una sol&#183;licitud d&#8217;admissi&#243;, presentada per escrit o per mitjans electr&#242;nics, en qu&#232; la persona interessada manifesti la seva voluntat de formar-ne part i accepti aquests Estatuts.</p>
+      <p>La Junta Directiva resoldr&#224; la sol&#183;licitud d&#8217;admissi&#243; i comunicar&#224; la seva decisi&#243; a la persona interessada.</p>
+      <p>En cas de denegaci&#243;, la persona interessada podr&#224; sol&#183;licitar que la decisi&#243; sigui revisada per la primera Assemblea General que se celebri.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 9. P&#232;rdua de la condici&#243; d&#8217;associat</h3>
+      <p>La condici&#243; de persona associada es perd:</p>
+      <p>a) Per baixa volunt&#224;ria.</p>
+      <p>b) Per defunci&#243; o extinci&#243; de la persona jur&#237;dica.</p>
+      <p>d) Per expulsi&#243;, quan concorri una causa disciplin&#224;ria prevista en el r&#232;gim disciplinari d'aquests Estatuts.</p>
+      <p>e) Per qualsevol altra causa prevista legalment.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 10. Drets de les persones associades</h3>
+      <p>Les persones associades tenen els drets seg&#252;ents:</p>
+      <ul><li>Participar en les activitats de l&#8217;associaci&#243;.</li>
+        <li>Assistir a les reunions de l&#8217;Assemblea General, intervenir-hi i exercir el dret de vot.</li>
+        <li>Cada persona associada t&#233; dret a un vot.</li>
+        <li>Elegir i ser elegides per als &#242;rgans de govern de l&#8217;associaci&#243;, d&#8217;acord amb aquests Estatuts.</li>
+        <li>Rebre informaci&#243; sobre la gesti&#243;, les activitats i la situaci&#243; econ&#242;mica de l&#8217;associaci&#243;.</li>
+        <li>Consultar la documentaci&#243; de l&#8217;associaci&#243; en els termes establerts per la legislaci&#243; vigent i aquests Estatuts.</li>
+        <li>Presentar propostes, suggeriments i iniciatives als &#242;rgans de govern.</li>
+        <li>Exercir els altres drets que els reconeguin la legislaci&#243; vigent i aquests Estatuts.</li></ul>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 11. Deures de les persones associades</h3>
+      <p>Les persones associades tenen el deure de respectar els Estatuts i acords, contribuir a les finalitats, abonar les quotes, i actuar amb respecte, inclusi&#243; i no-discriminaci&#243;.</p>
+      <h2 style="font-size:22px; margin-top:48px;">CAP&#205;TOL III. R&#200;GIM DISCIPLINARI</h2>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 12. Infraccions i sancions</h3>
+      <p>Les persones associades poden ser sancionades per l&#8217;incompliment dels deures establerts en aquests Estatuts o per conductes que perjudiquin greument els interessos, el funcionament o la imatge de l&#8217;associaci&#243;. Les infraccions es classificaran en lleus, greus i molt greus. Poden ser considerades infraccions lleus els incompliments puntuals dels deures associatius que no causin un perjudici rellevant a l&#8217;entitat.</p>
+      <p>Poden ser considerades infraccions greus els incompliments reiterats dels deures associatius o les conductes que causin un perjudici rellevant a l&#8217;associaci&#243; o a altres persones associades. Poden ser considerades infraccions molt greus les conductes que causin un perjudici greu a l&#8217;associaci&#243;, les agressions, l&#8217;assetjament, la discriminaci&#243;, l&#8217;apropiaci&#243; indeguda de recursos de l&#8217;entitat o l&#8217;incompliment greu i reiterat d&#8217;aquests Estatuts. Les sancions podran consistir en una amonestaci&#243; escrita, la suspensi&#243; temporal dels drets associatius o, en els casos molt greus, l&#8217;expulsi&#243; de l&#8217;associaci&#243;.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 13. Procediment sancionador</h3>
+      <p>El procediment sancionador s'iniciar&#224; d'ofici o a inst&#224;ncia de part per la Junta Directiva. Abans d&#8217;adoptar qualsevol sanci&#243;, es comunicar&#224; a la persona interessada els fets que se li imputen i la possible sanci&#243;, i se li concedir&#224; un termini raonable per presentar al&#183;legacions i aportar les proves que consideri oportunes.</p>
+      <p>La Junta Directiva adoptar&#224; la resoluci&#243; corresponent de manera motivada. La persona afectada podr&#224; rec&#243;rrer la resoluci&#243; davant la primera Assemblea General que se celebri, la qual podr&#224; confirmar, modificar o revocar la sanci&#243;. En tot cas, es respectaran els principis de proporcionalitat, audi&#232;ncia i defensa i la legislaci&#243; aplicable.</p>
+      <h2 style="font-size:22px; margin-top:48px;">CAP&#205;TOL IV. &#210;RGANS DE GOVERN</h2>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 14. &#210;rgans de l&#8217;associaci&#243;</h3>
+      <p>Els &#242;rgans de govern de l&#8217;associaci&#243; s&#243;n l&#8217;Assemblea General i la Junta Directiva. L&#8217;associaci&#243; podr&#224; crear altres comissions o &#242;rgans consultius quan ho consideri convenient.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 15. Assemblea General</h3>
+      <p>L&#8217;Assemblea General &#233;s l&#8217;&#242;rgan sobir&#224; de l&#8217;associaci&#243; i est&#224; integrada per totes les persones associades. Li correspon aprovar o modificar els Estatuts, elegir la Junta, aprovar comptes i pressupostos, establir quotes i decidir la dissoluci&#243; de l'entitat, entre d'altres previstes per llei.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 16. Reunions i qu&#242;rum de l&#8217;Assemblea General</h3>
+      <p>L&#8217;Assemblea General ordin&#224;ria es reunir&#224; com a m&#237;nim una vegada l&#8217;any. L&#8217;Assemblea General extraordin&#224;ria es reunir&#224; quan ho acordi la Junta Directiva o ho sol&#183;licitin les persones associades segons la legislaci&#243;.</p>
+      <p>La convocat&#242;ria es far&#224; amb un m&#237;nim de quinze dies d'antelaci&#243;, indicant lloc, data, hora i ordre del dia. L'Assemblea quedar&#224; v&#224;lidament constitu&#239;da en primera convocat&#242;ria quan hi assisteixin, presents o representades, la majoria de les persones associades. En segona convocat&#242;ria, que se celebrar&#224; mitja hora despr&#233;s de la fixada per a la primera, quedar&#224; v&#224;lidament constitu&#239;da sigui quin sigui el nombre d'assistents.</p>
+      <p>L&#8217;Assemblea podr&#224; celebrar-se presencialment, telem&#224;ticament o mitjan&#231;ant sistemes mixtos, garantint en tot moment la identificaci&#243; i participaci&#243; efectiva dels assistents.</p>
+      <p>Les persones associades podran delegar per escrit la seva representaci&#243; i vot en una altra persona associada, en els termes que estableixi la convocat&#242;ria. Una mateixa persona associada podr&#224; representar, com a m&#224;xim, una altra persona associada.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 17. Adopci&#243; d&#8217;acords</h3>
+      <p>Els acords de l&#8217;Assemblea General s&#8217;adoptaran per majoria simple dels vots emesos, llevat dels casos en qu&#232; la legislaci&#243; o aquests Estatuts estableixin una majoria qualificada. Requeriran la majoria qualificada que estableixi la legislaci&#243; vigent els acords relatius a la modificaci&#243; dels Estatuts, la dissoluci&#243; de l&#8217;associaci&#243;, la transformaci&#243;, fusi&#243; o escissi&#243; de l&#8217;entitat i qualsevol altre sup&#242;sit en qu&#232; la legislaci&#243; aix&#237; ho exigeixi. En cas d&#8217;empat, la proposta es considerar&#224; rebutjada.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 18. Junta Directiva</h3>
+      <p>La Junta Directiva &#233;s l&#8217;&#242;rgan de govern, administraci&#243; i representaci&#243; de l&#8217;associaci&#243; i exerceix les funcions que li atribueixen la legislaci&#243; vigent i aquests Estatuts. Estar&#224; formada, com a m&#237;nim, per la Presid&#232;ncia, la Secretaria i la Tresoreria, i podr&#224; incorporar una o m&#233;s vicepresid&#232;ncies i vocalies.</p>
+      <p>Els membres de la Junta Directiva seran elegits per l&#8217;Assemblea General d&#8217;entre les persones associades. Es reunir&#224; quan ho convoqui la Presid&#232;ncia i, com a m&#237;nim, una vegada l&#8217;any. La convocat&#242;ria es far&#224; amb una antelaci&#243; m&#237;nima de quinze (15) dies i indicar&#224; el lloc, la data, l&#8217;hora i l&#8217;ordre del dia.</p>
+      <p>La Junta Directiva podr&#224; reunir-se presencialment, telem&#224;ticament o mitjan&#231;ant sistemes mixtos, sempre que es garanteixi la identificaci&#243; i participaci&#243; efectiva dels seus membres. Quedar&#224; v&#224;lidament constitu&#239;da quan hi assisteixi, presencialment o telem&#224;ticament, almenys la meitat dels seus membres.</p>
+      <p>Els acords s&#8217;adoptaran per majoria simple dels vots emesos. En cas d&#8217;empat, el vot de la Presid&#232;ncia ser&#224; diriment. Els acords de la Junta Directiva constaran en acta, que ser&#224; redactada per la Secretaria i aprovada al final de la mateixa reuni&#243; o en la reuni&#243; seg&#252;ent.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 19. Durada i funcions dels c&#224;rrecs</h3>
+      <p>Els membres seran elegits per l'Assemblea General per un per&#237;ode de quatre anys i podran ser reelegits. Els membres de la Junta Directiva cessaran per expiraci&#243; del mandat, ren&#250;ncia, incapacitat o inhabilitaci&#243;, defunci&#243; o revocaci&#243; acordada per l&#8217;Assemblea General.</p>
+      <p>En cas de vacant temporal o definitiva d&#8217;un c&#224;rrec, la Junta Directiva podr&#224; designar provisionalment una persona associada per exercir les funcions corresponents fins a la seg&#252;ent Assemblea General.</p>
+      <p>Exerciran les seves funcions de manera gratu&#239;ta, sens perjudici del reemborsament de despeses justificades. Les seves funcions principals s&#243;n executar els acords, gestionar l'economia, elaborar els plans d'activitats i representar l'entitat.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 20. C&#224;rrecs de la Junta</h3>
+      <ul><li><strong>Presid&#232;ncia:</strong> Exerceix la representaci&#243; institucional de l&#8217;associaci&#243;, presideix l&#8217;Assemblea General i la Junta Directiva i vetlla per l&#8217;execuci&#243; dels seus acords.</li>
+        <li><strong>Secretaria:</strong> Custodia la documentaci&#243; de l&#8217;associaci&#243;, redacta les actes, certifica els acords i exerceix les funcions administratives corresponents.</li>
+        <li><strong>Tresoreria:</strong> Gestiona l&#8217;economia de l&#8217;associaci&#243;, prepara els pressupostos i comptes i supervisa els ingressos i les despeses.</li>
+        <li><strong>Vicepresid&#232;ncia i vocalies:</strong> Exerciran les funcions que els atribueixi la Junta Directiva o l&#8217;Assemblea General.</li></ul>
+      <h2 style="font-size:22px; margin-top:48px;">CAP&#205;TOL V. VOLUNTARIAT I COL&#183;LABORACI&#211;</h2>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 21. Voluntariat</h3>
+      <p>L&#8217;associaci&#243; podr&#224; comptar amb persones volunt&#224;ries per al desenvolupament de les seves activitats, d&#8217;acord amb la legislaci&#243; aplicable. La participaci&#243; de les persones volunt&#224;ries es basar&#224; en els principis de llibertat, responsabilitat, igualtat, inclusi&#243; i respecte. L&#8217;associaci&#243; establir&#224;, quan sigui necessari, els mecanismes de coordinaci&#243;, informaci&#243;, formaci&#243; i participaci&#243; de les persones volunt&#224;ries. La condici&#243; de persona volunt&#224;ria no implica per si mateixa la condici&#243; de persona associada.</p>
+      <p>Quan hi hagi persones volunt&#224;ries no associades que col&#183;laborin amb l'associaci&#243;, aquesta subscriur&#224; amb cadascuna un acord o full de comprom&#237;s del voluntariat en qu&#232; es concretin, com a m&#237;nim: les activitats a desenvolupar, la durada i disponibilitat del comprom&#237;s, els drets de la persona volunt&#224;ria (informaci&#243;, formaci&#243;, acreditaci&#243;, cobertura d'asseguran&#231;a i reemborsament de despeses justificades) i els seus deures (compliment del programa d'activitats, respecte als Estatuts i a les persones destinat&#224;ries, confidencialitat i dilig&#232;ncia en l'exercici de les seves funcions). La Junta Directiva designar&#224; una persona responsable de la coordinaci&#243; del voluntariat, encarregada de vetllar pel compliment d'aquests mecanismes de participaci&#243;.</p>
+      <h2 style="font-size:22px; margin-top:48px;">CAP&#205;TOL VI. R&#200;GIM ECON&#210;MIC</h2>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 22. Recursos econ&#242;mics</h3>
+      <p>Els recursos econ&#242;mics podran procedir de:</p>
+      <p>a) Quotes de les persones associades.</p>
+      <p>b) Subvencions, ajuts p&#250;blics o privats, donacions i patrocinis.</p>
+      <p>c) Ingressos derivats de les activitats de l&#8217;associaci&#243;, incloent-hi cursos, tallers, prestaci&#243; de serveis i la venda de publicacions, materials culturals o recursos educatius relacionats amb les seves finalitats.</p>
+      <p>d) Rendiments del patrimoni i qualsevol altre ingr&#233;s l&#237;cit.</p>
+      <p>e) Qualsevol altre recurs o ingr&#233;s l&#237;cit relacionat amb les finalitats de l&#8217;associaci&#243;.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 23. Patrimoni i exercici econ&#242;mic</h3>
+      <p>El patrimoni inicial de l&#8217;associaci&#243; ser&#224; de 0 euros. L&#8217;exercici econ&#242;mic coincidir&#224; amb l&#8217;any natural i es tancar&#224; el 31 de desembre. Els comptes seran sotmesos a l&#8217;Assemblea per a la seva aprovaci&#243;. L&#8217;associaci&#243; podr&#224; obrir i mantenir comptes bancaris i altres instruments financers necessaris per al desenvolupament de la seva activitat. La Junta Directiva determinar&#224; les persones autoritzades per operar-hi.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 24. Contractaci&#243; i gratu&#239;tat de c&#224;rrecs</h3>
+      <p>L'exercici dels c&#224;rrecs &#233;s gratu&#239;t. No obstant aix&#242;, l&#8217;associaci&#243; podr&#224; contractar personal laboral o professionals per desenvolupar activitats. Les persones que exerceixin c&#224;rrecs de govern podran prestar serveis laborals o professionals a l&#8217;associaci&#243; quan sigui legalment possible, hi hagi una necessitat real de l'entitat i s'aprovi de manera documentada, respectant les normes sobre conflictes d'inter&#232;s. En els casos en qu&#232; existeixi un conflicte d&#8217;inter&#232;s, la persona afectada s&#8217;abstindr&#224; de participar en la deliberaci&#243; i votaci&#243; corresponent.</p>
+      <h2 style="font-size:22px; margin-top:48px;">CAP&#205;TOL VII. MODIFICACI&#211; DELS ESTATUTS I DISSOLUCI&#211;</h2>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 25. Modificaci&#243;</h3>
+      <p>La modificaci&#243; dels Estatuts correspon a l&#8217;Assemblea General i haur&#224; de constar expressament en l&#8217;ordre del dia de la convocat&#242;ria. L&#8217;acord de modificaci&#243; s&#8217;adoptar&#224; amb la majoria establerta per la legislaci&#243; vigent. Les modificacions dels Estatuts es tramitaran i, quan sigui preceptiu, s&#8217;inscriuran al Registre d&#8217;Associacions de la Generalitat de Catalunya d&#8217;acord amb la legislaci&#243; aplicable.</p>
+      <h3 style="font-size:16.5px; font-weight:700; color:#1d2f46; margin:26px 0 8px 0;">Article 26. Dissoluci&#243; i liquidaci&#243;</h3>
+      <p>L&#8217;associaci&#243; es dissoldr&#224; per acord de l&#8217;Assemblea General, per impossibilitat de complir les seves finalitats o per qualsevol altra causa establerta legalment.</p>
+      <p>Acordada la dissoluci&#243;, s&#8217;obrir&#224; el per&#237;ode de liquidaci&#243; d&#8217;acord amb la legislaci&#243; vigent. Els b&#233;ns sobrants de la liquidaci&#243; es destinaran a una altra entitat sense &#224;nim de lucre amb finalitats d&#8217;inter&#232;s general similars o compatibles amb les d&#8217;ALKA. En cap cas els b&#233;ns o recursos sobrants es podran distribuir entre les persones associades.</p>
+      <p>En tot all&#242; no previst expressament en aquests Estatuts, s&#8217;aplicar&#224; la normativa vigent en mat&#232;ria d&#8217;associacions i, especialment, el llibre tercer del Codi civil de Catalunya.</p>
+      <p style="margin-top:32px; font-size:13px; opacity:.6;">Lleida, 18 d'agost de 2026. Per a una c&ograve;pia certificada, escriu a <a href="mailto:labas@alka.cat">labas@alka.cat</a>.</p>
+    </div>
+  </div>
+  <!-- FOOTER -->
+  <footer id="contacte" style="background:#1d2f46; color:#FDFBF7; padding:64px 64px 28px 64px;">
+    <div style="max-width:1200px; margin:0 auto;">
+
+      <div class="footer-grid" style="display:grid; grid-template-columns:1.3fr 1fr 1fr 1.2fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(253,251,247,.14);">
+
+        <div>
+          <svg width="98" height="20" viewBox="0 0 263.22 53" xmlns="http://www.w3.org/2000/svg">
+            <rect fill="#FDFBF7" x="136.74" y="1.11" width="19.54" height="50.77"/>
+            <polygon fill="#FDFBF7" points="192.6 51.82 162.53 51.89 159.86 28.37 159.83 1.07 185.71 1.12 166.07 24.59 192.6 51.82"/>
+            <path fill="#FDFBF7" d="M119.31,38.61c3.08.02,4.96,1.88,5.39,4.82l.27,9.21-51.81-.02V1.84s19.75,0,19.75,0l.02,31.95c-.09,2.6,1.74,4.63,4.43,4.65l21.94.17Z"/>
+            <path fill="#FDFBF7" d="M260.02,49.09c-1.09-2.29-2.61-5.53-4.34-9.24-8.66-18.42-15.93-33.84-17.33-35.9-1.68-2.47-4.68-3.95-8.02-3.95s-6.23,1.44-7.92,3.84c-2.13,3.05-8.72,17.14-16.47,33.86-2.23,4.81-4.14,8.95-5.31,11.38l-1.6,3.33h19.59s.81-1.57.81-1.57c2.64-5.12,5.3-9.36,11.13-9.36h.24c4.19.08,8.21,4.94,10.57,9.47l.74,1.42,19.51.04-1.57-3.33ZM228.96,31.93c-1.34-.3-2.5-1.48-3.11-2.94-1.75-4.2-1.33-8.98.54-13.18.91-2.05,3.51-3.8,5.01-2.94,1.57.91,2.68,2.26,3.26,3.84,1.6,4.29,2.09,10.88-1.21,14.2-1.09,1.09-2.82,1.39-4.5,1.02Z"/>
+            <path fill="#FDFBF7" d="M38.07,37.56c-3.82-3.29-8.91-3.17-12.66-.11-1.56,1.28-2.77,2.9-3.66,4.71-1.48,3.25-2.06,6.6-1.93,10.29H3.99s.02-27.71.02-27.71c0-6.68,2.91-12.91,7.97-17.42,11.6-10.34,30.4-9.53,40.68,1.66,4.06,4.42,6.51,10.08,6.53,16.08l.11,27.39h-15.89s-.75-6.84-.75-6.84c-.75-3.03-2.1-5.89-4.6-8.05Z"/>
+          </svg>
+          <div style="font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-top:14px;">Cultura &middot; Educaci&oacute; &middot; Comunitat</div>
+        </div>
+
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-bottom:18px;">Enlla&ccedil;os</div>
+          <div style="display:flex; flex-direction:column; gap:11px;">
+            <a href="/qui-som" style="color:#FDFBF7; opacity:.85; font-size:14px;">Qui som</a>
+            <a href="/arees" style="color:#FDFBF7; opacity:.85; font-size:14px;">&Agrave;rees d'acci&oacute;</a>
+            <a href="/projectes" style="color:#FDFBF7; opacity:.85; font-size:14px;">Projectes</a>
+            <a href="/participa" style="color:#FDFBF7; opacity:.85; font-size:14px;">Participa</a>
+            <a href="/#actualitat" style="color:#FDFBF7; opacity:.85; font-size:14px;">Actualitat</a>
+            <a href="/contacte" style="color:#FDFBF7; opacity:.85; font-size:14px;">Contacte</a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-bottom:18px;">Contacte</div>
+          <div style="display:flex; flex-direction:column; gap:11px; font-size:14px; opacity:.85;">
+            <a href="mailto:labas@alka.cat" style="color:#FDFBF7; opacity:1;">labas@alka.cat</a>
+            <span style="line-height:1.55;">Av. President Tarradellas 63, B3, 25001 Lleida</span>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:18px;">
+            <a href="https://www.youtube.com/channel/UCByeRCGGl_0M88K_WGqBT7Q" target="_blank" rel="noopener" aria-label="YouTube" style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#FDFBF7"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .6 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .4-4.8 31 31 0 0 0-.4-4.8ZM9.8 15.1V8.9l5.4 3.1-5.4 3.1Z"/></svg>
+            </a>
+            <a href="mailto:labas@alka.cat" aria-label="Correu" style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FDFBF7" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; margin-bottom:14px;">Uneix-te a la comunitat</div>
+          <p style="font-size:13px; line-height:1.6; opacity:.7; margin:0 0 16px 0;">Rep novetats i activitats directament al teu correu.</p>
+          <div style="display:flex; gap:8px;">
+            <input type="email" placeholder="El teu correu" class="footer-input" style="flex:1; min-width:0; padding:11px 16px; border-radius:999px; border:1px solid rgba(253,251,247,.25); background:rgba(255,255,255,.06); color:#FDFBF7; font-size:13.5px; font-family:inherit;">
+            <button aria-label="Envia" style="width:40px; height:40px; border-radius:50%; background:#e8b736; border:none; display:flex; align-items:center; justify-content:center; flex-shrink:0; cursor:pointer;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d2f46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <div style="padding-top:22px; font-size:12.5px; line-height:1.75; opacity:.7;">
+        Alka asociaci&oacute;n &middot; NIF G05608732 &middot; Inscrita al Registre d'Associacions de la Generalitat de Catalunya amb el n&uacute;m. 80242<br>
+        Av. President Tarradellas 63, B3, 25001 Lleida &middot; <a href="mailto:labas@alka.cat" style="color:#FDFBF7; opacity:1;">labas@alka.cat</a>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:22px; font-size:12.5px; opacity:.55; flex-wrap:wrap; gap:10px;">
+        <div>&copy; 2026 Alka asociaci&oacute;n</div>
+        <div style="display:flex; gap:18px;">
+          <a href="/estatuts" style="color:#FDFBF7; opacity:1;">Estatuts</a>
+          <a href="/avis-legal" style="color:#FDFBF7; opacity:1;">Av&iacute;s legal</a>
+          <a href="/privacitat" style="color:#FDFBF7; opacity:1;">Privacitat</a>
+          <a href="/proteccio-dades" style="color:#FDFBF7; opacity:1;">Protecci&oacute; de dades</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
