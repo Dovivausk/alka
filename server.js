@@ -85,7 +85,7 @@ export function buildProperties(tipus, f) {
     });
   }
 
-  // dues modalitats: Amic/Amiga (0 EUR) i Soci/a col.laborador/a (150 EUR/any, pagament a part)
+  // dos tipus de soci: amic/amiga (0 EUR) i Soci/a col.laborador/a (150 EUR/any, pagament a part)
   if (tipus === "soci") {
     const colab = f.modalitat === "colaborador";
     const menor = f.menor === "on" || f.menor === "true";
@@ -93,7 +93,7 @@ export function buildProperties(tipus, f) {
       ...comu,
       "Com ens ha conegut": text(f.com_ens_has_conegut),
       "Comentaris": text(f.comentaris),
-      "Modalitat": select(colab ? "Soci/a col·laborador/a · 150 €" : "Amic/Amiga · 0 €"),
+      "Modalitat": select(colab ? "Soci/a col·laborador/a · 150 €" : "Soci/a amic/amiga · 0 €"),
       "Pagament": select(colab ? "Pendent" : "No aplica"),
       "Mètode de pagament": colab ? select(f.metode === "targeta" ? "Targeta" : "Transferència") : undefined,
       "Any de quota": colab ? { number: new Date().getFullYear() } : undefined,
