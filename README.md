@@ -19,6 +19,8 @@ Variables d'entorn obligatories:
     NOTION_DB_SOCIS        id de la base "Socis ALKA"
     NOTION_DB_VOLUNTARIS   id de la base "Voluntaris ALKA"
     NOTION_DB_ACTUALITAT   id de la base "Actualitat" (opcional: sense ella /actualitat surt buida)
+    NOTION_DB_CONTACTE     id de la base "Contacte ALKA" (opcional: sense ella el formulari de /contacte
+                           demana que escriguin a labas@alka.cat)
 
 Sense aquestes variables el web es veu perfectament, pero els formularis
 responen amb un missatge d'error i no desen res. Com que aquest repositori
@@ -41,6 +43,11 @@ compilen amb les URL definitives. El contingut generat es puja al repositori
 perque Coolify no hagi d'executar cap pas de build.
 
 No editis res dins de `public/` a ma: el proper build ho sobreescriura.
+
+ATENCIO (19/10/2026): els canvis per a Google for Nonprofits (pagines /arees, /participa,
+/contacte en ca/lt/en, peu amb dades legals, enllacos del menu, Junta a /qui-som, avis legal,
+robots.txt obert i sitemap.xml) es van fer directament a `public/`. Cal passar-los als
+`.dc.html` del projecte de disseny abans del proper build, o es perdran.
 
 Els mini-apps (`public/viatge-lituania/`) no surten dels `.dc.html`: viuen a
 `apps/` del projecte de disseny i `build_site.py` els hi copia al final

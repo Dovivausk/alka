@@ -283,8 +283,7 @@ export async function renderActualitat(publicDir) {
   const f = shell.indexOf('<footer id="contacte"');
   if (i < 0 || f < i) {
     return `<!doctype html><html lang="ca"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"><title>Actualitat - ALKA</title>
-<meta name="robots" content="noindex, nofollow"></head>
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Actualitat - ALKA</title></head>
 <body style="margin:0;background:#FDFBF7;font-family:system-ui,sans-serif;color:#1d1d1b">${body}</body></html>`;
   }
   return fixActualitatLinks(shell.slice(0, i) + body + "\n  " + shell.slice(f))

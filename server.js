@@ -9,6 +9,7 @@
 //   NOTION_TOKEN         (obligatoria) secret de la integracio de Notion
 //   NOTION_DB_SOCIS      (obligatoria) id de la base "Socis ALKA"
 //   NOTION_DB_VOLUNTARIS (obligatoria) id de la base "Voluntaris ALKA"
+//   NOTION_DB_CONTACTE   (opcional)    id de la base "Contacte ALKA" (formulari de /contacte)
 //   PORT                 (opcional)    per defecte 3000
 //
 // Aquest repositori es public: els identificadors de les bases de dades
@@ -29,6 +30,7 @@ const NOTION_VERSION = "2022-06-28";
 const DB = {
   soci: process.env.NOTION_DB_SOCIS,
   voluntari: process.env.NOTION_DB_VOLUNTARIS,
+  contacte: process.env.NOTION_DB_CONTACTE,
 };
 
 const MIME = {
@@ -37,6 +39,7 @@ const MIME = {
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
   ".txt": "text/plain; charset=utf-8",
+  ".xml": "application/xml; charset=utf-8",
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
   ".png": "image/png",
@@ -66,6 +69,19 @@ export function buildProperties(tipus, f) {
     "Estat": select("Nova sollicitud"),
     "Idioma": select(String(f.idioma || "ca").toUpperCase()),
   };
+
+  // missatges del formulari de /contacte
+  if (tipus === "contacte") {
+    return clean({
+      "Nom i cognoms": comu["Nom i cognoms"],
+      "Correu electronic": comu["Correu electronic"],
+      "Assumpte": text(f.assumpte),
+      "Missatge": text(f.missatge),
+      "Consentiment": comu["Consentiment"],
+      "Estat": select("Nou"),
+      "Idioma": comu["Idioma"],
+    });
+  }
 
   // ser soci no te cap cost: el formulari no demana quota ni dades bancaries
   if (tipus === "soci") {
@@ -121,6 +137,8 @@ const T = {
     saveFail: ["No s'ha pogut desar", "Hi ha hagut un problema tècnic. Escriu-nos a labas@alka.cat i ho resolem."],
     okSoci: "Hem rebut la teva sol·licitud. Ens posarem en contacte amb tu per confirmar l'alta.",
     okVoluntari: "Hem rebut la teva sol·licitud. Ens posarem en contacte amb tu per conèixer-te i explicar-te les activitats.",
+    okContacte: "Hem rebut el teu missatge. Et respondrem tan aviat com puguem.",
+    missingMsg: ["Falten dades", "Cal indicar el nom, un correu electrònic vàlid i el missatge."],
     okSpam: "Hem rebut la teva sol·licitud.",
     notFound: ["Pàgina no trobada", "L'adreça que has seguit no existeix o ha canviat."],
   },
@@ -134,6 +152,8 @@ const T = {
     saveFail: ["Nepavyko išsaugoti", "Įvyko techninė klaida. Parašykite mums: labas@alka.cat ir viską sutvarkysime."],
     okSoci: "Gavome jūsų paraišką. Susisieksime su jumis, kad patvirtintume narystę.",
     okVoluntari: "Gavome jūsų paraišką. Susisieksime su jumis, kad susipažintume ir papasakotume apie veiklas.",
+    okContacte: "Gavome jūsų žinutę. Atsakysime kuo greičiau.",
+    missingMsg: ["Trūksta duomenų", "Nurodykite vardą, galiojantį el. pašto adresą ir žinutę."],
     okSpam: "Gavome jūsų paraišką.",
     notFound: ["Puslapis nerastas", "Nuoroda, kuria perėjote, neegzistuoja arba pasikeitė."],
   },
@@ -147,6 +167,8 @@ const T = {
     saveFail: ["Could not save", "There was a technical problem. Please write to us at labas@alka.cat and we will sort it out."],
     okSoci: "We have received your request. We will contact you to confirm your membership.",
     okVoluntari: "We have received your request. We will contact you to get to know you and tell you about our activities.",
+    okContacte: "We have received your message. We will reply as soon as we can.",
+    missingMsg: ["Missing information", "Please provide your name, a valid email address and your message."],
     okSpam: "We have received your request.",
     notFound: ["Page not found", "The address you followed does not exist or has changed."],
   },
@@ -248,11 +270,14 @@ async function handleInscripcio(req, res) {
   // camp trampa: invisible per a les persones, els robots l'omplen
   if (f.lloc_web) return send(res, 200, pagina(lang, [t.thanks, t.okSpam]));
 
-  const tipus = f.tipus === "voluntari" ? "voluntari" : "soci";
+  const tipus = ["voluntari", "contacte"].includes(f.tipus) ? f.tipus : "soci";
 
   // el navegador es pot saltar el required, per aixo ho tornem a comprovar aqui
   if (!f.nom || !f.email || !String(f.email).includes("@")) {
     return send(res, 400, pagina(lang, t.missing));
+  }
+  if (tipus === "contacte" && !String(f.missatge || "").trim()) {
+    return send(res, 400, pagina(lang, t.missingMsg));
   }
   if (!process.env.NOTION_TOKEN || !DB[tipus]) {
     console.error("falta NOTION_TOKEN o l'id de la base de dades");
@@ -266,7 +291,8 @@ async function handleInscripcio(req, res) {
     return send(res, 502, pagina(lang, t.saveFail));
   }
 
-  return send(res, 200, pagina(lang, [t.thanks, tipus === "soci" ? t.okSoci : t.okVoluntari]));
+  const ok = { soci: t.okSoci, voluntari: t.okVoluntari, contacte: t.okContacte }[tipus];
+  return send(res, 200, pagina(lang, [t.thanks, ok]));
 }
 
 // ---------------------------------------------------------------- estatics
@@ -296,7 +322,7 @@ function resolveFile(pathname) {
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, "http://localhost");
 
-  if (url.pathname === "/api/inscripcio") {
+  if (url.pathname === "/api/inscripcio" || url.pathname === "/api/contacte") {
     if (req.method !== "POST") return send(res, 405, "Method not allowed", "text/plain");
     return handleInscripcio(req, res);
   }
