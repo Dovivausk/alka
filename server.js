@@ -9,6 +9,8 @@
 //   NOTION_TOKEN         (obligatoria) secret de la integracio de Notion
 //   NOTION_DB_SOCIS      (obligatoria) id de la base "Socis ALKA"
 //   NOTION_DB_VOLUNTARIS (obligatoria) id de la base "Voluntaris ALKA"
+//   STRIPE_PAYMENT_LINK  (opcional)    enllac de pagament de Stripe (https://buy.stripe.com/...) per a la
+//                                     quota de soci/a col.laborador/a; sense ell, "Targeta" surt com a "properament"
 //   NOTION_DB_CONTACTE   (opcional)    id de la base "Contacte ALKA" (formulari de /contacte)
 //   PORT                 (opcional)    per defecte 3000
 //
@@ -222,6 +224,38 @@ border-radius:999px;font-weight:700;font-size:14.5px}</style></head>
 
 // Dades per pagar la quota de soci/a col.laborador/a (compte de l'associacio)
 const IBAN = "ES45 3140 0001 9100 2117 6300";
+const STRIPE = /^https:\/\/(buy\.stripe\.com|checkout\.stripe\.com)\//.test(process.env.STRIPE_PAYMENT_LINK || "")
+  ? process.env.STRIPE_PAYMENT_LINK : "";
+
+const CARD = {
+  ca: ["Targeta (properament)", "Targeta", "Paga la quota amb targeta", "Pagar 150 € amb targeta",
+    "Hem rebut la teva sol·licitud. Per completar l'alta com a soci/a col·laborador/a, paga la quota de 150 € amb targeta a la passarel·la segura de Stripe:",
+    "Fes servir el mateix correu electrònic que has posat al formulari. Quan es confirmi el pagament t'enviarem el justificant. La quota és anual i no es fa cap càrrec automàtic."],
+  lt: ["Kortele (netrukus)", "Kortele", "Sumokėk kortele", "Mokėti 150 € kortele",
+    "Gavome jūsų paraišką. Norėdami užbaigti nario rėmėjo registraciją, sumokėkite 150 € kortele saugioje Stripe mokėjimo sistemoje:",
+    "Naudokite tą patį el. pašto adresą, kurį nurodėte formoje. Patvirtinus mokėjimą atsiųsime kvitą. Mokestis metinis, nieko nenurašome automatiškai."],
+  en: ["Card (coming soon)", "Card", "Pay by card", "Pay €150 by card",
+    "We have received your application. To complete your supporting membership, pay the €150 fee by card through Stripe's secure checkout:",
+    "Please use the same email address you entered in the form. Once the payment is confirmed we will send you a receipt. The fee is annual, with no automatic charges."],
+};
+
+// amb enllac de Stripe, l'opcio "Targeta" del formulari queda activa
+function activaTargeta(html) {
+  if (!STRIPE) return html;
+  for (const l of Object.values(CARD)) {
+    html = html.replace(`<label class="disabled"><input type="radio" name="metode" value="targeta" disabled> ${l[0]}</label>`,
+      `<label><input type="radio" name="metode" value="targeta"> ${l[1]}</label>`);
+  }
+  return html;
+}
+
+function paginaTargeta(lang) {
+  const t = T[lang];
+  const c = CARD[lang];
+  return pagina(lang, [t.thanks, `${c[4]}</p>
+<p style="margin:0 0 22px 0;opacity:1"><a href="${STRIPE}" target="_blank" rel="noopener" style="background:#1d2f46">${c[3]} &rarr;</a></p>
+<p style="font-size:13px">${c[5]}`]);
+}
 
 function paginaPagament(lang) {
   const t = T[lang];
@@ -339,6 +373,7 @@ async function handleInscripcio(req, res) {
   }
 
   if (tipus === "soci" && f.modalitat === "colaborador") {
+    if (f.metode === "targeta" && STRIPE) return send(res, 200, paginaTargeta(lang));
     return send(res, 200, paginaPagament(lang));
   }
   const ok = { soci: t.okSoci, voluntari: t.okVoluntari, contacte: t.okContacte }[tipus];
@@ -401,7 +436,7 @@ const server = http.createServer(async (req, res) => {
   const isHtml = ext === ".html";
   if (isHtml) {
     // el menu apuntava a #actualitat, que no existeix: el portem a /actualitat
-    const html = fixActualitatLinks(fs.readFileSync(file, "utf8"));
+    const html = activaTargeta(fixActualitatLinks(fs.readFileSync(file, "utf8")));
     res.writeHead(200, {
       "Content-Type": MIME[ext],
       "Cache-Control": "no-cache",
