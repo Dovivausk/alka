@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prisijungti prie pamokos – „Gilė“</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Literata:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#F8EEDE;--card:#FFF9EE;--ink:#33402A;--muted:#7A6B52;--line:#E3D3B6;--green:#4E6B35;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{min-height:100vh;background:var(--bg);color:var(--ink);font-family:'Literata',Georgia,serif;
+       display:flex;align-items:center;justify-content:center;padding:32px 16px}
+  main{width:100%;max-width:560px}
+  .logo{height:96px;width:auto;display:block;margin-bottom:22px}
+  .badge{width:72px;height:72px;flex:none;border-radius:50%;object-fit:cover;-webkit-mask-image:radial-gradient(circle,#000 62%,transparent 71%);mask-image:radial-gradient(circle,#000 62%,transparent 71%);transform:scale(1.25)}
+  .kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:600}
+  h1{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:clamp(30px,7vw,42px);line-height:1.1;margin:8px 0 10px}
+  .lead{font-size:17px;color:var(--muted);line-height:1.5}
+  .cards{display:grid;gap:14px;margin-top:28px}
+  .card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:18px 20px;display:flex;gap:16px;align-items:center}
+  .dot{width:46px;height:46px;border-radius:50%;flex:none}
+  .name{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:22px}
+  .next{font-size:15px;color:var(--muted);margin-top:3px;line-height:1.4}
+  .live{border-color:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 18%,transparent)}
+  .btn{display:inline-block;margin-top:10px;background:var(--c);color:#FFF9EE;text-decoration:none;font-weight:600;
+       font-size:16px;padding:10px 18px;border-radius:999px}
+  .note{margin-top:26px;font-size:14px;color:var(--muted);line-height:1.5}
+  .foot{margin-top:28px;padding-top:16px;border-top:2px dashed var(--line);font-size:14px;color:var(--muted);
+        display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .foot b{font-family:'Fraunces',Georgia,serif;color:var(--ink)}
+  a.mail{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="/img/gile-logo.png" alt="Gilė – lituanistinė mokykla">
+  <h1 id="title">Prisijungimas prie pamokos</h1>
+  <p class="lead" id="lead">Tikriname tvarkaraštį…</p>
+  <div class="cards" id="cards"></div>
+  <p class="note" id="note"></p>
+  <div class="foot"><span>ALKA · Lleida</span><a class="mail" href="mailto:gile@alka.cat">gile@alka.cat</a></div>
+</main>
+
+<script>
+/* =========================================================
+   NUSTATYMAI – keisk tik šią dalį
+   ========================================================= */
+const MINUTES_BEFORE = 15;           // kiek minučių prieš pamoką atsidaro nuoroda
+const GROUPS = [
+  {
+    id: "azuoliukai",
+    name: "Ąžuoliukai",
+    img: "/img/azuoliukai.jpg",
+    color: "#6B4A2B",
+    meet: "https://meet.google.com/ksg-dwnj-zhs",   // ← įrašyk Ąžuoliukų Meet nuorodą
+    time: ["17:30", "19:30"],
+    dates: ["2026-10-21","2026-11-04","2026-11-18","2026-12-02","2026-12-16","2027-01-13","2027-01-27",
+            "2027-02-10","2027-02-24","2027-03-10","2027-03-31","2027-04-14","2027-04-28","2027-05-12",
+            "2027-05-26","2027-06-09"]
+  },
+  {
+    id: "lapeliai",
+    name: "Lapeliai",
+    img: "/img/lapeliai.jpg",
+    color: "#C08A1E",
+    meet: "https://meet.google.com/ksg-dwnj-zhs",   // ← įrašyk Lapelių Meet nuorodą
+    time: ["10:00", "12:00"],
+    dates: ["2026-10-25","2026-11-15","2026-11-22","2026-12-06","2026-12-20","2027-01-10","2027-01-24",
+            "2027-02-07","2027-02-21","2027-03-07","2027-03-14","2027-04-04","2027-04-18","2027-05-02",
+            "2027-05-16","2027-05-30"]
+  }
+];
+/* ========================================================= */
+
+const WEEKDAYS = ["sekmadienis","pirmadienis","antradienis","trečiadienis","ketvirtadienis","penktadienis","šeštadienis"];
+const MONTHS = ["sausio","vasario","kovo","balandžio","gegužės","birželio","liepos","rugpjūčio","rugsėjo","spalio","lapkričio","gruodžio"];
+
+// Dabartinis laikas Ispanijoje (Europe/Madrid), kaip "sienos laikas" minutėmis
+function madridNowMinutes(){
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Madrid",
+    year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"})
+    .formatToParts(new Date()).map(x=>[x.type,x.value]));
+  return Date.UTC(+p.year,+p.month-1,+p.day,+p.hour,+p.minute)/60000;
+}
+function toMinutes(date,hm){
+  const [y,m,d]=date.split("-").map(Number), [h,mi]=hm.split(":").map(Number);
+  return Date.UTC(y,m-1,d,h,mi)/60000;
+}
+function pretty(date,hm){
+  const [y,m,d]=date.split("-").map(Number);
+  const wd = WEEKDAYS[new Date(Date.UTC(y,m-1,d)).getUTCDay()];
+  return `${wd[0].toUpperCase()+wd.slice(1)}, ${MONTHS[m-1]} ${d} d., ${hm}`;
+}
+const hasLink = g => g.meet && !/XXX|YYY/.test(g.meet);
+
+function render(){
+  const now = madridNowMinutes();
+  const forced = new URLSearchParams(location.search).get("grupe");
+  const cards = document.getElementById("cards");
+  cards.innerHTML = "";
+  let live = null;
+
+  GROUPS.forEach(g=>{
+    let next = null, isLive = false;
+    for (const d of g.dates){
+      const s = toMinutes(d,g.time[0]), e = toMinutes(d,g.time[1]);
+      if (now >= s - MINUTES_BEFORE && now <= e){ isLive = true; next = d; break; }
+      if (s > now){ next = d; break; }
+    }
+    if (isLive && !live) live = g;
+
+    const el = document.createElement("div");
+    el.className = "card" + (isLive ? " live" : "");
+    el.style.setProperty("--c", g.color);
+    el.innerHTML = `<img class="badge" src="${g.img}" alt="${g.name}"><div>
+      <div class="name">${g.name}</div>
+      <div class="next">${isLive ? "Pamoka vyksta dabar" :
+         next ? "Artimiausia pamoka: " + pretty(next,g.time[0]) : "Šiais mokslo metais pamokų nebeliko"}</div>
+      ${isLive && hasLink(g) ? `<a class="btn" href="${g.meet}">Prisijungti</a>` : ""}
+    </div>`;
+    cards.appendChild(el);
+  });
+
+  // Rankinis pasirinkimas: …/?grupe=azuoliukai
+  if (forced){
+    const g = GROUPS.find(x=>x.id===forced);
+    if (g && hasLink(g)){ location.replace(g.meet); return; }
+  }
+
+  const title = document.getElementById("title"), lead = document.getElementById("lead"), note = document.getElementById("note");
+  if (live){
+    title.textContent = `Jungiamės prie ${live.name === "Lapeliai" ? "Lapelių" : "Ąžuoliukų"} pamokos`;
+    if (hasLink(live)){
+      lead.textContent = "Tuoj būsite nukreipti į Google Meet. Jei nepavyks, spauskite mygtuką „Prisijungti“.";
+      setTimeout(()=>location.replace(live.meet), 1500);
+    } else {
+      lead.textContent = "Nuoroda dar neįrašyta – parašykite mokytojai.";
+    }
+    note.textContent = "Įeinant gali tekti paspausti „Pedir unirse / Prašyti prisijungti“ – mokytoja jus įleis.";
+  } else {
+    title.textContent = "Šiuo metu pamokos nevyksta";
+    lead.textContent = `Ši nuoroda atsidarys likus ${MINUTES_BEFORE} min. iki pamokos pradžios ir automatiškai nukreips į jūsų grupės pamoką.`;
+    note.textContent = "Laikas nurodytas pagal Ispanijos laiką. Puslapis atsinaujina pats – galite jį palikti atidarytą.";
+  }
+}
+
+render();
+setInterval(()=>{ if (!document.hidden) render(); }, 30000);
+</script>
+</body>
+</html>
