@@ -52,7 +52,8 @@ modalitats Amic/Amiga i Soci/a col.laborador/a (150 EUR/any). Cal passar-los als
 `.dc.html` del projecte de disseny abans del proper build, o es perdran.
 
 ATENCIO (14/11/2026): el bloc "Zodziu olimpiada" (enllac a olimpiada.alka.cat) a /educacio
-(ca/lt/en) i la imatge `public/images/olimpiada.webp` es van afegir directament a `public/`.
+(ca/lt/en), la imatge `public/images/olimpiada.webp`, el nou horari de Giliukai (diumenge 11-13 h)
+i l'enllac a gile.alka.cat/tvarkarastis es van afegir directament a `public/`.
 Cal passar-los als `.dc.html` abans del proper build, o es perdran.
 
 Els mini-apps (`public/viatge-lituania/`) no surten dels `.dc.html`: viuen a
