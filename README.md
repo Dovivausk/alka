@@ -53,7 +53,8 @@ modalitats Amic/Amiga i Soci/a col.laborador/a (150 EUR/any). Cal passar-los als
 
 ATENCIO (14/11/2026): el bloc "Zodziu olimpiada" (enllac a olimpiada.alka.cat) a /educacio
 (ca/lt/en), la imatge `public/images/olimpiada.webp`, el nou horari de Giliukai (diumenge 11-13 h)
-i l'enllac a gile.alka.cat/tvarkarastis es van afegir directament a `public/`.
+i l'enllac a gile.alka.cat/tvarkarastis, i a /projectes (ca/lt/en) les targetes "Zodziu olimpiada"
+(imatge `public/images/olimpiada-blob.webp`) i "Escola Gile" es van afegir directament a `public/`.
 Cal passar-los als `.dc.html` abans del proper build, o es perdran.
 
 Els mini-apps (`public/viatge-lituania/`) no surten dels `.dc.html`: viuen a
